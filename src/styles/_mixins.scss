@@ -1,0 +1,31 @@
+@mixin clickable {
+
+	border-radius: $_radius;
+	background-color: $_white-semiOpaque;
+	box-shadow: $_shadow;
+	cursor: pointer;
+
+	&:hover {
+		background-color: $_white-mostlyOpaque;
+	}
+
+	&:active {
+		background-color: $_white-almostOpaque;
+	}
+
+}
+
+@mixin notClickable {
+
+	cursor: default;
+
+	&:hover,
+	&:active {
+		background-color: $_white-semiOpaque;
+	}
+
+}
+
+@mixin disabled {
+	opacity: 0.5;
+}

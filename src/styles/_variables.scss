@@ -1,0 +1,55 @@
+$_gutter-large: 40px;
+$_gutter: 20px;
+$_gutter-small: 10px;
+$_gutter-tiny: 5px;
+
+$_fontSize-small: 12px;
+$_fontSize: 16px;
+$_fontSize-medium: 24px;
+$_fontSize-large: 32px;
+$_fontSize-huge: 64px;
+
+$_lineHeight-small: 16px;
+$_lineHeight: 32px;
+$_lineHeight-large: 52px;
+
+$_radius: 10px;
+$_radius-small: 5px;
+
+$_transitionTiming: 0.3s;
+
+$_white: #f5f5f5;
+$_black: #090a0f;
+$_darkGrey: #333543;
+$_grey: #797a82;
+$_darkBlue: #1b2735;
+$_lightBlue: #6892c3;
+$_red: #a22a16;
+$_lightRed: #b54937;
+$_darkGreen: #1b3521;
+$_lightGreen: #2a5635;
+
+$_white-almostTransparent: rgba(245, 245, 245, 0.2);
+$_white-mostlyTransparent: rgba(245, 245, 245, 0.4);
+$_white-semiOpaque: rgba(245, 245, 245, 0.5);
+$_white-mostlyOpaque: rgba(245, 245, 245, 0.6);
+$_white-almostOpaque: rgba(245, 245, 245, 0.8);
+
+$_grey-almostTransparent: rgba(121, 122, 130, 0.2);
+$_grey-mostlyTransparent: rgba(121, 122, 130, 0.4);
+$_grey-semiOpaque: rgba(121, 122, 130, 0.5);
+$_grey-mostlyOpaque: rgba(121, 122, 130, 0.6);
+$_grey-almostOpaque: rgba(121, 122, 130, 0.8);
+
+$_black-almostTransparent: rgba(9, 10, 15, 0.2);
+$_black-mostlyTransparent: rgba(9, 10, 15, 0.4);
+$_black-semiOpaque: rgba(9, 10, 15, 0.5);
+$_black-mostlyOpaque: rgba(9, 10, 15, 0.6);
+$_black-almostOpaque: rgba(9, 10, 15, 0.8);
+
+$_shadow: 0 1px 3px 0 $_black;
+$_shadow-raised: 0 1px 5px 0 $_black;
+$_shadow-inset: inset 0 0 3px 0 $_black;
+
+$_z-index-1: 1000;
+$_z-index-2: 2000;
