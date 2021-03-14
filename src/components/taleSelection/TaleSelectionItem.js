@@ -1,20 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import BackgroundImg from '../backgroundImg/BackgroundImg';
+
 export const className = 'taleSelectionItem';
 
-const TaleSelectionItem = ({ name }) => (
+const TaleSelectionItem = ({ name, img }) => (
 
-	<div className={className}>
+	<BackgroundImg classes={className} imgUrl={img}>
 
 		<label>{name}</label>
 
-	</div>
+	</BackgroundImg>
 
 );
 
 TaleSelectionItem.propTypes = {
-	name: PropTypes.string
+	name: PropTypes.string,
+	img: PropTypes.string
 };
 
 export default TaleSelectionItem;

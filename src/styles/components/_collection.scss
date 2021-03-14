@@ -1,0 +1,16 @@
+.collection {
+
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	padding: $_gutter;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: $_gutter;
+	grid-auto-rows: minmax(25vh, auto);
+
+	&__item {
+		display: flex;
+	}
+
+}
