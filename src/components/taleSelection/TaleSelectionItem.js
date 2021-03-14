@@ -23,7 +23,7 @@ const TaleSelectionItem = ({ name, img, id }) => (
 
 TaleSelectionItem.propTypes = {
 	...taleShape,
-	id: PropTypes.number
+	id: PropTypes.string
 };
 
 export default TaleSelectionItem;
