@@ -5,6 +5,7 @@ import {
 	Route
 } from 'react-router-dom';
 
+import Tale from '../tale/Tale';
 import TaleSelection from '../taleSelection/TaleSelection';
 
 export const className = 'app';
@@ -19,7 +20,7 @@ const App = () => (
 
 				<Route path="/tale/:taleId">
 
-					<p>Woop</p>
+					<Tale />
 
 				</Route>
 
