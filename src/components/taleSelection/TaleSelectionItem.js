@@ -1,15 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import BackgroundImg from '../backgroundImg/BackgroundImg';
 
 export const className = 'taleSelectionItem';
 
-const TaleSelectionItem = ({ name, img }) => (
+const TaleSelectionItem = ({ name, img, id }) => (
 
-	<BackgroundImg classes={className} imgUrl={img}>
+	<BackgroundImg
+		imgUrl={img}
+		component={(<Link className={className} to={`/tale/${id}/start`} />)}
+	>
 
-		<label>{name}</label>
+		<p>{name}</p>
 
 	</BackgroundImg>
 
@@ -17,7 +21,11 @@ const TaleSelectionItem = ({ name, img }) => (
 
 TaleSelectionItem.propTypes = {
 	name: PropTypes.string,
-	img: PropTypes.string
+	img: PropTypes.string,
+	id: PropTypes.oneOfType([
+		PropTypes.number,
+		PropTypes.string
+	])
 };
 
 export default TaleSelectionItem;

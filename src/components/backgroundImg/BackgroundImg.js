@@ -1,26 +1,30 @@
-import React from 'react';
+import { cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 export const className = 'backgroundImg';
 
-const BackgroundImg = ({ classes, imgUrl, children }) => (
+const BackgroundImg = ({ imgUrl, children, component }) => (
 
-	<div
-		className={classNames(classes, className)}
-		style={{ backgroundImage: `url(${imgUrl})` }}
-	>
-
-		{children}
-
-	</div>
+	cloneElement(
+		component,
+		{
+			...component.props,
+			style: {
+				...component.props.style,
+				backgroundImage: `url(${imgUrl})`
+			},
+			className: classNames(component.props.className, className)
+		},
+		children
+	)
 
 );
 
 BackgroundImg.propTypes = {
-	classes: PropTypes.string,
 	imgUrl: PropTypes.string,
-	children: PropTypes.element
+	children: PropTypes.element,
+	component: PropTypes.element
 };
 
 export default BackgroundImg;

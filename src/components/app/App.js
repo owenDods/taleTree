@@ -1,4 +1,9 @@
 import React from 'react';
+import {
+	BrowserRouter as Router,
+	Switch,
+	Route
+} from 'react-router-dom';
 
 import TaleSelection from '../taleSelection/TaleSelection';
 
@@ -8,7 +13,25 @@ const App = () => (
 
 	<div className={className}>
 
-		<TaleSelection />
+		<Router>
+
+			<Switch>
+
+				<Route path="/tale/:taleId">
+
+					<p>Woop</p>
+
+				</Route>
+
+				<Route path="/">
+
+					<TaleSelection />
+
+				</Route>
+
+			</Switch>
+
+		</Router>
 
 	</div>
 
