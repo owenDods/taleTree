@@ -1,6 +1,7 @@
 import React from 'react';
 
-import Grid from '../grid/Grid';
+import Collection from '../collection/Collection';
+import TaleSelectionItem from './TaleSelectionItem';
 
 export const className = 'taleSelection';
 
@@ -47,10 +48,14 @@ const TaleSelection = () => (
 
 	<div className={className}>
 
-		<Grid
+		<Collection
 			name={className}
 			items={dummyTales}
-		/>
+		>
+
+			<TaleSelectionItem />
+
+		</Collection>
 
 	</div>
 
