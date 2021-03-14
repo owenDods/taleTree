@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+import taleShape from '../shapes/taleShape';
+
 import BackgroundImg from '../backgroundImg/BackgroundImg';
 
 export const className = 'taleSelectionItem';
@@ -20,12 +22,8 @@ const TaleSelectionItem = ({ name, img, id }) => (
 );
 
 TaleSelectionItem.propTypes = {
-	name: PropTypes.string,
-	img: PropTypes.string,
-	id: PropTypes.oneOfType([
-		PropTypes.number,
-		PropTypes.string
-	])
+	...taleShape,
+	id: PropTypes.number
 };
 
 export default TaleSelectionItem;

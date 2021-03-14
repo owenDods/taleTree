@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
 	BrowserRouter as Router,
 	Switch,
@@ -8,34 +8,47 @@ import {
 import Tale from '../tale/Tale';
 import TaleSelection from '../taleSelection/TaleSelection';
 
+import dummyTales from '../../../tales.json';
+
 export const className = 'app';
 
-const App = () => (
+const App = () => {
 
-	<div className={className}>
+	const [ tales, setTales ] = useState([]);
+	useEffect(() => {
 
-		<Router>
+		setTales(dummyTales);
 
-			<Switch>
+	}, []);
 
-				<Route path="/tale/:taleId">
+	return (
 
-					<Tale />
+		<div className={className}>
 
-				</Route>
+			<Router>
 
-				<Route path="/">
+				<Switch>
 
-					<TaleSelection />
+					<Route path="/tale/:taleId">
 
-				</Route>
+						<Tale tales={tales} />
 
-			</Switch>
+					</Route>
 
-		</Router>
+					<Route path="/">
 
-	</div>
+						<TaleSelection tales={tales} />
 
-);
+					</Route>
+
+				</Switch>
+
+			</Router>
+
+		</div>
+
+	);
+
+};
 
 export default App;
