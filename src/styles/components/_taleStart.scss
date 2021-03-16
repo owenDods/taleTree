@@ -1,0 +1,25 @@
+.taleStart {
+
+	display: flex;
+	flex-direction: column;
+	width: $_contentWidth;
+	height: 100%;
+	margin: auto;
+
+	&__img {
+		width: 100%;
+		height: 50vh;
+		margin: auto auto 0;
+		@include imgBox;
+	}
+
+	h1 {
+		margin: auto auto 0 0;
+		@include textLabel;
+	}
+
+	&__summary {
+		margin: $_gutter auto auto;
+	}
+
+}

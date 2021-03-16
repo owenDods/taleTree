@@ -29,3 +29,18 @@
 @mixin disabled {
 	opacity: 0.5;
 }
+
+@mixin imgBox {
+	padding: $_gutter;
+	box-sizing: border-box;
+	border-radius: $_radius;
+	box-shadow: $_shadow;
+	display: flex;
+}
+
+@mixin textLabel {
+	padding: $_gutter-small;
+	background-color: $_white-almostOpaque;
+	border-radius: $_radius;
+	font-family: 'Poppins', sans-serif;
+}
