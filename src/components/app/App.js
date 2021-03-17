@@ -5,8 +5,11 @@ import {
 	Route
 } from 'react-router-dom';
 
+import BackButton from '../backButton/BackButton';
 import Tale from '../tale/Tale';
 import TaleSelection from '../taleSelection/TaleSelection';
+
+import routes from '../../routes';
 
 import dummyTales from '../../../tales.json';
 
@@ -27,9 +30,11 @@ const App = () => {
 
 			<Router>
 
+				<BackButton />
+
 				<Switch>
 
-					<Route path="/tale/:taleId">
+					<Route path={`/${routes.TALE}/:taleId`}>
 
 						<Tale tales={tales} />
 
