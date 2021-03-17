@@ -1,0 +1,14 @@
+.backButton {
+
+	width: 80px;
+	height: 80px;
+	display: flex;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+	border-bottom-left-radius: 0;
+
+	svg {
+		transform: rotate(-90deg);
+	}
+
+}

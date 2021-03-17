@@ -28,6 +28,7 @@
 	},
 	"devDependencies": {
 		"@parcel/transformer-sass": "2.0.0-nightly.627",
+		"@parcel/transformer-svg-react": "^2.0.0-nightly.1739",
 		"parcel": "^2.0.0-beta.1",
 		"sass": "^1.26.10"
 	}

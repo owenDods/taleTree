@@ -1,5 +1,7 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
+
+import Triangle from '../../img/triangle.svg';
 
 import getDestinationFromPathname from './utils/getDestinationFromPathname';
 
@@ -10,7 +12,15 @@ const BackButton = () => {
 	const { pathname } = useLocation();
 	const destination = getDestinationFromPathname(pathname);
 
-	return !!destination && (<div className={className} />);
+	return !!destination && (
+
+		<Link className={className} to={destination}>
+
+			<Triangle />
+
+		</Link>
+
+	);
 
 };
 

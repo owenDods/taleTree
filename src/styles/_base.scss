@@ -54,8 +54,7 @@ a {
 	@include clickable;
 	text-decoration: none;
 	box-sizing: border-box;
-	padding: 0 $_gutter-small;
-	line-height: $_lineHeight;
+	padding: $_gutter-small;
 	color: inherit;
 }
 
