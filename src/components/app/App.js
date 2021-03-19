@@ -34,7 +34,7 @@ const App = () => {
 
 				<Switch>
 
-					<Route path={`${routes.TALE}/:taleId`}>
+					<Route path={`${routes.TALE}/:taleId?`}>
 
 						<Tale taleSummaries={taleSummaries} />
 

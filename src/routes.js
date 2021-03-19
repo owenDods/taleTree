@@ -4,7 +4,8 @@ const routeConstants = {
 
 export const dataByRoute = {
 	'/': {
-		label: 'Tale Selection'
+		label: 'Tale Selection',
+		lostSuggestion: true
 	},
 	[routeConstants.TALE]: {
 		label: 'Tale',

@@ -11,6 +11,7 @@ import find from 'lodash/fp/find';
 import taleSummaryShape from '../shapes/taleSummaryShape';
 
 import TaleStart from '../taleStart/TaleStart';
+import Lost from '../lost/Lost';
 
 export const className = 'tale';
 
@@ -26,9 +27,15 @@ const Tale = ({ taleSummaries }) => {
 
 			<Switch>
 
-				<Route path={path}>
+				<Route path={`${path}/start`}>
 
 					<TaleStart taleSummary={taleSummary} />
+
+				</Route>
+
+				<Route path="*">
+
+					<Lost />
 
 				</Route>
 

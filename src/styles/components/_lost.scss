@@ -1,0 +1,27 @@
+.lost {
+
+	display: flex;
+	flex-direction: column;
+	width: $_contentWidth;
+	height: 100%;
+	margin: auto;
+
+	h1 {
+		margin: auto auto 0;
+	}
+
+	p {
+		margin: $_gutter auto 0;
+	}
+
+	a {
+
+		margin: $_gutter auto 0;
+
+		&:last-of-type {
+			margin-bottom: auto;
+		}
+
+	}
+
+}
