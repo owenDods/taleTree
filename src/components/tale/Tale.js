@@ -8,17 +8,17 @@ import {
 
 import find from 'lodash/fp/find';
 
-import taleShape from '../shapes/taleShape';
+import taleSummaryShape from '../shapes/taleSummaryShape';
 
 import TaleStart from '../taleStart/TaleStart';
 
 export const className = 'tale';
 
-const Tale = ({ tales }) => {
+const Tale = ({ taleSummaries }) => {
 
 	const { path, params } = useRouteMatch();
 	const { taleId } = params;
-	const tale = find({ id: taleId }, tales);
+	const taleSummary = find({ id: taleId }, taleSummaries);
 
 	return (
 
@@ -28,7 +28,7 @@ const Tale = ({ tales }) => {
 
 				<Route path={path}>
 
-					<TaleStart tale={tale} />
+					<TaleStart taleSummary={taleSummary} />
 
 				</Route>
 
@@ -41,7 +41,7 @@ const Tale = ({ tales }) => {
 };
 
 Tale.propTypes = {
-	tales: PropTypes.arrayOf(PropTypes.shape(taleShape))
+	taleSummaries: PropTypes.arrayOf(PropTypes.shape(taleSummaryShape))
 };
 
 export default Tale;

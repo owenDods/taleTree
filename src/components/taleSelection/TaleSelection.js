@@ -1,20 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import taleShape from '../shapes/taleShape';
+import taleSummaryShape from '../shapes/taleSummaryShape';
 
 import Collection from '../collection/Collection';
 import TaleSelectionItem from './TaleSelectionItem';
 
 export const className = 'taleSelection';
 
-const TaleSelection = ({ tales }) => (
+const TaleSelection = ({ taleSummaries }) => (
 
 	<div className={className}>
 
 		<Collection
 			name={className}
-			items={tales}
+			items={taleSummaries}
 		>
 
 			<TaleSelectionItem />
@@ -26,7 +26,7 @@ const TaleSelection = ({ tales }) => (
 );
 
 TaleSelection.propTypes = {
-	tales: PropTypes.arrayOf(PropTypes.shape(taleShape))
+	taleSummaries: PropTypes.arrayOf(PropTypes.shape(taleSummaryShape))
 };
 
 export default TaleSelection;

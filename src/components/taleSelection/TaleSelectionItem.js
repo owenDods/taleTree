@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import taleShape from '../shapes/taleShape';
+import taleSummaryShape from '../shapes/taleSummaryShape';
 
 import BackgroundImg from '../backgroundImg/BackgroundImg';
 
@@ -22,7 +22,7 @@ const TaleSelectionItem = ({ name, img, id }) => (
 );
 
 TaleSelectionItem.propTypes = {
-	...taleShape,
+	...taleSummaryShape,
 	id: PropTypes.string
 };
 

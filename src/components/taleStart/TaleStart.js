@@ -3,33 +3,33 @@ import PropTypes from 'prop-types';
 
 import get from 'lodash/fp/get';
 
-import taleShape from '../shapes/taleShape';
+import taleSummaryShape from '../shapes/taleSummaryShape';
 
 import BackgroundImg from '../backgroundImg/BackgroundImg';
 
 export const className = 'taleStart';
 
-const TaleStart = ({ tale }) => (
+const TaleStart = ({ taleSummary }) => (
 
 	<div className={className}>
 
 		<BackgroundImg
-			imgUrl={get('img', tale)}
+			imgUrl={get('img', taleSummary)}
 			component={(<div className={`${className}__img`} />)}
 		>
 
-			<h1>{get('name', tale)}</h1>
+			<h1>{get('name', taleSummary)}</h1>
 
 		</BackgroundImg>
 
-		<p className={`${className}__summary`}>{get('summary', tale)}</p>
+		<p className={`${className}__summary`}>{get('summary', taleSummary)}</p>
 
 	</div>
 
 );
 
 TaleStart.propTypes = {
-	tale: PropTypes.shape(taleShape)
+	taleSummary: PropTypes.shape(taleSummaryShape)
 };
 
 export default TaleStart;

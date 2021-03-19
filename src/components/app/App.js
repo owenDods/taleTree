@@ -11,16 +11,16 @@ import TaleSelection from '../taleSelection/TaleSelection';
 
 import routes from '../../routes';
 
-import dummyTales from '../../../tales.json';
+import dummyTaleSummaries from '../../../taleSummaries.json';
 
 export const className = 'app';
 
 const App = () => {
 
-	const [ tales, setTales ] = useState([]);
+	const [ taleSummaries, setTaleSummaries ] = useState([]);
 	useEffect(() => {
 
-		setTales(dummyTales);
+		setTaleSummaries(dummyTaleSummaries);
 
 	}, []);
 
@@ -36,13 +36,13 @@ const App = () => {
 
 					<Route path={`${routes.TALE}/:taleId`}>
 
-						<Tale tales={tales} />
+						<Tale taleSummaries={taleSummaries} />
 
 					</Route>
 
 					<Route path="/">
 
-						<TaleSelection tales={tales} />
+						<TaleSelection taleSummaries={taleSummaries} />
 
 					</Route>
 
