@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
 	Switch,
@@ -17,9 +17,11 @@ export const className = 'tale';
 
 const Tale = ({ taleSummaries }) => {
 
-	const { path, params } = useRouteMatch();
+	const { path, params, url: talePath } = useRouteMatch();
 	const { taleId } = params;
 	const taleSummary = find({ id: taleId }, taleSummaries);
+
+	const [ activeTale, setActiveTale ] = useState(null);
 
 	return (
 
@@ -29,7 +31,18 @@ const Tale = ({ taleSummaries }) => {
 
 				<Route path={`${path}/start`}>
 
-					<TaleStart taleSummary={taleSummary} />
+					<TaleStart
+						taleSummary={taleSummary}
+						setActiveTale={setActiveTale}
+						activeTale={activeTale}
+						talePath={talePath}
+					/>
+
+				</Route>
+
+				<Route path={`${path}/:pageId`}>
+
+					<h1>Woop</h1>
 
 				</Route>
 

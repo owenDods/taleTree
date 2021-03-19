@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@400;700&display=swap');
 
 html {
 	width: 100%;
@@ -43,9 +43,8 @@ p {
 button {
 	@include clickable;
 	border: none;
-	padding: 0 $_gutter-small;
-	line-height: $_lineHeight;
-	font-family: 'Roboto', sans-serif;
+	padding: $_gutter-small;
+	font-family: 'Poppins', sans-serif;
 	font-size: $_fontSize;
 	outline: none;
 	color: $_black;
