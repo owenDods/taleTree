@@ -9,7 +9,10 @@ export const dataByRoute = {
 	},
 	[routeConstants.TALE]: {
 		label: 'Tale',
-		backDestination: '/'
+		backData: {
+			destination: '/',
+			routeToMatch: new RegExp(`^${routeConstants.TALE}/[a-z0-9]*/start`, 'i')
+		}
 	}
 };
 
