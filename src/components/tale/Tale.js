@@ -11,6 +11,7 @@ import find from 'lodash/fp/find';
 import taleSummaryShape from '../shapes/taleSummaryShape';
 
 import TaleStart from '../taleStart/TaleStart';
+import TalePage from '../talePage/TalePage';
 import Lost from '../lost/Lost';
 
 export const className = 'tale';
@@ -42,7 +43,7 @@ const Tale = ({ taleSummaries }) => {
 
 				<Route path={`${path}/:pageId`}>
 
-					<h1>Woop</h1>
+					<TalePage activeTale={activeTale} setActiveTale={setActiveTale} />
 
 				</Route>
 
