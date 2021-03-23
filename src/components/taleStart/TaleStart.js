@@ -5,18 +5,15 @@ import { Redirect } from 'react-router-dom';
 import get from 'lodash/fp/get';
 
 import taleSummaryShape from '../shapes/taleSummaryShape';
-import taleShape from '../shapes/taleShape';
 
 import BackgroundImg from '../backgroundImg/BackgroundImg';
 
-import dummyTale from '../../../tale.json';
-
 export const className = 'taleStart';
 
-const TaleStart = ({ taleSummary, setActiveTale, activeTale, talePath }) => {
+const TaleStart = ({ taleSummary, talePath }) => {
 
 	const [ redirectToTaleStart, setRedirectToTaleStart ] = useState(false);
-	const startPageId = get('startPage', activeTale);
+	const startPageId = get('startPage', taleSummary);
 
 	if (redirectToTaleStart && startPageId) {
 
@@ -29,8 +26,6 @@ const TaleStart = ({ taleSummary, setActiveTale, activeTale, talePath }) => {
 	}
 
 	const handleTaleStart = () => {
-
-		setActiveTale(dummyTale);
 
 		setRedirectToTaleStart(true);
 
@@ -61,8 +56,6 @@ const TaleStart = ({ taleSummary, setActiveTale, activeTale, talePath }) => {
 
 TaleStart.propTypes = {
 	taleSummary: PropTypes.shape(taleSummaryShape),
-	setActiveTale: PropTypes.func.isRequired,
-	activeTale: PropTypes.shape(taleShape),
 	talePath: PropTypes.string
 };
 

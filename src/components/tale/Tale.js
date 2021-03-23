@@ -34,8 +34,6 @@ const Tale = ({ taleSummaries }) => {
 
 					<TaleStart
 						taleSummary={taleSummary}
-						setActiveTale={setActiveTale}
-						activeTale={activeTale}
 						talePath={talePath}
 					/>
 
