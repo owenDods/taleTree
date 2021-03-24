@@ -32,22 +32,29 @@ const TalePage = ({ activeTale, setActiveTale }) => {
 
 	return (
 
-		<div className={className}>
+		<BackgroundImg
+			imgUrl={get('backgroundImg', activeTale)}
+			component={(<div className={className} />)}
+		>
 
-			{pageImg && (
+			<div className={`${className}__content`}>
 
-				<BackgroundImg
-					imgUrl={pageImg}
-					component={(<div className={`${className}__img`} />)}
-				/>
+				{pageImg && (
 
-			)}
+					<BackgroundImg
+						imgUrl={pageImg}
+						component={(<div className={`${className}__img`} />)}
+					/>
 
-			<h1>{get('title', activePage)}</h1>
+				)}
 
-			<p>{get('text', activePage)}</p>
+				<h1>{get('title', activePage)}</h1>
 
-		</div>
+				<p>{get('text', activePage)}</p>
+
+			</div>
+
+		</BackgroundImg>
 
 	);
 

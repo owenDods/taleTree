@@ -1,9 +1,17 @@
 .talePage {
 
-	@include pageContainer;
-	padding: $_gutter 0;
-	box-sizing: border-box;
-	display: block;
+	display: flex;
+
+	&__content {
+		@include pageContainer;
+		height: auto;
+		max-height: 100%;
+		padding: $_gutter;
+		box-sizing: border-box;
+		display: block;
+		background-color: $_white-almostOpaque;
+		box-shadow: $_shadow;
+	}
 
 	h1,
 	p {
@@ -15,6 +23,7 @@
 		height: 25vw;
 		float: right;
 		margin: 0 0 $_gutter $_gutter;
+		box-shadow: $_shadow;
 	}
 
 }
