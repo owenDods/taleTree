@@ -44,3 +44,11 @@
 	border-radius: $_radius;
 	font-family: 'Poppins', sans-serif;
 }
+
+@mixin pageContainer {
+	display: flex;
+	flex-direction: column;
+	width: $_contentWidth;
+	height: 100%;
+	margin: auto;
+}

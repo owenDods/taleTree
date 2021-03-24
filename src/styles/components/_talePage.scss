@@ -1,0 +1,20 @@
+.talePage {
+
+	@include pageContainer;
+	padding: $_gutter 0;
+	box-sizing: border-box;
+	display: block;
+
+	h1,
+	p {
+		margin: 0 $_gutter $_gutter 0;
+	}
+
+	&__img {
+		width: 25vw;
+		height: 25vw;
+		float: right;
+		margin: 0 0 $_gutter $_gutter;
+	}
+
+}
