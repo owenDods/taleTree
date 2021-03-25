@@ -2,13 +2,13 @@
 	"name": "taleTree",
 	"version": "1.0.0",
 	"description": "Web based choose your own adventure stories",
-	"main": "index.js",
+	"main": "build/index.html",
 	"author": "Owen Dods",
 	"license": "MIT",
 	"private": true,
 	"scripts": {
-		"start": "parcel serve index.html",
-		"build": "parcel build index.html -d build",
+		"start": "parcel serve src/index.html",
+		"build": "parcel build src/index.html --dist-dir ./build",
 		"lint": "eslint ./src"
 	},
 	"dependencies": {
