@@ -13,8 +13,16 @@ module.exports = {
 			{
 				test: /\.(png|svg|jpg|jpeg|gif)$/i,
 				type: 'asset/resource'
+			},
+			{
+				test: /\.(js|jsx)$/,
+				exclude: /node_modules/,
+				use: [ 'babel-loader' ]
 			}
 		]
+	},
+	resolve: {
+		extensions: [ '*', '.js', '.jsx' ],
 	},
 	devtool: 'inline-source-map',
 	devServer: {
@@ -23,11 +31,12 @@ module.exports = {
 	plugins: [
 		new HtmlWebpackPlugin({
 			title: 'TaleTree',
-			hash: true
+			hash: true,
+			template: 'index.html'
 		})
 	],
 	output: {
-		filename: '[name].bundle.js',
+		filename: '[name].[contenthash].js',
 		path: path.resolve(__dirname, 'dist'),
 		clean: true,
 		publicPath: '/'
