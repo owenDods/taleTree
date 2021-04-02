@@ -1,7 +1,7 @@
 {
 	"id": "1",
 	"name": "Tale 1",
-	"backgroundImg": "https://placeimg.com/640/480/nature",
+	"backgroundImg": "/backgroundImages/1.jpg",
 	"startPage": "5903086e-517b-4a21-b8da-f41d18361213",
 	"pages": {
 		"5903086e-517b-4a21-b8da-f41d18361213": {
