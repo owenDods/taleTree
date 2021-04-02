@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@400;700&display=swap');
 
-html {
+html,
+body,
+#root {
 	width: 100%;
 	height: 100%;
 }
 
 body {
-	width: 100%;
-	height: 100%;
 	margin: 0;
 	font-size: $_fontSize;
 	font-family: 'Open Sans', sans-serif;

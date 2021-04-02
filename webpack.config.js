@@ -11,13 +11,18 @@ module.exports = {
 				use: [ 'style-loader', 'css-loader', 'postcss-loader', 'sass-loader' ]
 			},
 			{
-				test: /\.(png|svg|jpg|jpeg|gif)$/i,
+				test: /\.(png|jpg|jpeg|gif)$/i,
 				type: 'asset/resource'
 			},
 			{
 				test: /\.(js|jsx)$/,
 				exclude: /node_modules/,
 				use: [ 'babel-loader' ]
+			},
+			{
+				test: /\.svg$/i,
+				exclude: /node_modules/,
+				use: [ 'svg-react-loader' ]
 			}
 		]
 	},
@@ -27,6 +32,7 @@ module.exports = {
 	devtool: 'inline-source-map',
 	devServer: {
 		contentBase: './dist',
+		historyApiFallback: true
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
