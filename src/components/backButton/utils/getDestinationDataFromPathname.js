@@ -1,4 +1,5 @@
 import get from 'lodash/fp/get';
+import find from 'lodash/fp/find';
 import getOr from 'lodash/fp/getOr';
 
 import { dataByRoute } from '../../../routes';
@@ -8,11 +9,13 @@ export default pathname => {
 	const { 0: baseRoute } = pathname.match(/^\/\w*/);
 
 	const backData = get(`${baseRoute}.backData`, dataByRoute);
+	const backDataWithMatchingRoute = find(({ routeToMatch }) => (
 
-	const routeToMatch = get('routeToMatch', backData);
-	const routeMatches = routeToMatch ? routeToMatch.test(pathname) : true;
+		routeToMatch ? routeToMatch.test(pathname) : false
 
-	const destination = routeMatches ? getOr(null, 'destination', backData) : null;
+	), backData);
+
+	const destination = getOr(null, 'destination', backDataWithMatchingRoute);
 	const destinationLabel = destination ? getOr(null, `${destination}.label`, dataByRoute) : null;
 
 	return {
