@@ -9,7 +9,8 @@ export default {
 		title: PropTypes.string,
 		text: PropTypes.string,
 		img: PropTypes.string,
-		destinations: PropTypes.objectOf(PropTypes.shape({
+		destinations: PropTypes.arrayOf(PropTypes.shape({
+			destination: PropTypes.string,
 			label: PropTypes.string
 		}))
 	}))

@@ -7,6 +7,7 @@ import get from 'lodash/fp/get';
 import taleShape from '../shapes/taleShape';
 
 import BackgroundImg from '../backgroundImg/BackgroundImg';
+import TaleChoice from '../taleChoice/TaleChoice';
 
 import dummyTale from '../../../tale.json';
 
@@ -29,6 +30,7 @@ const TalePage = ({ activeTale, setActiveTale }) => {
 	}, [ !!activeTale ]);
 
 	const pageImg = get('img', activePage);
+	const destinations = get('destinations', activePage);
 
 	return (
 
@@ -53,6 +55,8 @@ const TalePage = ({ activeTale, setActiveTale }) => {
 				<p>{get('text', activePage)}</p>
 
 			</div>
+
+			<TaleChoice choices={destinations} />
 
 		</BackgroundImg>
 
