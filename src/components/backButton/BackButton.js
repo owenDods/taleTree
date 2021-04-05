@@ -10,17 +10,17 @@ export const className = 'backButton';
 const BackButton = () => {
 
 	const { pathname } = useLocation();
-	const { destination, destinationLabel } = getDestinationDataFromPathname(pathname);
+	const { destination, destinationLabel, icon: Icon } = getDestinationDataFromPathname(pathname);
 
 	return !!destination && (
 
 		<Link
 			className={className}
 			to={destination}
-			title={`Back to ${destinationLabel}`}
+			title={destinationLabel}
 		>
 
-			<Triangle />
+			{Icon ? <Icon /> : <Triangle />}
 
 		</Link>
 

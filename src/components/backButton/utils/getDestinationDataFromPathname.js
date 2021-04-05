@@ -16,11 +16,13 @@ export default pathname => {
 	), backData);
 
 	const destination = getOr(null, 'destination', backDataWithMatchingRoute);
-	const destinationLabel = destination ? getOr(null, `${destination}.label`, dataByRoute) : null;
+	const destinationLabel = getOr(null, 'destinationLabel', backDataWithMatchingRoute) || `Back to ${getOr(null, `${destination}.label`, dataByRoute)}`;
+	const icon = getOr(null, 'icon', backDataWithMatchingRoute);
 
 	return {
 		destination,
-		destinationLabel
+		destinationLabel,
+		icon
 	};
 
 };

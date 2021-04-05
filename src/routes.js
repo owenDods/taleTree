@@ -1,3 +1,5 @@
+import Cross from './img/cross.svg';
+
 const routeConstants = {
 	TALE: '/tale'
 };
@@ -17,6 +19,8 @@ export const dataByRoute = {
 			},
 			{
 				destination: '/',
+				destinationLabel: 'Exit Tale',
+				icon: Cross,
 				routeToMatch: new RegExp(`^${routeConstants.TALE}/${uuidRegexPattern}/${uuidRegexPattern}`, 'i')
 			}
 		]
