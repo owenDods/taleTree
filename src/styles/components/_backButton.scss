@@ -19,4 +19,13 @@ $backButton-size: 80px;
 		height: 100%;
 	}
 
+	&--exitTale {
+		width: $backButton-size / 2;
+		height: $backButton-size / 2;
+		border-radius: $_radius;
+		top: $_gutter;
+		left: auto;
+		right: $_gutter;
+	}
+
 }

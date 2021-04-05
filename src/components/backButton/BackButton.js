@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLocation, Link } from 'react-router-dom';
+import classnames from 'classnames';
 
 import Triangle from '../../img/triangle.svg';
 
@@ -10,12 +11,17 @@ export const className = 'backButton';
 const BackButton = () => {
 
 	const { pathname } = useLocation();
-	const { destination, destinationLabel, icon: Icon } = getDestinationDataFromPathname(pathname);
+	const {
+		destination,
+		destinationLabel,
+		icon: Icon,
+		customClass
+	} = getDestinationDataFromPathname(pathname);
 
 	return !!destination && (
 
 		<Link
-			className={className}
+			className={classnames(className, customClass ? `${className}--${customClass}` : null)}
 			to={destination}
 			title={destinationLabel}
 		>

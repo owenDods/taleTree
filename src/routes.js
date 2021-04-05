@@ -21,6 +21,7 @@ export const dataByRoute = {
 				destination: '/',
 				destinationLabel: 'Exit Tale',
 				icon: Cross,
+				customClass: 'exitTale',
 				routeToMatch: new RegExp(`^${routeConstants.TALE}/${uuidRegexPattern}/${uuidRegexPattern}`, 'i')
 			}
 		]
