@@ -16,6 +16,7 @@
 	&__content {
 		@include pageContainer;
 		height: auto;
+		margin-bottom: 0;
 		max-height: 100%;
 		padding: $_gutter;
 		box-sizing: border-box;
@@ -43,10 +44,8 @@
 
 		@include pageContainer;
 		height: auto;
-		position: absolute;
-		bottom: $_gutter;
-		right: 0;
-		left: 0;
+		margin-top: $_gutter;
+		position: relative;
 		z-index: $_z-index-1;
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
