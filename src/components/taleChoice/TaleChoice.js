@@ -1,28 +1,39 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import map from 'lodash/fp/map';
+import isFunction from 'lodash/fp/isFunction';
 
 export const className = 'taleChoice';
 
-const TaleChoice = ({ choices }) => (
+const TaleChoice = ({ choices = [] }) => (
 
-	<div className={className}>
+	<div className={className} style={{ gridTemplateColumns: `repeat(${choices.length}, 1fr)` }}>
 
-		{map(({ destination, label }) => (
+		{map(({ destination, label }) => {
 
-			<Link
-				className={`${className}__choice`}
-				to={destination}
-				key={`${className}-${destination}`}
-			>
+			const destinationIsFunc = isFunction(destination);
+			const DestinationElement = destinationIsFunc ? 'button' : Link;
+			let destinationProps = {
+				className: `${className}__choice`,
+				key: `${className}-${destination}`,
+				[destinationIsFunc ? 'onClick' : 'to']: destination
+			};
+			destinationProps = destinationIsFunc ? { ...destinationProps, type: 'button' } : destinationProps;
 
-				<span>{label}</span>
+			return (
 
-			</Link>
+				<DestinationElement {...destinationProps}>
 
-		), choices)}
+					<span>{label}</span>
+
+				</DestinationElement>
+
+			);
+
+		}, choices)}
 
 	</div>
 
@@ -30,7 +41,10 @@ const TaleChoice = ({ choices }) => (
 
 TaleChoice.propTypes = {
 	choices: PropTypes.arrayOf(PropTypes.shape({
-		destination: PropTypes.string,
+		destination: PropTypes.oneOfType([
+			PropTypes.string,
+			PropTypes.func
+		]),
 		label: PropTypes.string
 	}))
 };

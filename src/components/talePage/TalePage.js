@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useRouteMatch } from 'react-router-dom';
+import { useRouteMatch, useHistory } from 'react-router-dom';
 
 import get from 'lodash/fp/get';
+import getOr from 'lodash/fp/getOr';
 
 import taleShape from '../shapes/taleShape';
 
@@ -30,7 +31,10 @@ const TalePage = ({ activeTale, setActiveTale }) => {
 	}, [ !!activeTale ]);
 
 	const pageImg = get('img', activePage);
-	const destinations = get('destinations', activePage);
+	const pageDestinations = getOr([], 'destinations', activePage);
+	const { goBack } = useHistory();
+	const destinations = pageDestinations.length ? pageDestinations
+		: [ { destination: () => goBack(), label: 'Back' } ];
 
 	return (
 

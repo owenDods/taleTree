@@ -40,32 +40,4 @@
 		box-shadow: $_shadow;
 	}
 
-	.taleChoice {
-
-		@include pageContainer;
-		height: auto;
-		margin-top: $_gutter;
-		position: relative;
-		z-index: $_z-index-1;
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		gap: $_gutter;
-		grid-auto-rows: minmax(80px, auto);
-
-		&__choice {
-
-			text-align: center;
-			font-size: $_fontSize-large;
-			font-family: 'Poppins', sans-serif;
-			font-weight: bold;
-			display: flex;
-
-			span {
-				margin: auto;
-			}
-
-		}
-
-	}
-
 }
