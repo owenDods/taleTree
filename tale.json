@@ -27,7 +27,13 @@
 		"ba228037-ce13-41b5-bc91-839dae17bca8": {
 			"title": "Success!",
 			"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pretium urna eget libero porta rhoncus. Maecenas lectus eros, malesuada quis feugiat et, iaculis in tellus. Vivamus at est non nisl tempor commodo nec quis erat. Duis eu justo consectetur, tempor elit a, consequat lorem. Sed dictum eros tellus. Pellentesque vel nunc aliquam, rhoncus libero et, fermentum turpis. Proin magna arcu, interdum eget malesuada quis, iaculis vitae felis. Vestibulum condimentum lacinia ipsum vel tincidunt.",
-			"img": "https://placeimg.com/640/490/animals"
+			"img": "https://placeimg.com/640/490/animals",
+			"destinations": [
+				{
+					"destination": "/",
+					"label": "Finish"
+				}
+			]
 		}
 	}
 }
