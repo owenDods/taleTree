@@ -1,34 +1,22 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { useRouteMatch, useHistory } from 'react-router-dom';
 
 import get from 'lodash/fp/get';
 import getOr from 'lodash/fp/getOr';
 
-import taleShape from '../shapes/taleShape';
-
 import BackgroundImg from '../backgroundImg/BackgroundImg';
 import TaleChoice from '../taleChoice/TaleChoice';
 
-import dummyTale from '../../../tale.json';
+import dummyPages from '../../../pages.json';
 
 export const className = 'talePage';
 
-const TalePage = ({ activeTale, setActiveTale }) => {
+const TalePage = ({ backgroundImg }) => {
 
 	const { params = {} } = useRouteMatch();
 	const { pageId } = params;
-	const activePage = get(pageId, get('pages', activeTale));
-
-	useEffect(() => {
-
-		if (!activeTale) {
-
-			setActiveTale(dummyTale);
-
-		}
-
-	}, [ !!activeTale ]);
+	const activePage = get(pageId, dummyPages);
 
 	const pageImg = get('img', activePage);
 	const pageDestinations = getOr([], 'destinations', activePage);
@@ -39,7 +27,7 @@ const TalePage = ({ activeTale, setActiveTale }) => {
 	return (
 
 		<BackgroundImg
-			imgUrl={get('backgroundImg', activeTale)}
+			imgUrl={backgroundImg}
 			component={(<div className={className} />)}
 		>
 
@@ -69,8 +57,7 @@ const TalePage = ({ activeTale, setActiveTale }) => {
 };
 
 TalePage.propTypes = {
-	activeTale: PropTypes.shape(taleShape),
-	setActiveTale: PropTypes.func.isRequired
+	backgroundImg: PropTypes.string
 };
 
 export default TalePage;

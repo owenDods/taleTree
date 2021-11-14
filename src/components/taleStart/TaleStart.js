@@ -4,16 +4,16 @@ import { Redirect } from 'react-router-dom';
 
 import get from 'lodash/fp/get';
 
-import taleSummaryShape from '../shapes/taleSummaryShape';
+import taleShape from '../shapes/taleShape';
 
 import BackgroundImg from '../backgroundImg/BackgroundImg';
 
 export const className = 'taleStart';
 
-const TaleStart = ({ taleSummary, talePath }) => {
+const TaleStart = ({ tale, talePath }) => {
 
 	const [ redirectToTaleStart, setRedirectToTaleStart ] = useState(false);
-	const startPageId = get('startPage', taleSummary);
+	const startPageId = get('startPage', tale);
 
 	if (redirectToTaleStart && startPageId) {
 
@@ -36,15 +36,15 @@ const TaleStart = ({ taleSummary, talePath }) => {
 		<div className={className}>
 
 			<BackgroundImg
-				imgUrl={get('img', taleSummary)}
+				imgUrl={get('img', tale)}
 				component={(<div className={`${className}__img`} />)}
 			>
 
-				<h1>{get('name', taleSummary)}</h1>
+				<h1>{get('name', tale)}</h1>
 
 			</BackgroundImg>
 
-			<p className={`${className}__summary`}>{get('summary', taleSummary)}</p>
+			<p className={`${className}__summary`}>{get('summary', tale)}</p>
 
 			<button type="button" onClick={handleTaleStart}>Begin</button>
 
@@ -55,7 +55,7 @@ const TaleStart = ({ taleSummary, talePath }) => {
 };
 
 TaleStart.propTypes = {
-	taleSummary: PropTypes.shape(taleSummaryShape),
+	tale: PropTypes.shape(taleShape),
 	talePath: PropTypes.string
 };
 

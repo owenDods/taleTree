@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {
 	Switch,
@@ -7,8 +7,9 @@ import {
 } from 'react-router-dom';
 
 import find from 'lodash/fp/find';
+import get from 'lodash/fp/get';
 
-import taleSummaryShape from '../shapes/taleSummaryShape';
+import taleShape from '../shapes/taleShape';
 
 import TaleStart from '../taleStart/TaleStart';
 import TalePage from '../talePage/TalePage';
@@ -16,13 +17,11 @@ import Lost from '../lost/Lost';
 
 export const className = 'tale';
 
-const Tale = ({ taleSummaries }) => {
+const Tale = ({ tales }) => {
 
 	const { path, params, url: talePath } = useRouteMatch();
 	const { taleId } = params;
-	const taleSummary = find({ id: taleId }, taleSummaries);
-
-	const [ activeTale, setActiveTale ] = useState(null);
+	const activeTale = find({ id: taleId }, tales);
 
 	return (
 
@@ -33,7 +32,7 @@ const Tale = ({ taleSummaries }) => {
 				<Route path={`${path}/start`}>
 
 					<TaleStart
-						taleSummary={taleSummary}
+						tale={activeTale}
 						talePath={talePath}
 					/>
 
@@ -41,7 +40,7 @@ const Tale = ({ taleSummaries }) => {
 
 				<Route path={`${path}/:pageId`}>
 
-					<TalePage activeTale={activeTale} setActiveTale={setActiveTale} />
+					<TalePage backgroundImg={get('backgroundImg', activeTale)} />
 
 				</Route>
 
@@ -60,7 +59,7 @@ const Tale = ({ taleSummaries }) => {
 };
 
 Tale.propTypes = {
-	taleSummaries: PropTypes.arrayOf(PropTypes.shape(taleSummaryShape))
+	tales: PropTypes.arrayOf(PropTypes.shape(taleShape))
 };
 
 export default Tale;
