@@ -5,6 +5,7 @@ import {
 	Route
 } from 'react-router-dom';
 
+import TopBar from '../topBar/TopBar';
 import BackButton from '../backButton/BackButton';
 import Tale from '../tale/Tale';
 import TaleSelection from '../taleSelection/TaleSelection';
@@ -30,23 +31,29 @@ const App = () => {
 
 			<Router>
 
-				<BackButton />
+				<TopBar />
 
-				<Switch>
+				<div className={`${className}__content`}>
 
-					<Route path={`${routes.TALE}/:taleId?`}>
+					<BackButton />
 
-						<Tale tales={tales} />
+					<Switch>
 
-					</Route>
+						<Route path={`${routes.TALE}/:taleId?`}>
 
-					<Route path="/">
+							<Tale tales={tales} />
 
-						<TaleSelection tales={tales} />
+						</Route>
 
-					</Route>
+						<Route path="/">
 
-				</Switch>
+							<TaleSelection tales={tales} />
+
+						</Route>
+
+					</Switch>
+
+				</div>
 
 			</Router>
 
