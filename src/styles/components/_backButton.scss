@@ -1,16 +1,13 @@
-$backButton-size: 80px;
+$backButton-size: 40px;
 
 .backButton {
 
 	width: $backButton-size;
 	height: $backButton-size;
 	display: flex;
-	border-top-left-radius: 0;
-	border-top-right-radius: 0;
-	border-bottom-left-radius: 0;
 	position: absolute;
-	top: 0;
-	left: 0;
+	top: $_gutter;
+	left: $_gutter;
 	z-index: $_z-index-1;
 
 	svg {
@@ -20,10 +17,6 @@ $backButton-size: 80px;
 	}
 
 	&--exitTale {
-		width: $backButton-size / 2;
-		height: $backButton-size / 2;
-		border-radius: $_radius;
-		top: $_gutter;
 		left: auto;
 		right: $_gutter;
 	}
