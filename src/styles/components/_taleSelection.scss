@@ -13,6 +13,14 @@
 			@include textLabel;
 		}
 
+		&:hover {
+
+			p {
+				background-color: $_white;
+			}
+
+		}
+
 	}
 
 }
