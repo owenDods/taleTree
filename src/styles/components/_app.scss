@@ -1,11 +1,19 @@
+$app-topBarHeight: 80px;
+
 .app {
 
 	width: 100%;
 	height: 100%;
 
+	.topBar {
+		height: $app-topBarHeight;
+		z-index: $_z-index-2;
+		position: relative;
+	}
+
 	&__content {
-		width: 100%;
-		height: 100%;
+		height: calc(100% - #{$app-topBarHeight});
+		position: relative;
 	}
 
 }
