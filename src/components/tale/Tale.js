@@ -37,7 +37,7 @@ const Tale = ({ tales }) => {
 			<CSSTransition
 				key={location.pathname}
 				classNames={className}
-				timeout={2000}
+				timeout={800}
 			>
 
 				<Switch location={location}>

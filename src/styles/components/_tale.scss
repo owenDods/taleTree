@@ -1,4 +1,4 @@
-$tale-transitionDuration: 2s / 2;
+$tale-transitionDuration: 0.8s / 2;
 $tale-taleChoice-transitionDuration: 0.2s;
 
 .tale {
@@ -14,9 +14,9 @@ $tale-taleChoice-transitionDuration: 0.2s;
 
 		.talePage__content {
 			transform: translateY(-100%);
+			opacity: 0;
 		}
 
-		.talePage__content,
 		.taleChoice {
 			opacity: 0;
 		}
@@ -57,9 +57,9 @@ $tale-taleChoice-transitionDuration: 0.2s;
 
 		.talePage__content {
 			transform: translateY(0);
+			opacity: 1;
 		}
 
-		.talePage__content,
 		.taleChoice {
 			opacity: 1;
 		}
