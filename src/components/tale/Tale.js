@@ -3,8 +3,13 @@ import PropTypes from 'prop-types';
 import {
 	Switch,
 	Route,
-	useRouteMatch
+	useRouteMatch,
+	useLocation
 } from 'react-router-dom';
+import {
+	TransitionGroup,
+	CSSTransition
+} from 'react-transition-group';
 
 import find from 'lodash/fp/find';
 import get from 'lodash/fp/get';
@@ -23,36 +28,46 @@ const Tale = ({ tales }) => {
 	const { taleId } = params;
 	const activeTale = find({ id: taleId }, tales);
 
+	const location = useLocation();
+
 	return (
 
-		<div className={className}>
+		<TransitionGroup className={className}>
 
-			<Switch>
+			<CSSTransition
+				key={location.pathname}
+				classNames={className}
+				timeout={2000}
+			>
 
-				<Route path={`${path}/start`}>
+				<Switch location={location}>
 
-					<TaleStart
-						tale={activeTale}
-						talePath={talePath}
-					/>
+					<Route path={`${path}/start`}>
 
-				</Route>
+						<TaleStart
+							tale={activeTale}
+							talePath={talePath}
+						/>
 
-				<Route path={`${path}/:pageId`}>
+					</Route>
 
-					<TalePage backgroundImg={get('backgroundImg', activeTale)} />
+					<Route path={`${path}/:pageId`}>
 
-				</Route>
+						<TalePage backgroundImg={get('backgroundImg', activeTale)} />
 
-				<Route path="*">
+					</Route>
 
-					<Lost />
+					<Route path="*">
 
-				</Route>
+						<Lost />
 
-			</Switch>
+					</Route>
 
-		</div>
+				</Switch>
+
+			</CSSTransition>
+
+		</TransitionGroup>
 
 	);
 

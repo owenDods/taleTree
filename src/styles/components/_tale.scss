@@ -1,4 +1,97 @@
+$tale-transitionDuration: 2s / 2;
+$tale-taleChoice-transitionDuration: 0.2s;
+
 .tale {
+
 	width: 100%;
 	height: 100%;
+
+	.talePage {
+		position: absolute;
+	}
+
+	&-enter {
+
+		.talePage__content {
+			transform: translateY(-100%);
+		}
+
+		.talePage__content,
+		.taleChoice {
+			opacity: 0;
+		}
+
+		&-active {
+
+			.talePage__content {
+				transition: opacity $tale-transitionDuration $tale-transitionDuration, transform $tale-transitionDuration $tale-transitionDuration;
+				transform: translateY(0);
+				opacity: 1;
+			}
+
+			.taleChoice {
+				transition: opacity $tale-taleChoice-transitionDuration $tale-transitionDuration;
+				opacity: 1;
+			}
+
+		}
+
+		&-done {
+
+			.talePage__content {
+				transform: translateY(0);
+				opacity: 1;
+			}
+
+			.taleChoice {
+				opacity: 1;
+			}
+
+		}
+
+	}
+
+	&-exit {
+
+		overflow: hidden;
+
+		.talePage__content {
+			transform: translateY(0);
+		}
+
+		.talePage__content,
+		.taleChoice {
+			opacity: 1;
+		}
+
+		&-active {
+
+			.talePage__content {
+				transition: opacity $tale-transitionDuration, transform $tale-transitionDuration;
+				transform: translateY(100%);
+				opacity: 0;
+			}
+
+			.taleChoice {
+				transition: opacity $tale-taleChoice-transitionDuration;
+				opacity: 0;
+			}
+
+		}
+
+		&-done {
+
+			.talePage__content {
+				transform: translateY(100%);
+				opacity: 0;
+			}
+
+			.taleChoice {
+				opacity: 0;
+			}
+
+		}
+
+	}
+
 }
