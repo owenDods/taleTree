@@ -1,28 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useRouteMatch, useHistory } from 'react-router-dom';
-
-import get from 'lodash/fp/get';
-import getOr from 'lodash/fp/getOr';
+import { useRouteMatch } from 'react-router-dom';
 
 import BackgroundImg from '../backgroundImg/BackgroundImg';
 import TaleChoice from '../taleChoice/TaleChoice';
 
-import dummyPages from '../../../pages.json';
-
 export const className = 'talePage';
 
-const TalePage = ({ backgroundImg }) => {
+const TalePage = ({ backgroundImg, setPageId, pageImg, title, text, destinations }) => {
 
 	const { params = {} } = useRouteMatch();
 	const { pageId } = params;
-	const activePage = get(pageId, dummyPages);
 
-	const pageImg = get('img', activePage);
-	const pageDestinations = getOr([], 'destinations', activePage);
-	const { goBack } = useHistory();
-	const destinations = pageDestinations.length ? pageDestinations
-		: [ { destination: () => goBack(), label: 'Back' } ];
+	useEffect(() => {
+
+		setPageId(pageId);
+
+	}, [ pageId ]);
 
 	return (
 
@@ -42,9 +36,9 @@ const TalePage = ({ backgroundImg }) => {
 
 				)}
 
-				<h1>{get('title', activePage)}</h1>
+				<h1>{title}</h1>
 
-				<p>{get('text', activePage)}</p>
+				<p>{text}</p>
 
 			</div>
 
@@ -57,7 +51,18 @@ const TalePage = ({ backgroundImg }) => {
 };
 
 TalePage.propTypes = {
-	backgroundImg: PropTypes.string
+	backgroundImg: PropTypes.string,
+	setPageId: PropTypes.func.isRequired,
+	pageImg: PropTypes.string,
+	title: PropTypes.string,
+	text: PropTypes.string,
+	destinations: PropTypes.arrayOf(PropTypes.shape({
+		destination: PropTypes.oneOfType([
+			PropTypes.string,
+			PropTypes.func
+		]),
+		label: PropTypes.string
+	}))
 };
 
 export default TalePage;
