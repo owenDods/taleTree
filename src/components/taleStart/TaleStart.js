@@ -40,7 +40,7 @@ const TaleStart = ({ tale, talePath }) => {
 				component={(<div className={`${className}__img`} />)}
 			>
 
-				<h1>{get('name', tale)}</h1>
+				<h2>{get('name', tale)}</h2>
 
 			</BackgroundImg>
 

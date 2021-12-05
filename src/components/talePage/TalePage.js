@@ -36,7 +36,7 @@ const TalePage = ({ backgroundImg, setPageId, pageImg, title, text, destinations
 
 				)}
 
-				<h1>{title}</h1>
+				<h2>{title}</h2>
 
 				<p>{text}</p>
 
