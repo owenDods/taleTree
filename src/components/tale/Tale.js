@@ -11,6 +11,7 @@ import {
 	TransitionGroup,
 	CSSTransition
 } from 'react-transition-group';
+import classnames from 'classnames';
 
 import find from 'lodash/fp/find';
 import get from 'lodash/fp/get';
@@ -38,20 +39,27 @@ const Tale = ({ tales }) => {
 
 	const pageImg = get('img', activePage);
 	const pageDestinations = getOr([], 'destinations', activePage);
+	const isDeadEnd = !pageDestinations.length;
 	const { goBack } = useHistory();
-	const destinations = pageDestinations.length ? pageDestinations
-		: [ { destination: () => goBack(), label: 'Back' } ];
+	const destinations = isDeadEnd ? [ { destination: () => goBack(), label: 'Back' } ]
+		: pageDestinations;
 
 	const location = useLocation();
 
+	const [ isGoingBackwards, setIsGoingBackwards ] = useState(false);
+
 	return (
 
-		<TransitionGroup className={className}>
+		<TransitionGroup
+			className={classnames(className, { [`${className}--deadEnd`]: isGoingBackwards })}
+		>
 
 			<CSSTransition
 				key={location.pathname}
 				classNames={className}
 				timeout={800}
+				onEnter={() => setIsGoingBackwards(isDeadEnd)}
+				onExited={() => setIsGoingBackwards(false)}
 			>
 
 				<Switch location={location}>

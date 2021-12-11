@@ -94,4 +94,54 @@ $tale-taleChoice-transitionDuration: 0.2s;
 
 	}
 
+	&--deadEnd .tale {
+
+		&-enter {
+
+			overflow: hidden;
+
+			.talePage__content {
+				transform: translateY(100%);
+			}
+
+			&-active {
+
+				.talePage__content {
+					transform: translateY(0);
+				}
+
+			}
+
+			&-done {
+
+				.talePage__content {
+					transform: translateY(0);
+				}
+
+			}
+
+		}
+
+		&-exit {
+
+			&-active {
+
+				.talePage__content {
+					transform: translateY(-100%);
+				}
+
+			}
+
+			&-done {
+
+				.talePage__content {
+					transform: translateY(-100%);
+				}
+
+			}
+
+		}
+
+	}
+
 }
