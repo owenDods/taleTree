@@ -4,8 +4,7 @@ import {
 	Switch,
 	Route,
 	useRouteMatch,
-	useLocation,
-	useHistory
+	useLocation
 } from 'react-router-dom';
 import {
 	TransitionGroup,
@@ -15,9 +14,10 @@ import classnames from 'classnames';
 
 import find from 'lodash/fp/find';
 import get from 'lodash/fp/get';
-import getOr from 'lodash/fp/getOr';
 
 import taleShape from '../shapes/taleShape';
+
+import useGetDestinationsAndDeadEndStatus from './utils/useGetDestinationsAndDeadEndStatus';
 
 import TaleStart from '../taleStart/TaleStart';
 import TalePage from '../talePage/TalePage';
@@ -36,13 +36,7 @@ const Tale = ({ tales }) => {
 	const [ pageId, setPageId ] = useState(null);
 
 	const activePage = get(pageId, dummyPages);
-
-	const pageImg = get('img', activePage);
-	const pageDestinations = getOr([], 'destinations', activePage);
-	const isDeadEnd = !pageDestinations.length;
-	const { goBack } = useHistory();
-	const destinations = isDeadEnd ? [ { destination: () => goBack(), label: 'Back' } ]
-		: pageDestinations;
+	const { destinations, isDeadEnd } = useGetDestinationsAndDeadEndStatus(activePage);
 
 	const location = useLocation();
 
@@ -78,7 +72,7 @@ const Tale = ({ tales }) => {
 						<TalePage
 							backgroundImg={get('backgroundImg', activeTale)}
 							setPageId={setPageId}
-							pageImg={pageImg}
+							pageImg={get('img', activePage)}
 							title={get('title', activePage)}
 							text={get('text', activePage)}
 							destinations={destinations}
