@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { useRouteMatch } from 'react-router-dom';
+
+import useSyncCurrentPageId from './utils/useSyncCurrentPageId';
 
 import BackgroundImg from '../backgroundImg/BackgroundImg';
 import TaleChoice from '../taleChoice/TaleChoice';
@@ -9,14 +10,7 @@ export const className = 'talePage';
 
 const TalePage = ({ backgroundImg, setPageId, pageImg, title, text, destinations }) => {
 
-	const { params = {} } = useRouteMatch();
-	const { pageId } = params;
-
-	useEffect(() => {
-
-		setPageId(pageId);
-
-	}, [ pageId ]);
+	useSyncCurrentPageId(setPageId);
 
 	return (
 
