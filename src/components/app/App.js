@@ -5,7 +5,6 @@ import {
 	Route
 } from 'react-router-dom';
 
-import TopBar from '../topBar/TopBar';
 import BackButton from '../backButton/BackButton';
 import Tale from '../tale/Tale';
 import TaleSelection from '../taleSelection/TaleSelection';
@@ -30,8 +29,6 @@ const App = () => {
 		<div className={className}>
 
 			<Router>
-
-				<TopBar />
 
 				<div className={`${className}__content`}>
 

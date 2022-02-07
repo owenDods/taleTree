@@ -2,6 +2,10 @@
 
 	@include pageContainer;
 
+	&__heading {
+		margin: $_gutter auto 0;
+	}
+
 	&Item {
 
 		width: 100%;

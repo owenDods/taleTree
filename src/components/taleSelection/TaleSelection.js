@@ -12,6 +12,8 @@ const TaleSelection = ({ tales }) => (
 
 	<div className={className}>
 
+		<h1 className={`${className}__heading`}>Tale Selection</h1>
+
 		<Collection
 			name={className}
 			items={tales}
