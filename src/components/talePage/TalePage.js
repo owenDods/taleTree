@@ -1,52 +1,43 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import useSyncCurrentPageId from './utils/useSyncCurrentPageId';
-
 import BackgroundImg from '../backgroundImg/BackgroundImg';
 import TaleChoice from '../taleChoice/TaleChoice';
 
 export const className = 'talePage';
 
-const TalePage = ({ backgroundImg, setPageId, pageImg, title, text, destinations }) => {
+const TalePage = ({ backgroundImg, pageImg, title, text, destinations }) => (
 
-	useSyncCurrentPageId(setPageId);
+	<BackgroundImg
+		imgUrl={backgroundImg}
+		component={(<div className={className} />)}
+	>
 
-	return (
+		<div className={`${className}__content`}>
 
-		<BackgroundImg
-			imgUrl={backgroundImg}
-			component={(<div className={className} />)}
-		>
+			{pageImg && (
 
-			<div className={`${className}__content`}>
+				<BackgroundImg
+					imgUrl={pageImg}
+					component={(<div className={`${className}__img`} />)}
+				/>
 
-				{pageImg && (
+			)}
 
-					<BackgroundImg
-						imgUrl={pageImg}
-						component={(<div className={`${className}__img`} />)}
-					/>
+			<h2>{title}</h2>
 
-				)}
+			<p>{text}</p>
 
-				<h2>{title}</h2>
+		</div>
 
-				<p>{text}</p>
+		<TaleChoice choices={destinations} />
 
-			</div>
+	</BackgroundImg>
 
-			<TaleChoice choices={destinations} />
-
-		</BackgroundImg>
-
-	);
-
-};
+);
 
 TalePage.propTypes = {
 	backgroundImg: PropTypes.string,
-	setPageId: PropTypes.func.isRequired,
 	pageImg: PropTypes.string,
 	title: PropTypes.string,
 	text: PropTypes.string,

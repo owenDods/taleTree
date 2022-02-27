@@ -17,8 +17,10 @@ import get from 'lodash/fp/get';
 
 import taleShape from '../shapes/taleShape';
 
+import getPageId from './utils/getPageId';
 import useGetDestinationsAndDeadEndStatus from './utils/useGetDestinationsAndDeadEndStatus';
 
+import TaleMap from '../taleMap/TaleMap';
 import TaleStart from '../taleStart/TaleStart';
 import TalePage from '../talePage/TalePage';
 import Lost from '../lost/Lost';
@@ -33,12 +35,12 @@ const Tale = ({ tales }) => {
 	const { taleId } = params;
 	const activeTale = find({ id: taleId }, tales);
 
-	const [ pageId, setPageId ] = useState(null);
+	const location = useLocation();
+	const { pathname } = location;
+	const pageId = getPageId(pathname, talePath);
 
 	const activePage = get(pageId, dummyPages);
 	const { destinations, isDeadEnd } = useGetDestinationsAndDeadEndStatus(activePage);
-
-	const location = useLocation();
 
 	const [ isGoingBackwards, setIsGoingBackwards ] = useState(false);
 
@@ -48,12 +50,13 @@ const Tale = ({ tales }) => {
 			className={classnames(className, { [`${className}--deadEnd`]: isGoingBackwards })}
 		>
 
+			<TaleMap />
+
 			<CSSTransition
-				key={location.pathname}
+				key={pathname}
 				classNames={className}
 				timeout={800}
-				onEnter={() => setIsGoingBackwards(isDeadEnd)}
-				onExited={() => setIsGoingBackwards(false)}
+				onEntered={() => setIsGoingBackwards(isDeadEnd)}
 			>
 
 				<Switch location={location}>
@@ -71,7 +74,6 @@ const Tale = ({ tales }) => {
 
 						<TalePage
 							backgroundImg={get('backgroundImg', activeTale)}
-							setPageId={setPageId}
 							pageImg={get('img', activePage)}
 							title={get('title', activePage)}
 							text={get('text', activePage)}
