@@ -20,6 +20,7 @@ import taleShape from '../shapes/taleShape';
 import getPageId from './utils/getPageId';
 import useGetDestinationsAndDeadEndStatus from './utils/useGetDestinationsAndDeadEndStatus';
 
+import BackgroundImg from '../backgroundImg/BackgroundImg';
 import TaleMap from '../taleMap/TaleMap';
 import TaleStart from '../taleStart/TaleStart';
 import TalePage from '../talePage/TalePage';
@@ -47,8 +48,18 @@ const Tale = ({ tales }) => {
 	return (
 
 		<TransitionGroup
-			className={classnames(className, { [`${className}--deadEnd`]: isGoingBackwards })}
+			className={
+				classnames(
+					className,
+					{ [`${className}--deadEnd`]: isGoingBackwards },
+					{ [`${className}--pageActive`]: pageId }
+				)
+			}
 		>
+
+			<BackgroundImg
+				imgUrl={get('backgroundImg', activeTale)}
+			/>
 
 			<TaleMap />
 

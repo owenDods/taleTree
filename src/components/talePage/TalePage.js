@@ -6,12 +6,9 @@ import TaleChoice from '../taleChoice/TaleChoice';
 
 export const className = 'talePage';
 
-const TalePage = ({ backgroundImg, pageImg, title, text, destinations }) => (
+const TalePage = ({ pageImg, title, text, destinations }) => (
 
-	<BackgroundImg
-		imgUrl={backgroundImg}
-		component={(<div className={className} />)}
-	>
+	<div className={className}>
 
 		<div className={`${className}__content`}>
 
@@ -32,12 +29,11 @@ const TalePage = ({ backgroundImg, pageImg, title, text, destinations }) => (
 
 		<TaleChoice choices={destinations} />
 
-	</BackgroundImg>
+	</div>
 
 );
 
 TalePage.propTypes = {
-	backgroundImg: PropTypes.string,
 	pageImg: PropTypes.string,
 	title: PropTypes.string,
 	text: PropTypes.string,

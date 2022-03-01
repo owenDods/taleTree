@@ -1,17 +1,9 @@
 .talePage {
 
+	width: 100%;
+	height: 100%;
 	display: flex;
 	flex-direction: column;
-
-	&:after {
-		content: '';
-		width: 100%;
-		height: 100%;
-		position: absolute;
-		top: 0;
-		left: 0;
-		background-image: linear-gradient(90deg, $_black-mostlyTransparent 0%, transparent 20%, transparent 80%, $_black-mostlyTransparent 100%);
-	}
 
 	&__content {
 		@include pageContainer;
