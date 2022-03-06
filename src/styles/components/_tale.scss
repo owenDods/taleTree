@@ -12,6 +12,9 @@ $tale-taleChoice-transitionDuration: 0.2s;
 		top: 0;
 		left: 0;
 		z-index: $_z-index--1;
+		opacity: 0;
+		visibility: hidden;
+		transition: opacity $_transitionTiming ease-in-out;
 
 		&:after {
 			content: '';
@@ -173,6 +176,7 @@ $tale-taleChoice-transitionDuration: 0.2s;
 
 	&--pageActive {
 
+		& > .backgroundImg,
 		.taleMap {
 			opacity: 1;
 			visibility: visible;
