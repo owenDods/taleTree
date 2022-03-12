@@ -11,7 +11,7 @@ import TaleSelection from '../taleSelection/TaleSelection';
 
 import routes from '../../routes';
 
-import dummyTaleCollection from '../../../dummyData/taleCollection.json';
+import dummyTaleCollection from '/dummyData/taleCollection.json';
 
 export const className = 'app';
 

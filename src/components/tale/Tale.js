@@ -26,8 +26,8 @@ import TaleStart from '../taleStart/TaleStart';
 import TalePage from '../talePage/TalePage';
 import Lost from '../lost/Lost';
 
-import dummyPageCollection from '../../../dummyData/pageCollection.json';
-import dummyTaleTreeCollection from '../../../dummyData/taleTreeCollection.json';
+import dummyPageCollection from '/dummyData/pageCollection.json';
+import dummyTaleTreeCollection from '/dummyData/taleTreeCollection.json';
 
 export const className = 'tale';
 
