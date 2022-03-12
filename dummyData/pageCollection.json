@@ -13,7 +13,7 @@
 				"label": "The middle bowl"
 			},
 			{
-				"destination": "ba228037-ce13-41b5-bc91-839dae17bca8",
+				"destination": "24a5c0cc-6cc6-4470-aba2-78e3d68b5367",
 				"label": "The smallest bowl"
 			}
 		]
@@ -33,5 +33,10 @@
 				"label": "Finish"
 			}
 		]
+	},
+	"24a5c0cc-6cc6-4470-aba2-78e3d68b5367": {
+		"title": "Disaster!",
+		"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pretium urna eget libero porta rhoncus. Maecenas lectus eros, malesuada quis feugiat et, iaculis in tellus. Vivamus at est non nisl tempor commodo nec quis erat. Duis eu justo consectetur, tempor elit a, consequat lorem. Sed dictum eros tellus. Pellentesque vel nunc aliquam, rhoncus libero et, fermentum turpis. Proin magna arcu, interdum eget malesuada quis, iaculis vitae felis. Vestibulum condimentum lacinia ipsum vel tincidunt.",
+		"img": "https://placeimg.com/650/480/animals"
 	}
 }
