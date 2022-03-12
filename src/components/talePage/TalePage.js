@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import BackgroundImg from '../backgroundImg/BackgroundImg';
 import TaleChoice from '../taleChoice/TaleChoice';
 
+import formatStringAsMarkdown from './utils/formatStringAsMarkdown';
+
 export const className = 'talePage';
 
 const TalePage = ({ pageImg, title, text, destinations }) => (
@@ -23,7 +25,7 @@ const TalePage = ({ pageImg, title, text, destinations }) => (
 
 			<h2>{title}</h2>
 
-			<p>{text}</p>
+			{formatStringAsMarkdown(text)}
 
 		</div>
 
