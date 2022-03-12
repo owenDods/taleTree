@@ -11,7 +11,7 @@ import TaleSelection from '../taleSelection/TaleSelection';
 
 import routes from '../../routes';
 
-import dummyTales from '../../../tales.json';
+import dummyTaleCollection from '../../../dummyData/taleCollection.json';
 
 export const className = 'app';
 
@@ -20,7 +20,7 @@ const App = () => {
 	const [ tales, setTales ] = useState([]);
 	useEffect(() => {
 
-		setTales(dummyTales);
+		setTales(dummyTaleCollection);
 
 	}, []);
 

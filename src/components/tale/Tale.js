@@ -26,7 +26,8 @@ import TaleStart from '../taleStart/TaleStart';
 import TalePage from '../talePage/TalePage';
 import Lost from '../lost/Lost';
 
-import dummyPages from '../../../pages.json';
+import dummyPageCollection from '../../../dummyData/pageCollection.json';
+import dummyTaleTreeCollection from '../../../dummyData/taleTreeCollection.json';
 
 export const className = 'tale';
 
@@ -40,10 +41,13 @@ const Tale = ({ tales }) => {
 	const { pathname } = location;
 	const pageId = getPageId(pathname, talePath);
 
-	const activePage = get(pageId, dummyPages);
+	const activePage = get(pageId, dummyPageCollection);
+	const activeTaleTree = get(taleId, dummyTaleTreeCollection);
 	const { destinations, isDeadEnd } = useGetDestinationsAndDeadEndStatus(activePage);
 
 	const [ isGoingBackwards, setIsGoingBackwards ] = useState(false);
+
+	console.log(activeTaleTree);
 
 	return (
 
