@@ -6,11 +6,15 @@
 		"destinations": [
 			{
 				"destination": "74cf7f70-eaf0-40c2-816c-573370c978ab",
-				"label": "Door Number 1"
+				"label": "The large bowl on the left"
 			},
 			{
 				"destination": "ba228037-ce13-41b5-bc91-839dae17bca8",
-				"label": "Door Number 2"
+				"label": "The middle bowl"
+			},
+			{
+				"destination": "ba228037-ce13-41b5-bc91-839dae17bca8",
+				"label": "The smallest bowl"
 			}
 		]
 	},
