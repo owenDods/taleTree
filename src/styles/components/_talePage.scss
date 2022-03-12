@@ -8,18 +8,66 @@
 	flex-direction: column;
 
 	&__content {
+
 		@include pageContainer;
 		height: auto;
 		margin-bottom: 0;
 		max-height: 80%;
-		overflow-y: auto;
-		padding: $_gutter $_gutter 0;
-		box-sizing: border-box;
 		display: block;
 		background-color: $_white-almostOpaque;
 		box-shadow: $_shadow;
 		position: relative;
 		z-index: $_z-index-1;
+
+		&Inner {
+			width: 100%;
+			height: 100%;
+			padding: $_gutter $_gutter 0;
+			box-sizing: border-box;
+			overflow-y: auto;
+		}
+
+		&--hasOverflow {
+
+			&.talePage__content {
+
+				&--scrollShadowTop .talePage__scrollShadow--top {
+					visibility: visible;
+					opacity: 1;
+				}
+
+				&--scrollShadowBottom .talePage__scrollShadow--bottom {
+					visibility: visible;
+					opacity: 1;
+				}
+
+			}
+
+		}
+
+	}
+
+	&__scrollShadow {
+
+		pointer-events: none;
+		position: absolute;
+		left: 0;
+		width: 100%;
+		height: $_gutter;
+		visibility: hidden;
+		opacity: 0;
+		transition: opacity $_transitionTiming;
+
+		&--top {
+			top: 0;
+			background-image: linear-gradient($_black-mostlyTransparent 0%, transparent 100%);
+		}
+
+		&--bottom {
+			bottom: 0;
+			background-image: linear-gradient(transparent 0%, $_black-mostlyTransparent 100%);
+		}
+
 	}
 
 	h2,

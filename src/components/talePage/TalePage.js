@@ -1,39 +1,72 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 import BackgroundImg from '../backgroundImg/BackgroundImg';
 import TaleChoice from '../taleChoice/TaleChoice';
 
 import formatStringAsMarkdown from './utils/formatStringAsMarkdown';
+import useIsAtTopOrBottomOfScroll from './utils/useIsAtTopOrBottomOfScroll';
 
 export const className = 'talePage';
 
-const TalePage = ({ pageImg, title, text, destinations }) => (
+const TalePage = ({ pageImg, title, text, destinations }) => {
 
-	<div className={className}>
+	const pageContentEl = useRef(null);
+	const [
+		{ isAtTopOfScroll, isAtBottomOfScroll },
+		updateOnScroll
+	] = useIsAtTopOrBottomOfScroll(pageContentEl);
 
-		<div className={`${className}__content`}>
+	return (
 
-			{pageImg && (
+		<div className={className}>
 
-				<BackgroundImg
-					imgUrl={pageImg}
-					component={(<div className={`${className}__img`} />)}
-				/>
+			<div
+				className={
+					classnames(
+						`${className}__content`,
+						{ [`${className}__content--hasOverflow`]: isAtTopOfScroll !== null },
+						{ [`${className}__content--scrollShadowTop`]: !isAtTopOfScroll },
+						{ [`${className}__content--scrollShadowBottom`]: !isAtBottomOfScroll }
+					)
+				}
+			>
 
-			)}
+				<div className={`${className}__scrollShadow ${className}__scrollShadow--top`} />
 
-			<h2>{title}</h2>
+				<div
+					className={`${className}__contentInner`}
+					ref={pageContentEl}
+					onScroll={updateOnScroll}
+				>
 
-			{formatStringAsMarkdown(text)}
+					{pageImg && (
+
+						<BackgroundImg
+							imgUrl={pageImg}
+							component={(<div className={`${className}__img`} />)}
+						/>
+
+					)}
+
+					<h2>{title}</h2>
+
+					{formatStringAsMarkdown(text)}
+
+				</div>
+
+				<div className={`${className}__scrollShadow ${className}__scrollShadow--bottom`} />
+
+			</div>
+
+			<TaleChoice choices={destinations} />
 
 		</div>
 
-		<TaleChoice choices={destinations} />
+	);
 
-	</div>
-
-);
+};
 
 TalePage.propTypes = {
 	pageImg: PropTypes.string,
