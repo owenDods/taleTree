@@ -41,7 +41,7 @@ const Tale = ({ taleCollection }) => {
 	const { pathname } = location;
 	const pageId = getPageId(pathname, talePath);
 
-	const activePage = get(pageId, dummyPageCollection);
+	const activePage = find({ id: pageId }, dummyPageCollection);
 	const activeTaleTree = get(taleId, dummyTaleTreeCollection);
 	const { destinations, isDeadEnd } = useGetDestinationsAndDeadEndStatus(activePage);
 
