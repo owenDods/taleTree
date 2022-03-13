@@ -44,12 +44,12 @@ const Tale = ({ taleCollection }) => {
 
 	const activePage = find({ id: pageId }, dummyPageCollection);
 	const activeTaleTree = get(taleId, dummyTaleTreeCollection);
-	generateTaleTree(dummyPageCollection);
+	console.log(generateTaleTree(dummyPageCollection));
 	const { destinations, isDeadEnd } = useGetDestinationsAndDeadEndStatus(activePage);
 
 	const [ isGoingBackwards, setIsGoingBackwards ] = useState(false);
 
-	// console.log(activeTaleTree);
+	console.log(activeTaleTree);
 
 	return (
 

@@ -1,12 +1,11 @@
 import map from 'lodash/fp/map';
 import filter from 'lodash/fp/filter';
 import reduce from 'lodash/fp/reduce';
+import findKey from 'lodash/fp/findKey';
 
 import { checkIsPageId } from '../../../routes';
 
 export default pageCollection => {
-
-	console.log(pageCollection);
 
 	const pageCollectionAsIdRelationships = map(({ id, parentPageId, destinations }) => (
 
@@ -18,8 +17,6 @@ export default pageCollection => {
 
 	), pageCollection);
 
-	console.log(pageCollectionAsIdRelationships);
-
 	const idToPageRelationshipMap = reduce((acc, curr) => {
 
 		acc[curr.id] = curr;
@@ -28,8 +25,16 @@ export default pageCollection => {
 
 	}, {}, pageCollectionAsIdRelationships);
 
-	console.log(idToPageRelationshipMap);
+	const rootId = findKey(({ parentPageId }) => !parentPageId, idToPageRelationshipMap);
 
-	return [];
+	const populateBranches = parentBranchId => {
+
+		const childBranches = idToPageRelationshipMap[parentBranchId].destinations;
+
+		return [ parentBranchId, map(populateBranches, childBranches) ];
+
+	};
+
+	return populateBranches(rootId);
 
 };
