@@ -8,7 +8,7 @@ import TaleSelectionItem from './TaleSelectionItem';
 
 export const className = 'taleSelection';
 
-const TaleSelection = ({ tales }) => (
+const TaleSelection = ({ taleCollection }) => (
 
 	<div className={className}>
 
@@ -16,7 +16,7 @@ const TaleSelection = ({ tales }) => (
 
 		<Collection
 			name={className}
-			items={tales}
+			items={taleCollection}
 		>
 
 			<TaleSelectionItem />
@@ -28,7 +28,7 @@ const TaleSelection = ({ tales }) => (
 );
 
 TaleSelection.propTypes = {
-	tales: PropTypes.arrayOf(PropTypes.shape(taleShape))
+	taleCollection: PropTypes.arrayOf(PropTypes.shape(taleShape))
 };
 
 export default TaleSelection;

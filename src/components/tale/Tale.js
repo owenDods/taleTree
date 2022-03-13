@@ -31,11 +31,11 @@ import dummyTaleTreeCollection from '../../../dummyData/taleTreeCollection.json'
 
 export const className = 'tale';
 
-const Tale = ({ tales }) => {
+const Tale = ({ taleCollection }) => {
 
 	const { path, params, url: talePath } = useRouteMatch();
 	const { taleId } = params;
-	const activeTale = find({ id: taleId }, tales);
+	const activeTale = find({ id: taleId }, taleCollection);
 
 	const location = useLocation();
 	const { pathname } = location;
@@ -114,7 +114,7 @@ const Tale = ({ tales }) => {
 };
 
 Tale.propTypes = {
-	tales: PropTypes.arrayOf(PropTypes.shape(taleShape))
+	taleCollection: PropTypes.arrayOf(PropTypes.shape(taleShape))
 };
 
 export default Tale;

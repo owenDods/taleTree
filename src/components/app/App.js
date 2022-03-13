@@ -17,10 +17,10 @@ export const className = 'app';
 
 const App = () => {
 
-	const [ tales, setTales ] = useState([]);
+	const [ taleCollection, setTaleCollection ] = useState([]);
 	useEffect(() => {
 
-		setTales(dummyTaleCollection);
+		setTaleCollection(dummyTaleCollection);
 
 	}, []);
 
@@ -38,13 +38,13 @@ const App = () => {
 
 						<Route path={`${routes.TALE}/:taleId?`}>
 
-							<Tale tales={tales} />
+							<Tale taleCollection={taleCollection} />
 
 						</Route>
 
 						<Route path="/">
 
-							<TaleSelection tales={tales} />
+							<TaleSelection taleCollection={taleCollection} />
 
 						</Route>
 
