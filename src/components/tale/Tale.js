@@ -28,7 +28,6 @@ import TalePage from '../talePage/TalePage';
 import Lost from '../lost/Lost';
 
 import dummyPageCollection from '../../../dummyData/pageCollection.json';
-import dummyTaleTreeCollection from '../../../dummyData/taleTreeCollection.json';
 
 export const className = 'tale';
 
@@ -43,8 +42,7 @@ const Tale = ({ taleCollection }) => {
 	const pageId = getPageId(pathname, talePath);
 
 	const activePage = find({ id: pageId }, dummyPageCollection);
-	const activeTaleTree = get(taleId, dummyTaleTreeCollection);
-	console.log(generateTaleTree(dummyPageCollection));
+	const activeTaleTree = generateTaleTree(dummyPageCollection);
 	const { destinations, isDeadEnd } = useGetDestinationsAndDeadEndStatus(activePage);
 
 	const [ isGoingBackwards, setIsGoingBackwards ] = useState(false);

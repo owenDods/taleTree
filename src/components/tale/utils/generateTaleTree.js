@@ -16,7 +16,6 @@ export default pageCollection => {
 		}
 
 	), pageCollection);
-
 	const idToPageRelationshipMap = reduce((acc, curr) => {
 
 		acc[curr.id] = curr;
