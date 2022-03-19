@@ -1,8 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
+import taleTreeNodeChecker from '../shapes/taleTreeNodeChecker';
 
 export const className = 'taleMap';
 
-const TaleMap = () => (
+const TaleMap = ({ taleTree }) => (
 
 	<div className={className}>
 
@@ -13,5 +16,9 @@ const TaleMap = () => (
 	</div>
 
 );
+
+TaleMap.propTypes = {
+	taleTree: PropTypes.arrayOf(taleTreeNodeChecker)
+};
 
 export default TaleMap;

@@ -47,8 +47,6 @@ const Tale = ({ taleCollection }) => {
 
 	const [ isGoingBackwards, setIsGoingBackwards ] = useState(false);
 
-	console.log(activeTaleTree);
-
 	return (
 
 		<TransitionGroup
@@ -65,7 +63,7 @@ const Tale = ({ taleCollection }) => {
 				imgUrl={get('backgroundImg', activeTale)}
 			/>
 
-			<TaleMap />
+			<TaleMap taleTree={activeTaleTree} />
 
 			<CSSTransition
 				key={pathname}
