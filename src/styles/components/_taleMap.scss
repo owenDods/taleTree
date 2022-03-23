@@ -9,8 +9,8 @@ $taleMap-primaryDotSize: 30px;
 	position: absolute;
 	z-index: $_z-index-1;
 
-	&__end,
-	&__start {
+	&__node {
+
 		width: $taleMap-primaryDotSize;
 		height: $taleMap-primaryDotSize;
 		border-radius: 100%;
@@ -18,18 +18,19 @@ $taleMap-primaryDotSize: 30px;
 		left: 0;
 		right: 0;
 		margin: auto;
-	}
 
-	&__end {
-		background-color: $_lightYellow;
-		box-shadow: 0px 0px 5px 2px $_lightYellowGlow, inset 0px 0px 5px 2px $_darkYellowGlow;
-		top: $_gutter;
-	}
+		&--end {
+			background-color: $_lightYellow;
+			box-shadow: 0px 0px 5px 2px $_lightYellowGlow, inset 0px 0px 5px 2px $_darkYellowGlow;
+			top: $_gutter;
+		}
 
-	&__start {
-		background-color: $_lightBlue;
-		box-shadow: 0px 0px 5px 2px $_lightBlueGlow, inset 0px 0px 5px 2px $_darkBlueGlow;
-		bottom: $_gutter;
+		&--start {
+			background-color: $_lightBlue;
+			box-shadow: 0px 0px 5px 2px $_lightBlueGlow, inset 0px 0px 5px 2px $_darkBlueGlow;
+			bottom: $_gutter;
+		}
+
 	}
 
 }
