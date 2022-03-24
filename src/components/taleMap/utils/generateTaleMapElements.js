@@ -1,5 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
+
 import map from 'lodash/fp/map';
 import isArray from 'lodash/fp/isArray';
 
@@ -25,8 +26,8 @@ export default (taleTree, className) => {
 
 	};
 
-	const mapElements = map.convert({ cap: false })(convertTaleTreeDataToElementArray, taleTree);
+	const mappedElements = map.convert({ cap: false })(convertTaleTreeDataToElementArray, taleTree);
 
-	return mapElements.reverse();
+	return mappedElements.reverse();
 
 };

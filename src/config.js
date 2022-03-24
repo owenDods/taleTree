@@ -1,1 +1,5 @@
-export default {};
+export const defaultTaleFinishDestination = '/';
+
+export default {
+	defaultTaleFinishDestination
+};

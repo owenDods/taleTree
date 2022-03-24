@@ -4,15 +4,20 @@ import reduce from 'lodash/fp/reduce';
 import findKey from 'lodash/fp/findKey';
 
 import { checkIsPageId } from '../../../routes';
+import { defaultTaleFinishDestination } from '../../../config';
 
-export default pageCollection => {
+export default (pageCollection, taleFinishDestination = defaultTaleFinishDestination) => {
 
 	const pageCollectionAsIdRelationships = map(({ id, parentPageId, destinations }) => (
 
 		{
 			id,
 			parentPageId,
-			destinations: filter(checkIsPageId, map('destination', destinations))
+			destinations: filter(destinationString => (
+
+				destinationString === taleFinishDestination || checkIsPageId(destinationString)
+
+			), map('destination', destinations))
 		}
 
 	), pageCollection);
@@ -27,6 +32,12 @@ export default pageCollection => {
 	const rootId = findKey(({ parentPageId }) => !parentPageId, idToPageRelationshipMap);
 
 	const populateBranches = parentBranchId => {
+
+		if (parentBranchId === taleFinishDestination) {
+
+			return [ parentBranchId ];
+
+		}
 
 		const childBranches = idToPageRelationshipMap[parentBranchId].destinations;
 

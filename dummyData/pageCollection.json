@@ -33,13 +33,13 @@
 		"id": "ba228037-ce13-41b5-bc91-839dae17bca8",
 		"parentPageId": "5903086e-517b-4a21-b8da-f41d18361213",
 		"taleId": "ba6c3c3b-7483-4713-ab0e-d649db8fe9ae",
-		"title": "Success!",
+		"title": "Not your finest moment",
 		"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pretium urna eget libero porta rhoncus. Maecenas lectus eros, malesuada quis feugiat et, iaculis in tellus. Vivamus at est non nisl tempor commodo nec quis erat. Duis eu justo consectetur, tempor elit a, consequat lorem. Sed dictum eros tellus. Pellentesque vel nunc aliquam, rhoncus libero et, fermentum turpis. Proin magna arcu, interdum eget malesuada quis, iaculis vitae felis. Vestibulum condimentum lacinia ipsum vel tincidunt.",
 		"img": "https://placeimg.com/640/490/animals",
 		"destinations": [
 			{
-				"destination": "/",
-				"label": "Finish"
+				"destination": "24a5c0cc-6cc6-4470-aba2-78e3d68b5367",
+				"label": "Quickly! The smallest bowl"
 			}
 		]
 	},
@@ -47,8 +47,28 @@
 		"id": "24a5c0cc-6cc6-4470-aba2-78e3d68b5367",
 		"parentPageId": "5903086e-517b-4a21-b8da-f41d18361213",
 		"taleId": "ba6c3c3b-7483-4713-ab0e-d649db8fe9ae",
-		"title": "Disaster!",
+		"title": "Keep going?",
 		"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pretium urna eget libero porta rhoncus. Maecenas lectus eros, malesuada quis feugiat et, iaculis in tellus. Vivamus at est non nisl tempor commodo nec quis erat. Duis eu justo consectetur, tempor elit a, consequat lorem. Sed dictum eros tellus. Pellentesque vel nunc aliquam, rhoncus libero et, fermentum turpis. Proin magna arcu, interdum eget malesuada quis, iaculis vitae felis. Vestibulum condimentum lacinia ipsum vel tincidunt.",
-		"img": "https://placeimg.com/650/480/animals"
+		"img": "https://placeimg.com/650/480/animals",
+		"destinations": [
+			{
+				"destination": "83b37fb9-fc06-46fd-935f-b9caeab73de2",
+				"label": "You've made it this far"
+			}
+		]
+	},
+	{
+		"id": "83b37fb9-fc06-46fd-935f-b9caeab73de2",
+		"parentPageId": "24a5c0cc-6cc6-4470-aba2-78e3d68b5367",
+		"taleId": "ba6c3c3b-7483-4713-ab0e-d649db8fe9ae",
+		"title": "Success!",
+		"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pretium urna eget libero porta rhoncus. Maecenas lectus eros, malesuada quis feugiat et, iaculis in tellus. Vivamus at est non nisl tempor commodo nec quis erat. Duis eu justo consectetur, tempor elit a, consequat lorem. Sed dictum eros tellus. Pellentesque vel nunc aliquam, rhoncus libero et, fermentum turpis. Proin magna arcu, interdum eget malesuada quis, iaculis vitae felis. Vestibulum condimentum lacinia ipsum vel tincidunt.",
+		"img": "https://placeimg.com/650/480/animals",
+		"destinations": [
+			{
+				"destination": "/",
+				"label": "Finish"
+			}
+		]
 	}
 ]
