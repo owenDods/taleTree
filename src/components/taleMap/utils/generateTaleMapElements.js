@@ -1,33 +1,34 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import classnames from 'classnames';
 
 import map from 'lodash/fp/map';
-import isArray from 'lodash/fp/isArray';
 
 export default (taleTree, className) => {
 
-	const convertTaleTreeDataToElementArray = (treeNode, index) => {
+	console.log(taleTree);
 
-		if (!isArray(treeNode)) {
+	const convertTaleTreeDataToElementArray = ({ value, children }, isStart) => {
 
-			return (
+		console.log(value, children);
+
+		return (
+			<Fragment key={value}>
 				<div
-					key={treeNode}
 					className={classnames(
 						`${className}__node`,
-						{ [`${className}__node--start`]: index === 0 }
+						{ [`${className}__node--start`]: isStart }
 					)}
-				/>
-			);
-
-		}
-
-		return map(convertTaleTreeDataToElementArray, treeNode);
+				>
+					{value}
+				</div>
+				{map(convertTaleTreeDataToElementArray, children)}
+			</Fragment>
+		);
 
 	};
 
-	const mappedElements = map.convert({ cap: false })(convertTaleTreeDataToElementArray, taleTree);
+	const mappedElements = convertTaleTreeDataToElementArray(taleTree, true);
 
-	return mappedElements.reverse();
+	return mappedElements;
 
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import taleTreeNodeChecker from '../shapes/taleTreeNodeChecker';
+import taleTreeShape from '../shapes/taleTreeShape';
 
 import generateTaleMapElements from './utils/generateTaleMapElements';
 
@@ -20,7 +20,7 @@ const TaleMap = ({ taleTree }) => (
 );
 
 TaleMap.propTypes = {
-	taleTree: PropTypes.arrayOf(taleTreeNodeChecker)
+	taleTree: PropTypes.shape(taleTreeShape)
 };
 
 export default TaleMap;
