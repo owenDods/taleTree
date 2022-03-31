@@ -1,34 +1,46 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import classnames from 'classnames';
 
 import map from 'lodash/fp/map';
+
+const flattenTaleTreeData = taleTree => {
+
+	const flattenedTreeArray = [];
+
+	const convertTaleTreeDataToFlatArray = ({ value, children }, parentId) => {
+
+		flattenedTreeArray.push({ value, parentId });
+
+		map(child => convertTaleTreeDataToFlatArray(child, value), children);
+
+	};
+
+	convertTaleTreeDataToFlatArray(taleTree);
+
+	return flattenedTreeArray;
+
+};
 
 export default (taleTree, className) => {
 
 	console.log(taleTree);
 
-	const convertTaleTreeDataToElementArray = ({ value, children }, isStart) => {
+	const flattenedTaleTreeData = flattenTaleTreeData(taleTree);
 
-		console.log(value, children);
+	const taleMapElements = map(({ value, parentId = '' }) => (
+		<div
+			key={`${parentId}-${value}`}
+			className={classnames(
+				`${className}__node`,
+				{ [`${className}__node--start`]: !parentId }
+			)}
+		>
+			{value}
+		</div>
+	), flattenedTaleTreeData);
 
-		return (
-			<Fragment key={value}>
-				<div
-					className={classnames(
-						`${className}__node`,
-						{ [`${className}__node--start`]: isStart }
-					)}
-				>
-					{value}
-				</div>
-				{map(convertTaleTreeDataToElementArray, children)}
-			</Fragment>
-		);
+	console.log(flattenedTaleTreeData);
 
-	};
-
-	const mappedElements = convertTaleTreeDataToElementArray(taleTree, true);
-
-	return mappedElements;
+	return taleMapElements;
 
 };
