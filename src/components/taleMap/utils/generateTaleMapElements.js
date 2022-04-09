@@ -7,6 +7,9 @@ import groupBy from 'lodash/fp/groupBy';
 import mapValues from 'lodash/fp/mapValues';
 import uniqBy from 'lodash/fp/uniqBy';
 import forEach from 'lodash/fp/forEach';
+import forEachRight from 'lodash/fp/forEachRight';
+import reject from 'lodash/fp/reject';
+import includes from 'lodash/fp/includes';
 
 const rootParentId = 'root';
 
@@ -28,25 +31,17 @@ const flattenTaleTreeData = taleTree => {
 
 };
 
-export default (taleTree, className) => {
-
-	console.log(taleTree);
-
-	const flattenedData = flattenTaleTreeData(taleTree);
-	const groupedData = flow(
-		groupBy('parentId'),
-		mapValues(uniqBy(({ value, parentId }) => `${parentId}-${value}`))
-	)(flattenedData);
-
-	console.log(flattenedData);
-	console.log(groupedData);
+const convertDataToTreeLevels = groupedData => {
 
 	const dataAsTreeLevels = [];
-	const populateTreeLevels = id => {
+
+	const populateTreeLevels = (id, level = 0) => {
 
 		const treeLevelIdCollection = map('value', groupedData[id]);
 
-		dataAsTreeLevels.push(treeLevelIdCollection);
+		const currentLevel = dataAsTreeLevels[level] || [];
+
+		dataAsTreeLevels[level] = [ ...currentLevel, ...treeLevelIdCollection ];
 
 		forEach(treeLevelId => {
 
@@ -54,7 +49,9 @@ export default (taleTree, className) => {
 
 			if (children) {
 
-				populateTreeLevels(treeLevelId);
+				const nextLevel = level + 1;
+
+				populateTreeLevels(treeLevelId, nextLevel);
 
 			}
 
@@ -63,19 +60,61 @@ export default (taleTree, className) => {
 	};
 
 	populateTreeLevels(rootParentId);
-	console.log(dataAsTreeLevels);
 
-	const taleMapElements = map(({ value, parentId }) => (
-		<div
-			key={`${parentId}-${value}`}
-			className={classnames(
-				`${className}__node`,
-				{ [`${className}__node--start`]: parentId === rootParentId }
-			)}
-		>
-			{value}
-		</div>
-	), flattenedData);
+	let loggedIds = [];
+
+	forEachRight.convert({ cap: false })((treeLevelIds, levelIndex) => {
+
+		const filteredIds = reject(treeLevelId => includes(treeLevelId, loggedIds), treeLevelIds);
+
+		dataAsTreeLevels[levelIndex] = filteredIds;
+
+		loggedIds = [ ...loggedIds, ...filteredIds ];
+
+	}, dataAsTreeLevels);
+
+	return dataAsTreeLevels;
+
+};
+
+export default (taleTree, className) => {
+
+	const flattenedData = flattenTaleTreeData(taleTree);
+	const groupedData = flow(
+		groupBy('parentId'),
+		mapValues(uniqBy(({ value, parentId }) => `${parentId}-${value}`))
+	)(flattenedData);
+
+	const dataAsTreeLevels = convertDataToTreeLevels(groupedData);
+
+	const taleMapElements = map.convert({ cap: false })((treeLevelIds, levelIndex) => {
+
+		const treeLevelKey = `treeLevel-${treeLevelIds.join('_')}`;
+
+		return (
+			<div
+				key={treeLevelKey}
+				className={`${className}__treeLevel`}
+			>
+
+				{map(treeLevelId => (
+
+					<div
+						key={`${treeLevelKey}-${treeLevelId}`}
+						className={classnames(
+							`${className}__node`,
+							{ [`${className}__node--start`]: levelIndex === 0 }
+						)}
+					>
+						{treeLevelId}
+					</div>
+
+				), treeLevelIds)}
+
+			</div>
+		);
+
+	}, dataAsTreeLevels);
 
 	return taleMapElements;
 
