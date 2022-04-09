@@ -103,7 +103,8 @@ export default (taleTree, className) => {
 						key={`${treeLevelKey}-${treeLevelId}`}
 						className={classnames(
 							`${className}__node`,
-							{ [`${className}__node--start`]: levelIndex === 0 }
+							{ [`${className}__node--start`]: levelIndex === 0 },
+							{ [`${className}__node--end`]: levelIndex === dataAsTreeLevels.length - 1 }
 						)}
 					>
 						{treeLevelId}

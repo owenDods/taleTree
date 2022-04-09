@@ -11,8 +11,6 @@ const TaleMap = ({ taleTree }) => (
 
 	<div className={className}>
 
-		<div className={`${className}__node ${className}__node--end`} />
-
 		{generateTaleMapElements(taleTree, className)}
 
 	</div>
