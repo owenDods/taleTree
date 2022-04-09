@@ -90,11 +90,17 @@ export default (taleTree, className) => {
 	const taleMapElements = map.convert({ cap: false })((treeLevelIds, levelIndex) => {
 
 		const treeLevelKey = `treeLevel-${treeLevelIds.join('_')}`;
+		const isStart = levelIndex === 0;
+		const isEnd = levelIndex === dataAsTreeLevels.length - 1;
 
 		return (
 			<div
 				key={treeLevelKey}
-				className={`${className}__treeLevel`}
+				className={classnames(
+					`${className}__treeLevel`,
+					{ [`${className}__treeLevel--start`]: isStart },
+					{ [`${className}__treeLevel--end`]: isEnd }
+				)}
 			>
 
 				{map(treeLevelId => (
@@ -103,8 +109,8 @@ export default (taleTree, className) => {
 						key={`${treeLevelKey}-${treeLevelId}`}
 						className={classnames(
 							`${className}__node`,
-							{ [`${className}__node--start`]: levelIndex === 0 },
-							{ [`${className}__node--end`]: levelIndex === dataAsTreeLevels.length - 1 }
+							{ [`${className}__node--start`]: isStart },
+							{ [`${className}__node--end`]: isEnd }
 						)}
 					>
 						{treeLevelId}
