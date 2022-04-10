@@ -77,7 +77,7 @@ const convertDataToTreeLevels = groupedData => {
 
 };
 
-export default (taleTree, className) => {
+export default (taleTree, className, activePageId) => {
 
 	const flattenedData = flattenTaleTreeData(taleTree);
 	const groupedData = flow(
@@ -110,11 +110,10 @@ export default (taleTree, className) => {
 						className={classnames(
 							`${className}__node`,
 							{ [`${className}__node--start`]: isStart },
-							{ [`${className}__node--end`]: isEnd }
+							{ [`${className}__node--end`]: isEnd },
+							{ [`${className}__node--active`]: treeLevelId === activePageId }
 						)}
-					>
-						{treeLevelId}
-					</div>
+					/>
 
 				), treeLevelIds)}
 

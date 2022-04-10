@@ -63,7 +63,7 @@ const Tale = ({ taleCollection }) => {
 				imgUrl={get('backgroundImg', activeTale)}
 			/>
 
-			<TaleMap taleTree={activeTaleTree} />
+			<TaleMap taleTree={activeTaleTree} activePageId={pageId} />
 
 			<CSSTransition
 				key={pathname}

@@ -34,6 +34,7 @@ $taleMap-primaryDotSize: 30px;
 		background-color: $_white;
 		border-radius: 100%;
 		margin: auto;
+		position: relative;
 
 		&--start {
 			width: $taleMap-primaryDotSize;
@@ -47,6 +48,23 @@ $taleMap-primaryDotSize: 30px;
 			height: $taleMap-primaryDotSize;
 			background-color: $_lightYellow;
 			box-shadow: 0px 0px 5px 2px $_lightYellowGlow, inset 0px 0px 5px 2px $_darkYellowGlow;
+		}
+
+		&--active {
+
+			&:before {
+				content: '';
+				width: 5px;
+				height: 5px;
+				position: absolute;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				margin: auto;
+				background-color: orange;
+			}
+
 		}
 
 	}

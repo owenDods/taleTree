@@ -7,18 +7,19 @@ import generateTaleMapElements from './utils/generateTaleMapElements';
 
 export const className = 'taleMap';
 
-const TaleMap = ({ taleTree }) => (
+const TaleMap = ({ taleTree, activePageId }) => (
 
 	<div className={className}>
 
-		{generateTaleMapElements(taleTree, className)}
+		{generateTaleMapElements(taleTree, className, activePageId)}
 
 	</div>
 
 );
 
 TaleMap.propTypes = {
-	taleTree: PropTypes.shape(taleTreeShape)
+	taleTree: PropTypes.shape(taleTreeShape),
+	activePageId: PropTypes.string
 };
 
 export default TaleMap;
