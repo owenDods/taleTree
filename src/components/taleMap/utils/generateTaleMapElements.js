@@ -73,6 +73,8 @@ const convertDataToTreeLevels = groupedData => {
 
 	}, dataAsTreeLevels);
 
+	dataAsTreeLevels.pop();
+
 	return dataAsTreeLevels;
 
 };
@@ -84,7 +86,6 @@ export default (taleTree, className, activePageId) => {
 		groupBy('parentId'),
 		mapValues(uniqBy(({ value, parentId }) => `${parentId}-${value}`))
 	)(flattenedData);
-
 	const dataAsTreeLevels = convertDataToTreeLevels(groupedData);
 
 	const taleMapElements = map.convert({ cap: false })((treeLevelIds, levelIndex) => {
