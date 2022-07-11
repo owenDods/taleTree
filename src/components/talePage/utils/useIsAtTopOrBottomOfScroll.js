@@ -13,7 +13,7 @@ export default elementRef => {
 
 			setIsAtTopOfScroll(scrollTop === 0);
 
-			setIsAtBottomOfScroll(Math.max(overflowAmount - scrollTop, 0) === 0);
+			setIsAtBottomOfScroll(Math.max(overflowAmount - Math.round(scrollTop), 0) === 0);
 
 		}
 
