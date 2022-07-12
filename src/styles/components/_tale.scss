@@ -1,4 +1,6 @@
-$tale-transitionDuration: 0.8s / 2;
+@use 'sass:math';
+
+$tale-transitionDuration: math.div(0.8s, 2);
 $tale-taleChoice-transitionDuration: 0.2s;
 
 .tale {

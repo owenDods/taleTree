@@ -32,7 +32,9 @@ module.exports = {
 	},
 	devtool: 'inline-source-map',
 	devServer: {
-		contentBase: './dist',
+		static: {
+			directory: path.resolve(__dirname, 'dist')
+		},
 		historyApiFallback: true
 	},
 	plugins: [
