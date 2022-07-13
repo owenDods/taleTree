@@ -1,62 +1,37 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { Redirect } from 'react-router-dom';
-
-import get from 'lodash/fp/get';
-
-import taleShape from '../shapes/taleShape';
+import { Link } from 'react-router-dom';
 
 import BackgroundImg from '../backgroundImg/BackgroundImg';
 
 export const className = 'taleStart';
 
-const TaleStart = ({ tale, talePath }) => {
+const TaleStart = ({ img, name, summary, startPageDestination }) => (
 
-	const [ redirectToTaleStart, setRedirectToTaleStart ] = useState(false);
-	const startPageId = get('startPage', tale);
+	<div className={className}>
 
-	if (redirectToTaleStart && startPageId) {
+		<BackgroundImg
+			imgUrl={img}
+			component={(<div className={`${className}__img`} />)}
+		>
 
-		return (
+			<h2>{name}</h2>
 
-			<Redirect to={`${talePath}/${startPageId}`} push />
+		</BackgroundImg>
 
-		);
+		<p className={`${className}__summary`}>{summary}</p>
 
-	}
+		<Link to={startPageDestination}>Begin</Link>
 
-	const handleTaleStart = () => {
+	</div>
 
-		setRedirectToTaleStart(true);
-
-	};
-
-	return (
-
-		<div className={className}>
-
-			<BackgroundImg
-				imgUrl={get('img', tale)}
-				component={(<div className={`${className}__img`} />)}
-			>
-
-				<h2>{get('name', tale)}</h2>
-
-			</BackgroundImg>
-
-			<p className={`${className}__summary`}>{get('summary', tale)}</p>
-
-			<button type="button" onClick={handleTaleStart}>Begin</button>
-
-		</div>
-
-	);
-
-};
+);
 
 TaleStart.propTypes = {
-	tale: PropTypes.shape(taleShape),
-	talePath: PropTypes.string
+	img: PropTypes.string,
+	name: PropTypes.string,
+	summary: PropTypes.string,
+	startPageDestination: PropTypes.string
 };
 
 export default TaleStart;

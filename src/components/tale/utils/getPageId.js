@@ -1,8 +1,7 @@
 import { checkIsPageId } from '../../../routes';
 
-export default (pathname, talePath) => {
+export default stringAfterTalePath => {
 
-	const stringAfterTalePath = pathname.replace(`${talePath}/`, '');
 	const isPageId = checkIsPageId(stringAfterTalePath);
 
 	return isPageId ? stringAfterTalePath : null;

@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
-	Switch,
+	Routes,
 	Route,
-	useRouteMatch,
-	useLocation
+	useLocation,
+	useParams,
+	useResolvedPath
 } from 'react-router-dom';
 import {
 	TransitionGroup,
@@ -33,19 +34,21 @@ export const className = 'tale';
 
 const Tale = ({ taleCollection }) => {
 
-	const { path, params, url: talePath } = useRouteMatch();
-	const { taleId } = params;
+	const { taleId, '*': stringAfterTalePath } = useParams();
+
 	const activeTale = find({ id: taleId }, taleCollection);
 
 	const location = useLocation();
 	const { pathname } = location;
-	const pageId = getPageId(pathname, talePath);
+	const pageId = getPageId(stringAfterTalePath);
 
 	const activePage = find({ id: pageId }, dummyPageCollection);
 	const activeTaleTree = generateTaleTree(dummyPageCollection);
-	const { destinations, isDeadEnd } = useGetDestinationsAndDeadEndStatus(activePage);
+	const { destinations, isDeadEnd } = useGetDestinationsAndDeadEndStatus(activePage, useResolvedPath('').pathname);
 
 	const [ isGoingBackwards, setIsGoingBackwards ] = useState(false);
+
+	const { pathname: startPageDestination } = useResolvedPath(get('startPage', activeTale) || '');
 
 	return (
 
@@ -72,36 +75,39 @@ const Tale = ({ taleCollection }) => {
 				onEntered={() => setIsGoingBackwards(isDeadEnd)}
 			>
 
-				<Switch location={location}>
+				<Routes location={location}>
 
-					<Route path={`${path}/start`}>
+					<Route
+						path="start"
+						element={(
+							<TaleStart
+								img={get('img', activeTale)}
+								name={get('name', activeTale)}
+								summary={get('summary', activeTale)}
+								startPageDestination={startPageDestination}
+							/>
+						)}
+					/>
 
-						<TaleStart
-							tale={activeTale}
-							talePath={talePath}
-						/>
+					<Route
+						path=":pageId"
+						element={(
+							<TalePage
+								backgroundImg={get('backgroundImg', activeTale)}
+								pageImg={get('img', activePage)}
+								title={get('title', activePage)}
+								text={get('text', activePage)}
+								destinations={destinations}
+							/>
+						)}
+					/>
 
-					</Route>
+					<Route
+						path="*"
+						element={<Lost />}
+					/>
 
-					<Route path={`${path}/:pageId`}>
-
-						<TalePage
-							backgroundImg={get('backgroundImg', activeTale)}
-							pageImg={get('img', activePage)}
-							title={get('title', activePage)}
-							text={get('text', activePage)}
-							destinations={destinations}
-						/>
-
-					</Route>
-
-					<Route path="*">
-
-						<Lost />
-
-					</Route>
-
-				</Switch>
+				</Routes>
 
 			</CSSTransition>
 

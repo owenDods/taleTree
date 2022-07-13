@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {
 	BrowserRouter as Router,
-	Switch,
+	Routes,
 	Route
 } from 'react-router-dom';
 
@@ -34,21 +34,19 @@ const App = () => {
 
 					<BackButton />
 
-					<Switch>
+					<Routes>
 
-						<Route path={`${routes.TALE}/:taleId?`}>
+						<Route
+							path={`${routes.TALE}/:taleId/*`}
+							element={<Tale taleCollection={taleCollection} />}
+						/>
 
-							<Tale taleCollection={taleCollection} />
+						<Route
+							path="/"
+							element={<TaleSelection taleCollection={taleCollection} />}
+						/>
 
-						</Route>
-
-						<Route path="/">
-
-							<TaleSelection taleCollection={taleCollection} />
-
-						</Route>
-
-					</Switch>
+					</Routes>
 
 				</div>
 
