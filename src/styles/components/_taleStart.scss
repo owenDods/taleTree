@@ -18,11 +18,13 @@
 		margin: $_gutter auto 0;
 	}
 
-	button {
+	a {
 		width: 100%;
 		margin: $_gutter auto auto;
 		font-size: $_fontSize-large;
 		font-weight: bold;
+		text-align: center;
+		font-family: 'Poppins', sans-serif;
 	}
 
 }
