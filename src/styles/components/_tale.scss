@@ -1,12 +1,19 @@
 @use 'sass:math';
 
-$tale-transitionDuration: math.div(0.8s, 2);
+$tale-totalTransitionDuration: 0.8s;
+$tale-transitionDuration: math.div($tale-totalTransitionDuration, 2);
 $tale-taleChoice-transitionDuration: 0.2s;
 
 .tale {
 
 	width: 100%;
 	height: 100%;
+
+	.taleStart {
+		opacity: 1;
+		visibility: visible;
+		transition: opacity $_transitionTiming ease-in-out;
+	}
 
 	& > .backgroundImg {
 
@@ -177,6 +184,11 @@ $tale-taleChoice-transitionDuration: 0.2s;
 	}
 
 	&--pageActive {
+
+		.taleStart {
+			opacity: 0;
+			visibility: hidden;
+		}
 
 		& > .backgroundImg,
 		.taleMap {
