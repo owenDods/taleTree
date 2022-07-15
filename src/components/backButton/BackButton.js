@@ -8,7 +8,7 @@ import getDestinationDataFromPathname from './utils/getDestinationDataFromPathna
 
 export const className = 'backButton';
 
-const BackButton = () => {
+function BackButton() {
 
 	const { pathname } = useLocation();
 	const {
@@ -32,6 +32,6 @@ const BackButton = () => {
 
 	);
 
-};
+}
 
 export default BackButton;

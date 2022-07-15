@@ -10,7 +10,7 @@ import useIsAtTopOrBottomOfScroll from './utils/useIsAtTopOrBottomOfScroll';
 
 export const className = 'talePage';
 
-const TalePage = ({ pageImg, title, text, destinations }) => {
+function TalePage({ pageImg, title, text, destinations }) {
 
 	const pageContentEl = useRef(null);
 	const [
@@ -66,7 +66,7 @@ const TalePage = ({ pageImg, title, text, destinations }) => {
 
 	);
 
-};
+}
 
 TalePage.propTypes = {
 	pageImg: PropTypes.string,

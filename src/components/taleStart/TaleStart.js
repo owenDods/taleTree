@@ -6,26 +6,28 @@ import BackgroundImg from '../backgroundImg/BackgroundImg';
 
 export const className = 'taleStart';
 
-const TaleStart = ({ img, name, summary, startPageDestination }) => (
+function TaleStart({ img, name, summary, startPageDestination }) {
 
-	<div className={className}>
+	return (
+		<div className={className}>
 
-		<BackgroundImg
-			imgUrl={img}
-			component={(<div className={`${className}__img`} />)}
-		>
+			<BackgroundImg
+				imgUrl={img}
+				component={(<div className={`${className}__img`} />)}
+			>
 
-			<h2>{name}</h2>
+				<h2>{name}</h2>
 
-		</BackgroundImg>
+			</BackgroundImg>
 
-		<p className={`${className}__summary`}>{summary}</p>
+			<p className={`${className}__summary`}>{summary}</p>
 
-		<Link to={startPageDestination}>Begin</Link>
+			<Link to={startPageDestination}>Begin</Link>
 
-	</div>
+		</div>
+	);
 
-);
+}
 
 TaleStart.propTypes = {
 	img: PropTypes.string,

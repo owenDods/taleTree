@@ -4,18 +4,20 @@ import getLostLinks from './utils/getLostLinks';
 
 export const className = 'lost';
 
-const Lost = () => (
+function Lost() {
 
-	<div className={className}>
+	return (
+		<div className={className}>
 
-		<h1>Hmm, we seem to have gotten you lost...</h1>
+			<h1>Hmm, we seem to have gotten you lost...</h1>
 
-		<p>Try some of the links below to get your bearings</p>
+			<p>Try some of the links below to get your bearings</p>
 
-		{getLostLinks()}
+			{getLostLinks()}
 
-	</div>
+		</div>
+	);
 
-);
+}
 
 export default Lost;

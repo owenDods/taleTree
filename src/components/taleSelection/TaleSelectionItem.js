@@ -8,18 +8,20 @@ import BackgroundImg from '../backgroundImg/BackgroundImg';
 
 export const className = 'taleSelectionItem';
 
-const TaleSelectionItem = ({ name, img, id }) => (
+function TaleSelectionItem({ name, img, id }) {
 
-	<BackgroundImg
-		imgUrl={img}
-		component={(<Link className={className} to={`/tale/${id}/start`} />)}
-	>
+	return (
+		<BackgroundImg
+			imgUrl={img}
+			component={(<Link className={className} to={`/tale/${id}/start`} />)}
+		>
 
-		<p>{name}</p>
+			<p>{name}</p>
 
-	</BackgroundImg>
+		</BackgroundImg>
+	);
 
-);
+}
 
 TaleSelectionItem.propTypes = {
 	...taleShape,

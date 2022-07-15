@@ -8,24 +8,26 @@ import TaleSelectionItem from './TaleSelectionItem';
 
 export const className = 'taleSelection';
 
-const TaleSelection = ({ taleCollection }) => (
+function TaleSelection({ taleCollection }) {
 
-	<div className={className}>
+	return (
+		<div className={className}>
 
-		<h1 className={`${className}__heading`}>Tale Selection</h1>
+			<h1 className={`${className}__heading`}>Tale Selection</h1>
 
-		<Collection
-			name={className}
-			items={taleCollection}
-		>
+			<Collection
+				name={className}
+				items={taleCollection}
+			>
 
-			<TaleSelectionItem />
+				<TaleSelectionItem />
 
-		</Collection>
+			</Collection>
 
-	</div>
+		</div>
+	);
 
-);
+}
 
 TaleSelection.propTypes = {
 	taleCollection: PropTypes.arrayOf(PropTypes.shape(taleShape))

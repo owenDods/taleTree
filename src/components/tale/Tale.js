@@ -32,7 +32,7 @@ import dummyPageCollection from '../../../dummyData/pageCollection.json';
 
 export const className = 'tale';
 
-const Tale = ({ taleCollection }) => {
+function Tale({ taleCollection }) {
 
 	const { taleId, '*': stringAfterTalePath } = useParams();
 
@@ -115,7 +115,7 @@ const Tale = ({ taleCollection }) => {
 
 	);
 
-};
+}
 
 Tale.propTypes = {
 	taleCollection: PropTypes.arrayOf(PropTypes.shape(taleShape))

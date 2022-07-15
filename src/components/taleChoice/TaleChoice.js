@@ -8,36 +8,38 @@ import isFunction from 'lodash/fp/isFunction';
 
 export const className = 'taleChoice';
 
-const TaleChoice = ({ choices = [] }) => (
+function TaleChoice({ choices = [] }) {
 
-	<div className={className} style={{ gridTemplateColumns: `repeat(${choices.length}, 1fr)` }}>
+	return (
+		<div className={className} style={{ gridTemplateColumns: `repeat(${choices.length}, 1fr)` }}>
 
-		{map(({ destination, label }) => {
+			{map(({ destination, label }) => {
 
-			const destinationIsFunc = isFunction(destination);
-			const DestinationElement = destinationIsFunc ? 'button' : Link;
-			let destinationProps = {
-				className: `${className}__choice`,
-				key: `${className}-${destination}`,
-				[destinationIsFunc ? 'onClick' : 'to']: destination
-			};
-			destinationProps = destinationIsFunc ? { ...destinationProps, type: 'button' } : destinationProps;
+				const destinationIsFunc = isFunction(destination);
+				const DestinationElement = destinationIsFunc ? 'button' : Link;
+				let destinationProps = {
+					className: `${className}__choice`,
+					key: `${className}-${destination}`,
+					[destinationIsFunc ? 'onClick' : 'to']: destination
+				};
+				destinationProps = destinationIsFunc ? { ...destinationProps, type: 'button' } : destinationProps;
 
-			return (
+				return (
 
-				<DestinationElement {...destinationProps}>
+					<DestinationElement {...destinationProps}>
 
-					<span>{label}</span>
+						<span>{label}</span>
 
-				</DestinationElement>
+					</DestinationElement>
 
-			);
+				);
 
-		}, choices)}
+			}, choices)}
 
-	</div>
+		</div>
+	);
 
-);
+}
 
 TaleChoice.propTypes = {
 	choices: PropTypes.arrayOf(PropTypes.shape({

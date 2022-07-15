@@ -15,7 +15,7 @@ import dummyTaleCollection from '../../../dummyData/taleCollection.json';
 
 export const className = 'app';
 
-const App = () => {
+function App() {
 
 	const [ taleCollection, setTaleCollection ] = useState([]);
 	useEffect(() => {
@@ -56,6 +56,6 @@ const App = () => {
 
 	);
 
-};
+}
 
 export default App;

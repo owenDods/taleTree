@@ -5,26 +5,28 @@ import map from 'lodash/fp/map';
 
 export const className = 'collection';
 
-const Collection = ({ name, items, children }) => (
+function Collection({ name, items, children }) {
 
-	<div className={className}>
+	return (
+		<div className={className}>
 
-		{map.convert({ cap: false })(item => (
+			{map.convert({ cap: false })(item => (
 
-			<div
-				className={`${className}__item`}
-				key={`${className}-${name}-${item.id}`}
-			>
+				<div
+					className={`${className}__item`}
+					key={`${className}-${name}-${item.id}`}
+				>
 
-				{cloneElement(children, item)}
+					{cloneElement(children, item)}
 
-			</div>
+				</div>
 
-		), items)}
+			), items)}
 
-	</div>
+		</div>
+	);
 
-);
+}
 
 Collection.propTypes = {
 	name: PropTypes.string.isRequired,
