@@ -21,7 +21,7 @@ const flattenTaleTreeData = taleTree => {
 
 		flattenedTreeArray.push({ value, parentId });
 
-		map(child => convertTaleTreeDataToFlatArray(child, value), children);
+		forEach(child => convertTaleTreeDataToFlatArray(child, value), children);
 
 	};
 
@@ -31,9 +31,13 @@ const flattenTaleTreeData = taleTree => {
 
 };
 
-const convertDataToTreeLevels = groupedData => {
+const convertDataToTreeLevels = flattenedData => {
 
 	const dataAsTreeLevels = [];
+	const groupedData = flow(
+		groupBy('parentId'),
+		mapValues(uniqBy(({ value, parentId }) => `${parentId}-${value}`))
+	)(flattenedData);
 
 	const populateTreeLevels = (id, level = 0) => {
 
@@ -82,11 +86,7 @@ const convertDataToTreeLevels = groupedData => {
 export default (taleTree, className, activePageId) => {
 
 	const flattenedData = flattenTaleTreeData(taleTree);
-	const groupedData = flow(
-		groupBy('parentId'),
-		mapValues(uniqBy(({ value, parentId }) => `${parentId}-${value}`))
-	)(flattenedData);
-	const dataAsTreeLevels = convertDataToTreeLevels(groupedData);
+	const dataAsTreeLevels = convertDataToTreeLevels(flattenedData);
 
 	const taleMapElements = map.convert({ cap: false })((treeLevelIds, levelIndex) => {
 
