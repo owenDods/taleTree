@@ -1,5 +1,7 @@
 import { hierarchy, tree, select, linkHorizontal } from 'd3';
 
+import formatDataForD3Hierarchy from './formatDataForD3Hierarchy';
+
 const width = 640;
 const padding = 1;
 const strokeColour = '#555';
@@ -14,11 +16,8 @@ const labelPadding = 3;
 
 export default (element, taleTree) => {
 
-	console.log(taleTree);
-
-	const root = hierarchy(taleTree);
-
-	console.log(root);
+	const formattedData = formatDataForD3Hierarchy(taleTree);
+	const root = hierarchy(formattedData);
 
 	const dx = 10;
 	const dy = width / (root.height + padding);
