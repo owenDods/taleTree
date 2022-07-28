@@ -8,6 +8,9 @@ import forEachRight from 'lodash/fp/forEachRight';
 import includes from 'lodash/fp/includes';
 import remove from 'lodash/fp/remove';
 import cloneDeep from 'lodash/fp/cloneDeep';
+import reject from 'lodash/fp/reject';
+
+import { defaultTaleFinishDestination } from '../../../config';
 
 const mutableRemove = remove.convert({ immutable: false });
 
@@ -69,7 +72,7 @@ function convertDataToTreeLevels(flattenedData) {
 
 }
 
-function getDuplicatedIdsAsTreeLevels(dataAsTreeLevels) {
+function getDuplicatedIdsAsTreeLevels(dataAsTreeLevels, taleFinishDestination) {
 
 	let loggedIds = [];
 	const idsRemovedFromTreeLevels = [];
@@ -81,7 +84,10 @@ function getDuplicatedIdsAsTreeLevels(dataAsTreeLevels) {
 			includes(treeLevelId, loggedIds)
 		), filteredIds);
 
-		loggedIds = [ ...loggedIds, ...filteredIds ];
+		loggedIds = [
+			...loggedIds,
+			...reject(id => id === taleFinishDestination, filteredIds)
+		];
 
 		idsRemovedFromTreeLevels.push(removedIds);
 
@@ -91,7 +97,7 @@ function getDuplicatedIdsAsTreeLevels(dataAsTreeLevels) {
 
 }
 
-function flagTaleTreeFallthroughPages(taleTree, shallowerDuplicatedIdAsTreeLevels) {
+function flagTaleTreeFallthroughPagesAndTrimChildren(taleTree, shallowerDuplicatedIdAsTreeLevels) {
 
 	const flagTaleTreeDataItemAtLevel = (taleTreeDataItem, level = 0) => {
 
@@ -122,12 +128,59 @@ function flagTaleTreeFallthroughPages(taleTree, shallowerDuplicatedIdAsTreeLevel
 
 }
 
-function formatDataForD3Hierarchy(taleTree) {
+function trimRedundantDestinationLeaves(taleTree, taleFinishDestination) {
+
+	const trimChildren = taleTreeDataItemChildren => {
+
+		const trimmedChildren = reject(
+			({ value }) => value === taleFinishDestination,
+			taleTreeDataItemChildren
+		);
+
+		return map(trimmedChild => {
+
+			const { children } = trimmedChild;
+
+			if (children.length) {
+
+				return {
+					...trimmedChild,
+					children: trimChildren(children)
+				};
+
+			}
+
+			return trimmedChild;
+
+		}, trimmedChildren);
+
+	};
+
+	const trimmedTaleTree = {
+		...taleTree,
+		children: trimChildren(taleTree.children)
+	};
+
+	return trimmedTaleTree;
+
+}
+
+function formatDataForD3Hierarchy(taleTree, taleFinishDestination = defaultTaleFinishDestination) {
 
 	const flattenedData = flattenTaleTreeData(taleTree);
 	const dataAsTreeLevels = convertDataToTreeLevels(flattenedData);
-	const shallowerDuplicatedIdAsTreeLevels = getDuplicatedIdsAsTreeLevels(dataAsTreeLevels);
-	const formattedData = flagTaleTreeFallthroughPages(taleTree, shallowerDuplicatedIdAsTreeLevels);
+	const shallowerDuplicatedIdAsTreeLevels = getDuplicatedIdsAsTreeLevels(
+		dataAsTreeLevels,
+		taleFinishDestination
+	);
+	const flaggedAndTrimmedData = flagTaleTreeFallthroughPagesAndTrimChildren(
+		taleTree,
+		shallowerDuplicatedIdAsTreeLevels
+	);
+	const formattedData = trimRedundantDestinationLeaves(
+		flaggedAndTrimmedData,
+		taleFinishDestination
+	);
 
 	return formattedData;
 
