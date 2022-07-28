@@ -29,7 +29,7 @@ function TaleMap({ taleTree, activePageId }) {
 
 			<div
 				className="woop"
-				style={{ position: 'absolute', zIndex: 99999, backgroundColor: 'white' }}
+				style={{ position: 'absolute', zIndex: 99999, backgroundColor: 'white', display: 'flex' }}
 				ref={woopEl}
 			/>
 
