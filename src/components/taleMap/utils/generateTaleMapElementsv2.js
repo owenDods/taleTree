@@ -64,29 +64,6 @@ export default (element, taleTree) => {
 		.attr('fill', d => (d.children ? strokeColour : nodeFillColour))
 		.attr('r', nodeRadius);
 
-	const labels = root.descendants().map(d => {
-
-		let labelText = d.data.value;
-
-		if (labelText.length > 1) {
-
-			labelText = labelText.slice(0, 8);
-
-		}
-
-		return labelText;
-
-	});
-
-	node.append('text')
-		.attr('dy', '0.32em')
-		.attr('x', d => (d.children ? -6 : 6))
-		.attr('text-anchor', d => (d.children ? 'end' : 'start'))
-		.attr('paint-order', 'stroke')
-		.attr('stroke', labelBackgroundColour)
-		.attr('stroke-width', labelPadding)
-		.text((d, i) => labels[i]);
-
 	return svg.node();
 
 };
