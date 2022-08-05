@@ -11,8 +11,6 @@ const strokeLinejoin = undefined;
 const strokeWidth = 1.5;
 const nodeRadius = 3;
 const nodeFillColour = '#999';
-const labelBackgroundColour = '#fff';
-const labelPadding = 3;
 
 export default (element, taleTree) => {
 
