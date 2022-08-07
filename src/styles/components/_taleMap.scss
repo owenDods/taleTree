@@ -1,6 +1,11 @@
 $taleMap-normalDotSize: 5px;
 $taleMap-primaryDotSize: 30px;
 
+.woop {
+	width: 10%;
+	height: 100%;
+}
+
 .taleMap {
 
 	background-image: linear-gradient($_black-mostlyTransparent 0%,$_black-mostlyOpaque 100%);

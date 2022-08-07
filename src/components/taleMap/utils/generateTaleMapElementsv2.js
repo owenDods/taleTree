@@ -1,39 +1,27 @@
-import { hierarchy, tree, select, linkHorizontal } from 'd3';
+import { hierarchy, tree, select, linkVertical } from 'd3';
 
 import formatDataForD3Hierarchy from './formatDataForD3Hierarchy';
 
-const width = 640;
-const padding = 1;
+const padding = 40;
 const strokeColour = '#555';
-const strokeOpacity = 0.4;
-const strokeLinecap = undefined;
-const strokeLinejoin = undefined;
-const strokeWidth = 1.5;
-const nodeRadius = 3;
+const strokeOpacity = 0.6;
+const strokeWidth = 5;
+const nodeRadius = 10;
 const nodeFillColour = '#999';
 
 export default (element, taleTree) => {
 
+	const { width, height } = element.getBoundingClientRect();
+
 	const formattedData = formatDataForD3Hierarchy(taleTree);
 	const root = hierarchy(formattedData);
 
-	const dx = 10;
-	const dy = width / (root.height + padding);
-	tree().nodeSize([ dx, dy ])(root);
-
-	let x0 = Infinity;
-	let x1 = -x0;
-	root.each(({ x }) => {
-
-		x1 = x > x1 ? x : x1;
-		x0 = x < x0 ? x : x0;
-
-	});
-
-	const height = x1 - x0 + dx * 2;
+	const nodeWidth = 40;
+	const nodeHeight = (height - padding) / root.height;
+	tree().nodeSize([ nodeWidth, nodeHeight ])(root);
 
 	const svg = select(element).append('svg')
-		.attr('viewBox', [ (-dy * (padding / 2)), (x0 - dx), width, height ])
+		.attr('viewBox', [ -(width / 2), -(height - (padding / 2)), width, height ])
 		.attr('width', width)
 		.attr('height', height)
 		.attr('style', 'max-width: 100%; height: auto; height: intrinsic;')
@@ -44,19 +32,18 @@ export default (element, taleTree) => {
 		.attr('fill', 'none')
 		.attr('stroke', strokeColour)
 		.attr('stroke-opacity', strokeOpacity)
-		.attr('stroke-linecap', strokeLinecap)
-		.attr('stroke-linejoin', strokeLinejoin)
+		.attr('stroke-linejoin', 'round')
 		.attr('stroke-width', strokeWidth)
 		.selectAll('path')
 		.data(root.links())
 		.join('path')
-		.attr('d', linkHorizontal().x(d => d.y).y(d => d.x));
+		.attr('d', linkVertical().x(({ x }) => x).y(({ y }) => -y));
 
 	const node = svg.append('g')
 		.selectAll('a')
 		.data(root.descendants())
 		.join('a')
-		.attr('transform', d => `translate(${d.y},${d.x})`);
+		.attr('transform', d => `translate(${d.x},-${d.y})`);
 
 	node.append('circle')
 		.attr('fill', d => (d.children ? strokeColour : nodeFillColour))
