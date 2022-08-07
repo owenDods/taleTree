@@ -2,11 +2,12 @@ import { hierarchy, tree, select, linkVertical } from 'd3';
 
 import formatDataForD3Hierarchy from './formatDataForD3Hierarchy';
 
+const nodeWidth = 30;
 const padding = 40;
 const strokeColour = '#555';
 const strokeOpacity = 0.6;
 const strokeWidth = 5;
-const nodeRadius = 10;
+const nodeRadius = 8;
 const nodeFillColour = '#999';
 
 export default (element, taleTree) => {
@@ -16,7 +17,6 @@ export default (element, taleTree) => {
 	const formattedData = formatDataForD3Hierarchy(taleTree);
 	const root = hierarchy(formattedData);
 
-	const nodeWidth = 40;
 	const nodeHeight = (height - padding) / root.height;
 	tree().nodeSize([ nodeWidth, nodeHeight ])(root);
 
@@ -41,12 +41,16 @@ export default (element, taleTree) => {
 
 	const node = svg.append('g')
 		.selectAll('a')
-		.data(root.descendants())
+		.data(
+			root
+				.descendants()
+				.filter(({ data: { fallThrough } }) => !fallThrough)
+		)
 		.join('a')
 		.attr('transform', d => `translate(${d.x},-${d.y})`);
 
 	node.append('circle')
-		.attr('fill', d => (d.children ? strokeColour : nodeFillColour))
+		.attr('fill', ({ children }) => (children ? strokeColour : nodeFillColour))
 		.attr('r', nodeRadius);
 
 	return svg.node();
