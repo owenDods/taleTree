@@ -1,4 +1,5 @@
 import { hierarchy, tree, select, linkVertical } from 'd3';
+import find from 'lodash/fp/find';
 
 import formatDataForD3Hierarchy from './formatDataForD3Hierarchy';
 
@@ -15,10 +16,10 @@ export default (element, taleTree) => {
 	const { width, height } = element.getBoundingClientRect();
 
 	const formattedData = formatDataForD3Hierarchy(taleTree);
-	const root = hierarchy(formattedData);
+	const d3HierarchyData = hierarchy(formattedData);
 
-	const nodeHeight = (height - padding) / root.height;
-	tree().nodeSize([ nodeWidth, nodeHeight ])(root);
+	const nodeHeight = (height - padding) / d3HierarchyData.height;
+	tree().nodeSize([ nodeWidth, nodeHeight ])(d3HierarchyData);
 
 	const svg = select(element).append('svg')
 		.attr('viewBox', [ -(width / 2), -(height - (padding / 2)), width, height ])
@@ -28,6 +29,9 @@ export default (element, taleTree) => {
 		.attr('font-family', 'sans-serif')
 		.attr('font-size', 10);
 
+	const linksData = d3HierarchyData.links();
+	const linkGenerator = linkVertical().x(({ x }) => x).y(({ y }) => -y);
+
 	svg.append('g')
 		.attr('fill', 'none')
 		.attr('stroke', strokeColour)
@@ -35,17 +39,40 @@ export default (element, taleTree) => {
 		.attr('stroke-linejoin', 'round')
 		.attr('stroke-width', strokeWidth)
 		.selectAll('path')
-		.data(root.links())
+		.data(linksData)
 		.join('path')
-		.attr('d', linkVertical().x(({ x }) => x).y(({ y }) => -y));
+		.attr('d', d => {
+
+			let pathToBeDrawn = linkGenerator(d);
+			const { data: targetData } = d.target;
+
+			if (targetData.fallThrough) {
+
+				const { value: targetDataValue } = targetData;
+				const fallThroughLink = find(
+					({ target: { data: { value, fallThrough } } }) => (
+						!fallThrough && value === targetDataValue
+					),
+					linksData
+				);
+				const fallThroughLinkObject = { source: d.target, target: fallThroughLink.target };
+				const fallThroughPathToBeDrawn = linkGenerator(fallThroughLinkObject);
+
+				pathToBeDrawn = `${pathToBeDrawn}${fallThroughPathToBeDrawn}`;
+
+			}
+
+			return pathToBeDrawn;
+
+		});
+
+	const dataWithNoFallThroughNodes = d3HierarchyData
+		.descendants()
+		.filter(({ data: { fallThrough } }) => !fallThrough);
 
 	const node = svg.append('g')
 		.selectAll('a')
-		.data(
-			root
-				.descendants()
-				.filter(({ data: { fallThrough } }) => !fallThrough)
-		)
+		.data(dataWithNoFallThroughNodes)
 		.join('a')
 		.attr('transform', d => `translate(${d.x},-${d.y})`);
 
