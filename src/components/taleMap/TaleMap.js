@@ -14,7 +14,7 @@ function TaleMap({ taleTree, activePageId }) {
 
 	useEffect(() => {
 
-		generateTaleMapElementsv2(woopEl.current, taleTree);
+		generateTaleMapElementsv2(woopEl.current, taleTree, className);
 
 	}, []);
 
@@ -29,7 +29,7 @@ function TaleMap({ taleTree, activePageId }) {
 
 			<div
 				className="woop"
-				style={{ position: 'absolute', zIndex: 99999, backgroundColor: 'white', display: 'flex' }}
+				style={{ position: 'absolute', zIndex: 99999, display: 'flex' }}
 				ref={woopEl}
 			/>
 

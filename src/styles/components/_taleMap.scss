@@ -4,6 +4,7 @@ $taleMap-primaryDotSize: 30px;
 .woop {
 	width: 10%;
 	height: 100%;
+	background-image: linear-gradient($_black-mostlyTransparent 0%,$_black-mostlyOpaque 100%);
 }
 
 .taleMap {
@@ -37,6 +38,7 @@ $taleMap-primaryDotSize: 30px;
 		width: $taleMap-normalDotSize;
 		height: $taleMap-normalDotSize;
 		background-color: $_white;
+		fill: $_white;
 		border-radius: 100%;
 		margin: auto;
 		position: relative;
@@ -72,6 +74,11 @@ $taleMap-primaryDotSize: 30px;
 
 		}
 
+	}
+
+	&__branch {
+		stroke: $_white;
+		stroke-opacity: 0.2;
 	}
 
 }

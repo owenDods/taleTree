@@ -5,13 +5,10 @@ import formatDataForD3Hierarchy from './formatDataForD3Hierarchy';
 
 const nodeWidth = 30;
 const padding = 40;
-const strokeColour = '#555';
-const strokeOpacity = 0.6;
 const strokeWidth = 5;
 const nodeRadius = 8;
-const nodeFillColour = '#999';
 
-export default (element, taleTree) => {
+export default (element, taleTree, className) => {
 
 	const { width, height } = element.getBoundingClientRect();
 
@@ -34,13 +31,12 @@ export default (element, taleTree) => {
 
 	svg.append('g')
 		.attr('fill', 'none')
-		.attr('stroke', strokeColour)
-		.attr('stroke-opacity', strokeOpacity)
 		.attr('stroke-linejoin', 'round')
 		.attr('stroke-width', strokeWidth)
 		.selectAll('path')
 		.data(linksData)
 		.join('path')
+		.classed(`${className}__branch`, true)
 		.attr('d', d => {
 
 			let pathToBeDrawn = linkGenerator(d);
@@ -77,7 +73,8 @@ export default (element, taleTree) => {
 		.attr('transform', d => `translate(${d.x},-${d.y})`);
 
 	node.append('circle')
-		.attr('fill', ({ children }) => (children ? strokeColour : nodeFillColour))
+		.classed(`${className}__node`, true)
+		.classed(`${className}__node--start`, (d, index) => index === 0)
 		.attr('r', nodeRadius);
 
 	return svg.node();
