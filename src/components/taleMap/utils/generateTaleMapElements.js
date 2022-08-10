@@ -73,16 +73,22 @@ export default (element, taleTree, className, activePageId) => {
 		.classed(`${className}__node--end`, (d, index, allCircleData) => index === (allCircleData.length - 1))
 		.classed(`${className}__node--active`, ({ data: { value } }) => value === activePageId);
 
-	const activeParentNode = select(svg.select(`.${className}__node--active`).node().parentNode);
+	const activeNode = svg.select(`.${className}__node--active`).node();
 
-	activeParentNode
-		.append('ellipse')
-		.classed(`${className}__markerRing`, true);
+	if (activeNode) {
 
-	activeParentNode
-		.append('path')
-		.classed(`${className}__marker`, true)
-		.attr('d', 'M 0 0 C -30 -30 30 -30 0 0');
+		const activeParentNode = select(activeNode.parentNode);
+
+		activeParentNode
+			.append('ellipse')
+			.classed(`${className}__markerRing`, true);
+
+		activeParentNode
+			.append('path')
+			.classed(`${className}__marker`, true)
+			.attr('d', 'M 0 0 C -30 -30 30 -30 0 0');
+
+	}
 
 	return svg.node();
 
