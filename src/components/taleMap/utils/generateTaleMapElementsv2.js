@@ -8,18 +8,20 @@ const padding = 40;
 const strokeWidth = 5;
 const nodeRadius = 8;
 
-export default (element, taleTree, className) => {
+export default (element, taleTree, className, activePageId) => {
+
+	element.replaceChildren();
 
 	const { width, height } = element.getBoundingClientRect();
 
 	const formattedData = formatDataForD3Hierarchy(taleTree);
 	const d3HierarchyData = hierarchy(formattedData);
 
-	const nodeHeight = (height - padding) / d3HierarchyData.height;
+	const nodeHeight = (height - (padding * 2)) / d3HierarchyData.height;
 	tree().nodeSize([ nodeWidth, nodeHeight ])(d3HierarchyData);
 
 	const svg = select(element).append('svg')
-		.attr('viewBox', [ -(width / 2), -(height - (padding / 2)), width, height ])
+		.attr('viewBox', [ -(width / 2), -(height - padding), width, height ])
 		.attr('width', width)
 		.attr('height', height)
 		.attr('style', 'max-width: 100%; height: auto; height: intrinsic;')
@@ -75,6 +77,8 @@ export default (element, taleTree, className) => {
 	node.append('circle')
 		.classed(`${className}__node`, true)
 		.classed(`${className}__node--start`, (d, index) => index === 0)
+		.classed(`${className}__node--end`, (d, index, allCircleData) => index === (allCircleData.length - 1))
+		.classed(`${className}__node--active`, ({ data: { value } }) => value === activePageId)
 		.attr('r', nodeRadius);
 
 	return svg.node();

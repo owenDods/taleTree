@@ -47,6 +47,7 @@ $taleMap-primaryDotSize: 30px;
 			width: $taleMap-primaryDotSize;
 			height: $taleMap-primaryDotSize;
 			background-color: $_lightBlue;
+			fill: $_lightBlue;
 			box-shadow: 0px 0px 5px 2px $_lightBlueGlow, inset 0px 0px 5px 2px $_darkBlueGlow;
 		}
 
@@ -54,10 +55,13 @@ $taleMap-primaryDotSize: 30px;
 			width: $taleMap-primaryDotSize;
 			height: $taleMap-primaryDotSize;
 			background-color: $_lightYellow;
+			fill: $_lightYellow;
 			box-shadow: 0px 0px 5px 2px $_lightYellowGlow, inset 0px 0px 5px 2px $_darkYellowGlow;
 		}
 
 		&--active {
+
+			r: 12;
 
 			&:before {
 				content: '';

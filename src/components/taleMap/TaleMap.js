@@ -14,9 +14,9 @@ function TaleMap({ taleTree, activePageId }) {
 
 	useEffect(() => {
 
-		generateTaleMapElementsv2(woopEl.current, taleTree, className);
+		generateTaleMapElementsv2(woopEl.current, taleTree, className, activePageId);
 
-	}, []);
+	}, [ activePageId ]);
 
 	return (
 		<Fragment>
