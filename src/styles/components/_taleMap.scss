@@ -11,6 +11,7 @@
 	&__node {
 
 		fill: $_white;
+		r: 8px;
 
 		&--start {
 			fill: $_lightBlue;
@@ -27,8 +28,28 @@
 	}
 
 	&__branch {
+		fill: none;
 		stroke: $_white;
+		stroke-width: 5px;
 		stroke-opacity: 0.2;
+		stroke-linejoin: round;
+	}
+
+	&__marker {
+
+		fill: $_black;
+		stroke-width: 2px;
+		stroke: $_white;
+
+		&Ring {
+			fill: none;
+			stroke-width: 2px;
+			stroke: $_black;
+			rx: 8px;
+			ry: 4px;
+			opacity: 0.5;
+		}
+
 	}
 
 }

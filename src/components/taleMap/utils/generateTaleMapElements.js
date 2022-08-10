@@ -5,8 +5,6 @@ import formatDataForD3Hierarchy from './formatDataForD3Hierarchy';
 
 const nodeWidth = 30;
 const padding = 40;
-const strokeWidth = 5;
-const nodeRadius = 8;
 
 export default (element, taleTree, className, activePageId) => {
 
@@ -24,17 +22,12 @@ export default (element, taleTree, className, activePageId) => {
 		.attr('viewBox', [ -(width / 2), -(height - padding), width, height ])
 		.attr('width', width)
 		.attr('height', height)
-		.attr('style', 'max-width: 100%; height: auto; height: intrinsic;')
-		.attr('font-family', 'sans-serif')
-		.attr('font-size', 10);
+		.attr('style', 'max-width: 100%; height: auto; height: intrinsic;');
 
 	const linksData = d3HierarchyData.links();
 	const linkGenerator = linkVertical().x(({ x }) => x).y(({ y }) => -y);
 
 	svg.append('g')
-		.attr('fill', 'none')
-		.attr('stroke-linejoin', 'round')
-		.attr('stroke-width', strokeWidth)
 		.selectAll('path')
 		.data(linksData)
 		.join('path')
@@ -78,8 +71,18 @@ export default (element, taleTree, className, activePageId) => {
 		.classed(`${className}__node`, true)
 		.classed(`${className}__node--start`, (d, index) => index === 0)
 		.classed(`${className}__node--end`, (d, index, allCircleData) => index === (allCircleData.length - 1))
-		.classed(`${className}__node--active`, ({ data: { value } }) => value === activePageId)
-		.attr('r', nodeRadius);
+		.classed(`${className}__node--active`, ({ data: { value } }) => value === activePageId);
+
+	const activeParentNode = select(svg.select(`.${className}__node--active`).node().parentNode);
+
+	activeParentNode
+		.append('ellipse')
+		.classed(`${className}__markerRing`, true);
+
+	activeParentNode
+		.append('path')
+		.classed(`${className}__marker`, true)
+		.attr('d', 'M 0 0 C -30 -30 30 -30 0 0');
 
 	return svg.node();
 
