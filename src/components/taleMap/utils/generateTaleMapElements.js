@@ -1,128 +1,86 @@
-import React from 'react';
-import classnames from 'classnames';
+import { hierarchy, tree, select, linkVertical } from 'd3';
+import find from 'lodash/fp/find';
 
-import map from 'lodash/fp/map';
-import flow from 'lodash/fp/flow';
-import groupBy from 'lodash/fp/groupBy';
-import mapValues from 'lodash/fp/mapValues';
-import uniqBy from 'lodash/fp/uniqBy';
-import forEach from 'lodash/fp/forEach';
-import forEachRight from 'lodash/fp/forEachRight';
-import reject from 'lodash/fp/reject';
-import includes from 'lodash/fp/includes';
+import formatDataForD3Hierarchy from './formatDataForD3Hierarchy';
 
-const rootParentId = 'root';
+const nodeWidth = 30;
+const padding = 40;
+const strokeWidth = 5;
+const nodeRadius = 8;
 
-const flattenTaleTreeData = taleTree => {
+export default (element, taleTree, className, activePageId) => {
 
-	const flattenedTreeArray = [];
+	element.replaceChildren();
 
-	const convertTaleTreeDataToFlatArray = ({ value, children }, parentId) => {
+	const { width, height } = element.getBoundingClientRect();
 
-		flattenedTreeArray.push({ value, parentId });
+	const formattedData = formatDataForD3Hierarchy(taleTree);
+	const d3HierarchyData = hierarchy(formattedData);
 
-		forEach(child => convertTaleTreeDataToFlatArray(child, value), children);
+	const nodeHeight = (height - (padding * 2)) / d3HierarchyData.height;
+	tree().nodeSize([ nodeWidth, nodeHeight ])(d3HierarchyData);
 
-	};
+	const svg = select(element).append('svg')
+		.attr('viewBox', [ -(width / 2), -(height - padding), width, height ])
+		.attr('width', width)
+		.attr('height', height)
+		.attr('style', 'max-width: 100%; height: auto; height: intrinsic;')
+		.attr('font-family', 'sans-serif')
+		.attr('font-size', 10);
 
-	convertTaleTreeDataToFlatArray(taleTree, rootParentId);
+	const linksData = d3HierarchyData.links();
+	const linkGenerator = linkVertical().x(({ x }) => x).y(({ y }) => -y);
 
-	return flattenedTreeArray;
+	svg.append('g')
+		.attr('fill', 'none')
+		.attr('stroke-linejoin', 'round')
+		.attr('stroke-width', strokeWidth)
+		.selectAll('path')
+		.data(linksData)
+		.join('path')
+		.classed(`${className}__branch`, true)
+		.attr('d', d => {
 
-};
+			let pathToBeDrawn = linkGenerator(d);
+			const { data: targetData } = d.target;
 
-const convertDataToTreeLevels = flattenedData => {
+			if (targetData.fallThrough) {
 
-	const dataAsTreeLevels = [];
-	const groupedData = flow(
-		groupBy('parentId'),
-		mapValues(uniqBy(({ value, parentId }) => `${parentId}-${value}`))
-	)(flattenedData);
+				const { value: targetDataValue } = targetData;
+				const fallThroughLink = find(
+					({ target: { data: { value, fallThrough } } }) => (
+						!fallThrough && value === targetDataValue
+					),
+					linksData
+				);
+				const fallThroughLinkObject = { source: d.target, target: fallThroughLink.target };
+				const fallThroughPathToBeDrawn = linkGenerator(fallThroughLinkObject);
 
-	const populateTreeLevels = (id, level = 0) => {
-
-		const treeLevelIdCollection = map('value', groupedData[id]);
-
-		const currentLevel = dataAsTreeLevels[level] || [];
-
-		dataAsTreeLevels[level] = [ ...currentLevel, ...treeLevelIdCollection ];
-
-		forEach(treeLevelId => {
-
-			const { [treeLevelId]: children } = groupedData;
-
-			if (children) {
-
-				const nextLevel = level + 1;
-
-				populateTreeLevels(treeLevelId, nextLevel);
+				pathToBeDrawn = `${pathToBeDrawn}${fallThroughPathToBeDrawn}`;
 
 			}
 
-		}, treeLevelIdCollection);
+			return pathToBeDrawn;
 
-	};
+		});
 
-	populateTreeLevels(rootParentId);
+	const dataWithNoFallThroughNodes = d3HierarchyData
+		.descendants()
+		.filter(({ data: { fallThrough } }) => !fallThrough);
 
-	let loggedIds = [];
+	const node = svg.append('g')
+		.selectAll('a')
+		.data(dataWithNoFallThroughNodes)
+		.join('a')
+		.attr('transform', d => `translate(${d.x},-${d.y})`);
 
-	forEachRight.convert({ cap: false })((treeLevelIds, levelIndex) => {
+	node.append('circle')
+		.classed(`${className}__node`, true)
+		.classed(`${className}__node--start`, (d, index) => index === 0)
+		.classed(`${className}__node--end`, (d, index, allCircleData) => index === (allCircleData.length - 1))
+		.classed(`${className}__node--active`, ({ data: { value } }) => value === activePageId)
+		.attr('r', nodeRadius);
 
-		const filteredIds = reject(treeLevelId => includes(treeLevelId, loggedIds), treeLevelIds);
-
-		dataAsTreeLevels[levelIndex] = filteredIds;
-
-		loggedIds = [ ...loggedIds, ...filteredIds ];
-
-	}, dataAsTreeLevels);
-
-	dataAsTreeLevels.pop();
-
-	return dataAsTreeLevels;
-
-};
-
-export default (taleTree, className, activePageId) => {
-
-	const flattenedData = flattenTaleTreeData(taleTree);
-	const dataAsTreeLevels = convertDataToTreeLevels(flattenedData);
-
-	const taleMapElements = map.convert({ cap: false })((treeLevelIds, levelIndex) => {
-
-		const treeLevelKey = `treeLevel-${treeLevelIds.join('_')}`;
-		const isStart = levelIndex === 0;
-		const isEnd = levelIndex === dataAsTreeLevels.length - 1;
-
-		return (
-			<div
-				key={treeLevelKey}
-				className={classnames(
-					`${className}__treeLevel`,
-					{ [`${className}__treeLevel--start`]: isStart },
-					{ [`${className}__treeLevel--end`]: isEnd }
-				)}
-			>
-
-				{map(treeLevelId => (
-
-					<div
-						key={`${treeLevelKey}-${treeLevelId}`}
-						className={classnames(
-							`${className}__node`,
-							{ [`${className}__node--start`]: isStart },
-							{ [`${className}__node--end`]: isEnd },
-							{ [`${className}__node--active`]: treeLevelId === activePageId }
-						)}
-					/>
-
-				), treeLevelIds)}
-
-			</div>
-		);
-
-	}, dataAsTreeLevels);
-
-	return taleMapElements;
+	return svg.node();
 
 };

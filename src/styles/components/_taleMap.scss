@@ -1,12 +1,3 @@
-$taleMap-normalDotSize: 5px;
-$taleMap-primaryDotSize: 30px;
-
-.woop {
-	width: 10%;
-	height: 100%;
-	background-image: linear-gradient($_black-mostlyTransparent 0%,$_black-mostlyOpaque 100%);
-}
-
 .taleMap {
 
 	background-image: linear-gradient($_black-mostlyTransparent 0%,$_black-mostlyOpaque 100%);
@@ -16,66 +7,21 @@ $taleMap-primaryDotSize: 30px;
 	position: absolute;
 	z-index: $_z-index-1;
 	display: flex;
-	flex-direction: column-reverse;
-
-	&__treeLevel {
-
-		display: flex;
-		margin: auto 0;
-
-		&--start {
-			margin-bottom: $_gutter;
-		}
-
-		&--end {
-			margin-top: $_gutter;
-		}
-
-	}
 
 	&__node {
 
-		width: $taleMap-normalDotSize;
-		height: $taleMap-normalDotSize;
-		background-color: $_white;
 		fill: $_white;
-		border-radius: 100%;
-		margin: auto;
-		position: relative;
 
 		&--start {
-			width: $taleMap-primaryDotSize;
-			height: $taleMap-primaryDotSize;
-			background-color: $_lightBlue;
 			fill: $_lightBlue;
-			box-shadow: 0px 0px 5px 2px $_lightBlueGlow, inset 0px 0px 5px 2px $_darkBlueGlow;
 		}
 
 		&--end {
-			width: $taleMap-primaryDotSize;
-			height: $taleMap-primaryDotSize;
-			background-color: $_lightYellow;
 			fill: $_lightYellow;
-			box-shadow: 0px 0px 5px 2px $_lightYellowGlow, inset 0px 0px 5px 2px $_darkYellowGlow;
 		}
 
 		&--active {
-
 			r: 12;
-
-			&:before {
-				content: '';
-				width: 5px;
-				height: 5px;
-				position: absolute;
-				top: 0;
-				right: 0;
-				bottom: 0;
-				left: 0;
-				margin: auto;
-				background-color: orange;
-			}
-
 		}
 
 	}

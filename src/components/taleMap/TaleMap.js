@@ -1,39 +1,27 @@
-import React, { Fragment, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 
 import taleTreeShape from '../shapes/taleTreeShape';
 
 import generateTaleMapElements from './utils/generateTaleMapElements';
-import generateTaleMapElementsv2 from './utils/generateTaleMapElementsv2';
 
 export const className = 'taleMap';
 
 function TaleMap({ taleTree, activePageId }) {
 
-	const woopEl = useRef(null);
+	const taleMapEl = useRef(null);
 
 	useEffect(() => {
 
-		generateTaleMapElementsv2(woopEl.current, taleTree, className, activePageId);
+		generateTaleMapElements(taleMapEl.current, taleTree, className, activePageId);
 
 	}, [ activePageId ]);
 
 	return (
-		<Fragment>
-
-			<div className={className}>
-
-				{generateTaleMapElements(taleTree, className, activePageId)}
-
-			</div>
-
-			<div
-				className="woop"
-				style={{ position: 'absolute', zIndex: 99999, display: 'flex' }}
-				ref={woopEl}
-			/>
-
-		</Fragment>
+		<div
+			className={className}
+			ref={taleMapEl}
+		/>
 	);
 
 }
