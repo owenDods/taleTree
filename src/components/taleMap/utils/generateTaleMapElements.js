@@ -7,7 +7,22 @@ import formatDataForD3Hierarchy from './formatDataForD3Hierarchy';
 const nodeWidth = 30;
 const padding = 40;
 
-export default (element, taleTree, className, activePageId, visitedPages) => {
+function calculateNodeHeight(height, dataHeight) {
+
+	const heightMinusPadding = height - (padding * 2);
+	let nodeHeight = height / 10;
+
+	if (nodeHeight * dataHeight > heightMinusPadding) {
+
+		nodeHeight = heightMinusPadding / dataHeight;
+
+	}
+
+	return nodeHeight;
+
+}
+
+function generateTaleMapElements(element, taleTree, className, activePageId, visitedPages) {
 
 	element.replaceChildren();
 
@@ -17,7 +32,7 @@ export default (element, taleTree, className, activePageId, visitedPages) => {
 	const formattedData = formatDataForD3Hierarchy(limitedData);
 	const d3HierarchyData = hierarchy(formattedData);
 
-	const nodeHeight = (height - (padding * 2)) / d3HierarchyData.height;
+	const nodeHeight = calculateNodeHeight(height, d3HierarchyData.height);
 	tree().nodeSize([ nodeWidth, nodeHeight ])(d3HierarchyData);
 
 	const svg = select(element).append('svg')
@@ -94,4 +109,6 @@ export default (element, taleTree, className, activePageId, visitedPages) => {
 
 	return svg.node();
 
-};
+}
+
+export default generateTaleMapElements;
