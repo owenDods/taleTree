@@ -9,13 +9,17 @@ function useTrackVisitedPages(taleId, activePageId) {
 
 	useEffect(() => {
 
-		setVisitedPages(currentVisitedPages => {
+		if (activePageId) {
 
-			const updatedUniqueVisitedPages = [ ...new Set([ ...currentVisitedPages, activePageId ]) ];
+			setVisitedPages(currentVisitedPages => {
 
-			return updatedUniqueVisitedPages;
+				const updatedUniqueVisitedPages = [ ...new Set([ ...currentVisitedPages, activePageId ]) ];
 
-		});
+				return updatedUniqueVisitedPages;
+
+			});
+
+		}
 
 	}, [ activePageId ]);
 
