@@ -3,13 +3,17 @@ import PropTypes from 'prop-types';
 
 import taleTreeShape from '../shapes/taleTreeShape';
 
+import useTrackVisitedPages from './utils/useTrackVisitedPages';
 import generateTaleMapElements from './utils/generateTaleMapElements';
 
 export const className = 'taleMap';
 
 function TaleMap({ taleTree, activePageId }) {
 
+	const visitedPages = useTrackVisitedPages(activePageId);
 	const taleMapEl = useRef(null);
+
+	console.log(visitedPages);
 
 	useEffect(() => {
 
