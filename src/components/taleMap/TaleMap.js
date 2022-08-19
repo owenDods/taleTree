@@ -8,9 +8,9 @@ import generateTaleMapElements from './utils/generateTaleMapElements';
 
 export const className = 'taleMap';
 
-function TaleMap({ taleTree, activePageId }) {
+function TaleMap({ taleTree, taleId, activePageId }) {
 
-	const visitedPages = useTrackVisitedPages(activePageId);
+	const visitedPages = useTrackVisitedPages(taleId, activePageId);
 	const taleMapEl = useRef(null);
 
 	console.log(visitedPages);
@@ -32,6 +32,7 @@ function TaleMap({ taleTree, activePageId }) {
 
 TaleMap.propTypes = {
 	taleTree: PropTypes.shape(taleTreeShape),
+	taleId: PropTypes.string,
 	activePageId: PropTypes.string
 };
 

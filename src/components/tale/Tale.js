@@ -66,7 +66,11 @@ function Tale({ taleCollection }) {
 				imgUrl={get('backgroundImg', activeTale)}
 			/>
 
-			<TaleMap taleTree={activeTaleTree} activePageId={pageId} />
+			<TaleMap
+				taleTree={activeTaleTree}
+				taleId={taleId}
+				activePageId={pageId}
+			/>
 
 			<CSSTransition
 				key={pathname}
