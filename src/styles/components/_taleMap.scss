@@ -25,11 +25,14 @@
 			r: 12;
 		}
 
+		&--unvisited:not(.taleMap__node--active) {
+			visibility: hidden;
+		}
+
 	}
 
 	&__branch {
 		fill: none;
-		stroke: $_white;
 		stroke-width: 5px;
 		stroke-opacity: 0.2;
 		stroke-linejoin: round;

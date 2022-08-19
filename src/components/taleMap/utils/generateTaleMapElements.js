@@ -6,6 +6,7 @@ import formatDataForD3Hierarchy from './formatDataForD3Hierarchy';
 
 const nodeWidth = 30;
 const padding = 40;
+const pathCoordRegex = /-?\d+\.?\d*,-?\d+\.?\d*/g;
 
 function calculateNodeHeight(height, dataHeight) {
 
@@ -19,6 +20,24 @@ function calculateNodeHeight(height, dataHeight) {
 	}
 
 	return nodeHeight;
+
+}
+
+function offsetPathToGiveItDimensionsForGradientIfNeeded(pathToBeDrawn) {
+
+	const isVerticalLine = pathToBeDrawn.match(pathCoordRegex).every(coordString => (
+
+		coordString.split(',')[0] === '0'
+
+	));
+
+	if (isVerticalLine) {
+
+		return pathToBeDrawn.replace(/0/, '0.01');
+
+	}
+
+	return pathToBeDrawn;
 
 }
 
@@ -41,6 +60,24 @@ function generateTaleMapElements(element, taleTree, className, activePageId, vis
 		.attr('height', height)
 		.attr('style', 'max-width: 100%; height: auto; height: intrinsic;');
 
+	const pathGradientId = `${className}__pathGradient`;
+	const pathGradient = svg.append('defs')
+		.append('linearGradient')
+		.attr('id', pathGradientId)
+		.attr('x1', '0')
+		.attr('y1', '1')
+		.attr('x2', '0')
+		.attr('y2', '0');
+
+	pathGradient.append('stop')
+		.attr('stop-color', 'white')
+		.attr('offset', '0.8');
+
+	pathGradient.append('stop')
+		.attr('stop-color', 'white')
+		.attr('stop-opacity', '0')
+		.attr('offset', '1');
+
 	const linksData = d3HierarchyData.links();
 	const linkGenerator = linkVertical().x(({ x }) => x).y(({ y }) => -y);
 
@@ -49,9 +86,18 @@ function generateTaleMapElements(element, taleTree, className, activePageId, vis
 		.data(linksData)
 		.join('path')
 		.classed(`${className}__branch`, true)
+		.attr('stroke', ({ target: { data: { value } } }) => {
+
+			const hasUnvisitedDestination = !visitedPages.includes(value) && !(activePageId === value);
+
+			return hasUnvisitedDestination ? `url(#${pathGradientId})` : '#f5f5f5';
+
+		})
 		.attr('d', d => {
 
 			let pathToBeDrawn = linkGenerator(d);
+			pathToBeDrawn = offsetPathToGiveItDimensionsForGradientIfNeeded(pathToBeDrawn);
+
 			const { data: targetData } = d.target;
 
 			if (targetData.fallThrough) {
@@ -88,7 +134,8 @@ function generateTaleMapElements(element, taleTree, className, activePageId, vis
 		.classed(`${className}__node`, true)
 		.classed(`${className}__node--start`, (d, index) => index === 0)
 		.classed(`${className}__node--end`, (d, index, allCircleData) => index === (allCircleData.length - 1))
-		.classed(`${className}__node--active`, ({ data: { value } }) => value === activePageId);
+		.classed(`${className}__node--active`, ({ data: { value } }) => value === activePageId)
+		.classed(`${className}__node--unvisited`, ({ data: { value } }) => !visitedPages.includes(value));
 
 	const activeNode = svg.select(`.${className}__node--active`).node();
 
