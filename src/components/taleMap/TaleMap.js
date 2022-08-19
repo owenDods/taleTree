@@ -13,11 +13,9 @@ function TaleMap({ taleTree, taleId, activePageId }) {
 	const visitedPages = useTrackVisitedPages(taleId, activePageId);
 	const taleMapEl = useRef(null);
 
-	console.log(visitedPages);
-
 	useEffect(() => {
 
-		generateTaleMapElements(taleMapEl.current, taleTree, className, activePageId);
+		generateTaleMapElements(taleMapEl.current, taleTree, className, activePageId, visitedPages);
 
 	}, [ activePageId ]);
 

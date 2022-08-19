@@ -1,18 +1,20 @@
 import { hierarchy, tree, select, linkVertical } from 'd3';
 import find from 'lodash/fp/find';
 
+import limitDataBasedOnProgress from './limitDataBasedOnProgress';
 import formatDataForD3Hierarchy from './formatDataForD3Hierarchy';
 
 const nodeWidth = 30;
 const padding = 40;
 
-export default (element, taleTree, className, activePageId) => {
+export default (element, taleTree, className, activePageId, visitedPages) => {
 
 	element.replaceChildren();
 
 	const { width, height } = element.getBoundingClientRect();
 
-	const formattedData = formatDataForD3Hierarchy(taleTree);
+	const limitedData = limitDataBasedOnProgress(taleTree, activePageId, visitedPages);
+	const formattedData = formatDataForD3Hierarchy(limitedData);
 	const d3HierarchyData = hierarchy(formattedData);
 
 	const nodeHeight = (height - (padding * 2)) / d3HierarchyData.height;
