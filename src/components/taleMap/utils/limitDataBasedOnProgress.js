@@ -2,7 +2,7 @@ import map from 'lodash/fp/map';
 
 function limitDataBasedOnProgress(taleTree, activePageId, visitedPages = []) {
 
-	const cloneTreeDataItemIfItHasBeenReached = taleTreeDataItem => {
+	const conditionallyCloneTreeDataItem = taleTreeDataItem => {
 
 		const { value, children } = taleTreeDataItem;
 		let clonedTaleTreeDataItem = { ...taleTreeDataItem, children: [] };
@@ -11,7 +11,7 @@ function limitDataBasedOnProgress(taleTree, activePageId, visitedPages = []) {
 
 			clonedTaleTreeDataItem = {
 				...clonedTaleTreeDataItem,
-				children: map(cloneTreeDataItemIfItHasBeenReached, children)
+				children: map(conditionallyCloneTreeDataItem, children)
 			};
 
 		}
@@ -20,7 +20,7 @@ function limitDataBasedOnProgress(taleTree, activePageId, visitedPages = []) {
 
 	};
 
-	const limitedData = { ...cloneTreeDataItemIfItHasBeenReached(taleTree) };
+	const limitedData = { ...conditionallyCloneTreeDataItem(taleTree) };
 
 	return limitedData;
 
