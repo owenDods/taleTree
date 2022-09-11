@@ -1,0 +1,29 @@
+$mainLogo-indent: -8px;
+
+.mainLogo {
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: $_gutter;
+	height: $_lineHeight;
+	line-height: $_lineHeight;
+	z-index: $_z-index-1;
+	display: flex;
+
+	svg {
+		width: 100%;
+		height: 100%;
+	}
+
+	h1 {
+		text-indent: $mainLogo-indent;
+	}
+
+	span {
+		overflow: hidden;
+		width: 0;
+		display: inline-block;
+	}
+
+}

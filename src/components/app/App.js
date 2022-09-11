@@ -5,6 +5,7 @@ import {
 	Route
 } from 'react-router-dom';
 
+import MainLogo from '../mainLogo/MainLogo';
 import BackButton from '../backButton/BackButton';
 import Tale from '../tale/Tale';
 import TaleSelection from '../taleSelection/TaleSelection';
@@ -31,6 +32,8 @@ function App() {
 			<Router>
 
 				<div className={`${className}__content`}>
+
+					<MainLogo />
 
 					<BackButton />
 
