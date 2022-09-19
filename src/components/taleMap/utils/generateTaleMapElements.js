@@ -51,7 +51,11 @@ function generateTaleMapElements(element, taleTree, className, activePageId, vis
 	const formattedData = formatDataForD3Hierarchy(limitedData);
 	const d3HierarchyData = hierarchy(formattedData);
 
-	const nodeHeight = calculateNodeHeight(height, d3HierarchyData.height);
+	const dataHeight = d3HierarchyData.height;
+	const taleFullHeight = hierarchy(formatDataForD3Hierarchy(taleTree)).height;
+	const isDataAtFullHeight = dataHeight === taleFullHeight;
+
+	const nodeHeight = calculateNodeHeight(height, dataHeight);
 	tree().nodeSize([ nodeWidth, nodeHeight ])(d3HierarchyData);
 
 	const svg = select(element).append('svg')
@@ -133,7 +137,7 @@ function generateTaleMapElements(element, taleTree, className, activePageId, vis
 	node.append('circle')
 		.classed(`${className}__node`, true)
 		.classed(`${className}__node--start`, (d, index) => index === 0)
-		.classed(`${className}__node--end`, (d, index, allCircleData) => index === (allCircleData.length - 1))
+		.classed(`${className}__node--end`, ({ depth }) => isDataAtFullHeight && (depth === dataHeight))
 		.classed(`${className}__node--active`, ({ data: { value } }) => value === activePageId)
 		.classed(`${className}__node--unvisited`, ({ data: { value } }) => !visitedPages.includes(value));
 
