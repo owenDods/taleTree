@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom';
 
 import BackgroundImg from '../backgroundImg/BackgroundImg';
-import MainLogo from '../mainLogo/MainLogo';
+import AppHeaderContent from './AppHeaderContent';
 import BackButton from '../backButton/BackButton';
 import Tale from '../tale/Tale';
 import TaleSelection from '../taleSelection/TaleSelection';
@@ -26,6 +26,8 @@ function App() {
 
 	}, []);
 
+	const [ appHeaderTitle, setAppHeaderTitle ] = useState('');
+
 	return (
 
 		<div className={className}>
@@ -38,7 +40,7 @@ function App() {
 
 				<div className={`${className}__header`}>
 
-					<MainLogo />
+					<AppHeaderContent appHeaderTitle={appHeaderTitle} />
 
 				</div>
 
@@ -50,7 +52,12 @@ function App() {
 
 						<Route
 							path={`${routes.TALE}/:taleId/*`}
-							element={<Tale taleCollection={taleCollection} />}
+							element={(
+								<Tale
+									taleCollection={taleCollection}
+									setAppHeaderTitle={setAppHeaderTitle}
+								/>
+							)}
 						/>
 
 						<Route

@@ -28,6 +28,15 @@ $app_headerHeight: 50px;
 			margin: auto auto auto $_gutter;
 			padding: 0;
 		}
+
+		& > h2 {
+			position: absolute;
+			bottom: 50%;
+			left: 50%;
+			transform: translate(-50%, 50%);
+			opacity: 0.75;
+		}
+
 	}
 
 	&__content {

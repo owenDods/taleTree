@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
 	Routes,
@@ -15,6 +15,7 @@ import classnames from 'classnames';
 
 import find from 'lodash/fp/find';
 import get from 'lodash/fp/get';
+import getOr from 'lodash/fp/getOr';
 
 import taleShape from '../shapes/taleShape';
 
@@ -32,11 +33,12 @@ import dummyPageCollection from '../../../dummyData/pageCollection.json';
 
 export const className = 'tale';
 
-function Tale({ taleCollection }) {
+function Tale({ taleCollection, setAppHeaderTitle }) {
 
 	const { taleId, '*': stringAfterTalePath } = useParams();
 
 	const activeTale = find({ id: taleId }, taleCollection);
+	const taleTitle = getOr('', 'name', activeTale);
 
 	const location = useLocation();
 	const { pathname } = location;
@@ -44,6 +46,15 @@ function Tale({ taleCollection }) {
 
 	const activePage = find({ id: pageId }, dummyPageCollection);
 	const activeTaleTree = generateTaleTree(dummyPageCollection);
+
+	useEffect(() => {
+
+		setAppHeaderTitle(pageId ? taleTitle : '');
+
+		return () => setAppHeaderTitle('');
+
+	}, [ taleTitle, pageId ]);
+
 	const { destinations, isDeadEnd } = useGetDestinationsAndDeadEndStatus(activePage, useResolvedPath('').pathname);
 
 	const [ isGoingBackwards, setIsGoingBackwards ] = useState(false);
@@ -86,7 +97,7 @@ function Tale({ taleCollection }) {
 						element={(
 							<TaleStart
 								img={get('img', activeTale)}
-								name={get('name', activeTale)}
+								name={taleTitle}
 								summary={get('summary', activeTale)}
 								startPageDestination={startPageDestination}
 							/>
@@ -122,7 +133,8 @@ function Tale({ taleCollection }) {
 }
 
 Tale.propTypes = {
-	taleCollection: PropTypes.arrayOf(PropTypes.shape(taleShape))
+	taleCollection: PropTypes.arrayOf(PropTypes.shape(taleShape)),
+	setAppHeaderTitle: PropTypes.func
 };
 
 export default Tale;
