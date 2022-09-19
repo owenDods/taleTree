@@ -5,6 +5,7 @@ import {
 	Route
 } from 'react-router-dom';
 
+import BackgroundImg from '../backgroundImg/BackgroundImg';
 import MainLogo from '../mainLogo/MainLogo';
 import BackButton from '../backButton/BackButton';
 import Tale from '../tale/Tale';
@@ -28,6 +29,10 @@ function App() {
 	return (
 
 		<div className={className}>
+
+			<BackgroundImg
+				imgUrl="/backgroundImages/mainApp.jpg"
+			/>
 
 			<Router>
 
