@@ -8,12 +8,14 @@ const nodeWidth = 30;
 const padding = 40;
 const pathCoordRegex = /-?\d+\.?\d*,-?\d+\.?\d*/g;
 
-function calculateNodeHeight(height, dataHeight) {
+function calculateNodeHeight(height, dataHeight, endHasBeenReached) {
 
 	const heightMinusPadding = height - (padding * 2);
 	let nodeHeight = height / 10;
 
-	if (nodeHeight * dataHeight > heightMinusPadding) {
+	const totalNodeHeightExceedsElement = nodeHeight * dataHeight > heightMinusPadding;
+
+	if (totalNodeHeightExceedsElement || endHasBeenReached) {
 
 		nodeHeight = heightMinusPadding / dataHeight;
 
@@ -55,7 +57,25 @@ function generateTaleMapElements(element, taleTree, className, activePageId, vis
 	const taleFullHeight = hierarchy(formatDataForD3Hierarchy(taleTree)).height;
 	const isDataAtFullHeight = dataHeight === taleFullHeight;
 
-	const nodeHeight = calculateNodeHeight(height, dataHeight);
+	const endNodeIds = [];
+
+	if (isDataAtFullHeight) {
+
+		d3HierarchyData.each(({ data: { value }, depth }) => {
+
+			if (depth === taleFullHeight) {
+
+				endNodeIds.push(value);
+
+			}
+
+		});
+
+	}
+
+	const endHasBeenReached = endNodeIds.some(id => visitedPages.includes(id) || activePageId === id);
+
+	const nodeHeight = calculateNodeHeight(height, dataHeight, endHasBeenReached);
 	tree().nodeSize([ nodeWidth, nodeHeight ])(d3HierarchyData);
 
 	const svg = select(element).append('svg')
