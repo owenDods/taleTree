@@ -1,19 +1,15 @@
 import React from 'react';
 
-import TaleTreeIcon from '../../img/taleTreeIcon.svg';
-
 export const className = 'mainLogo';
 
-const MainLogo = () => (
+function MainLogo() {
 
-	<div className={className}>
+	return (
 
-		<TaleTreeIcon />
+		<h1 className={className}>TaleTree</h1>
 
-		<h1><span>T</span>aleTree</h1>
+	);
 
-	</div>
-
-);
+}
 
 export default MainLogo;
