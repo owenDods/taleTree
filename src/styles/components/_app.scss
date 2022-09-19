@@ -1,10 +1,30 @@
+$app_headerHeight: 50px;
+
 .app {
 
 	width: 100%;
 	height: 100%;
+	display: flex;
+	flex-direction: column;
+
+	&__header {
+
+		width: 100%;
+		height: $app_headerHeight;
+		display: flex;
+		background-color: $_white;
+		box-shadow: $_shadow;
+		position: relative;
+		z-index: $_z-index-1;
+
+		.mainLogo {
+			margin: auto auto auto $_gutter;
+			padding: 0;
+		}
+	}
 
 	&__content {
-		height: 100%;
+		height: calc(100% - #{$app_headerHeight});
 		position: relative;
 	}
 

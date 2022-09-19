@@ -31,9 +31,13 @@ function App() {
 
 			<Router>
 
-				<div className={`${className}__content`}>
+				<div className={`${className}__header`}>
 
 					<MainLogo />
+
+				</div>
+
+				<div className={`${className}__content`}>
 
 					<BackButton />
 
