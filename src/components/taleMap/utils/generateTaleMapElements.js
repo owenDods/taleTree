@@ -54,24 +54,18 @@ function generateTaleMapElements(element, taleTree, className, activePageId, vis
 	const d3HierarchyData = hierarchy(formattedData);
 
 	const dataHeight = d3HierarchyData.height;
-	const taleFullHeight = hierarchy(formatDataForD3Hierarchy(taleTree)).height;
-	const isDataAtFullHeight = dataHeight === taleFullHeight;
 
 	const endNodeIds = [];
 
-	if (isDataAtFullHeight) {
+	d3HierarchyData.each(({ data: { value, isFinish } }) => {
 
-		d3HierarchyData.each(({ data: { value }, depth }) => {
+		if (isFinish) {
 
-			if (depth === taleFullHeight) {
+			endNodeIds.push(value);
 
-				endNodeIds.push(value);
+		}
 
-			}
-
-		});
-
-	}
+	});
 
 	const endHasBeenReached = endNodeIds.some(id => visitedPages.includes(id) || activePageId === id);
 
@@ -157,7 +151,7 @@ function generateTaleMapElements(element, taleTree, className, activePageId, vis
 	node.append('circle')
 		.classed(`${className}__node`, true)
 		.classed(`${className}__node--start`, (d, index) => index === 0)
-		.classed(`${className}__node--end`, ({ depth }) => isDataAtFullHeight && (depth === dataHeight))
+		.classed(`${className}__node--end`, ({ data: { isFinish } }) => isFinish)
 		.classed(`${className}__node--active`, ({ data: { value } }) => value === activePageId)
 		.classed(`${className}__node--unvisited`, ({ data: { value } }) => !visitedPages.includes(value));
 

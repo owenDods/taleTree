@@ -128,38 +128,23 @@ function flagTaleTreeFallthroughPagesAndTrimChildren(taleTree, shallowerDuplicat
 
 }
 
-function trimRedundantDestinationLeaves(taleTree, taleFinishDestination) {
+function trimRedundantDestinationLeaves(taleTree) {
 
-	const trimChildren = taleTreeDataItemChildren => {
+	const trimChildrenAndFlagParentIfTrimmed = taleTreeDataItem => {
 
-		const trimmedChildren = reject(
-			({ value }) => value === taleFinishDestination,
-			taleTreeDataItemChildren
-		);
+		const { children } = taleTreeDataItem;
 
-		return map(trimmedChild => {
+		const trimmedChildren = reject('isFinish', children);
 
-			const { children } = trimmedChild;
-
-			if (children.length) {
-
-				return {
-					...trimmedChild,
-					children: trimChildren(children)
-				};
-
-			}
-
-			return trimmedChild;
-
-		}, trimmedChildren);
+		return {
+			...taleTreeDataItem,
+			isFinish: children.length > trimmedChildren.length,
+			children: map(trimChildrenAndFlagParentIfTrimmed, trimmedChildren)
+		};
 
 	};
 
-	const trimmedTaleTree = {
-		...taleTree,
-		children: trimChildren(taleTree.children)
-	};
+	const trimmedTaleTree = trimChildrenAndFlagParentIfTrimmed(taleTree);
 
 	return trimmedTaleTree;
 
@@ -177,10 +162,7 @@ function formatDataForD3Hierarchy(taleTree, taleFinishDestination = defaultTaleF
 		taleTree,
 		shallowerDuplicatedIdAsTreeLevels
 	);
-	const formattedData = trimRedundantDestinationLeaves(
-		flaggedAndTrimmedData,
-		taleFinishDestination
-	);
+	const formattedData = trimRedundantDestinationLeaves(flaggedAndTrimmedData);
 
 	return formattedData;
 

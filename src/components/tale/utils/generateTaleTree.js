@@ -33,11 +33,12 @@ export default (pageCollection, taleFinishDestination = defaultTaleFinishDestina
 
 	const populateBranches = parentBranchId => {
 
-		const childBranches = parentBranchId === taleFinishDestination
-			? [] : idToPageRelationshipMap[parentBranchId].destinations;
+		const isFinish = parentBranchId === taleFinishDestination;
+		const childBranches = isFinish ? [] : idToPageRelationshipMap[parentBranchId].destinations;
 
 		return {
 			value: parentBranchId,
+			isFinish,
 			children: map(populateBranches, childBranches)
 		};
 
