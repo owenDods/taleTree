@@ -67,7 +67,8 @@ function generateTaleMapElements(element, taleTree, className, activePageId, vis
 
 	});
 
-	const endHasBeenReached = endNodeIds.some(id => visitedPages.includes(id) || activePageId === id);
+	const checkIfPageHasBeenVisited = id => visitedPages.includes(id) || activePageId === id;
+	const endHasBeenReached = endNodeIds.some(checkIfPageHasBeenVisited);
 
 	const nodeHeight = calculateNodeHeight(height, dataHeight, endHasBeenReached);
 	tree().nodeSize([ nodeWidth, nodeHeight ])(d3HierarchyData);
@@ -106,7 +107,7 @@ function generateTaleMapElements(element, taleTree, className, activePageId, vis
 		.classed(`${className}__branch`, true)
 		.attr('stroke', ({ target: { data: { value } } }) => {
 
-			const hasUnvisitedDestination = !visitedPages.includes(value) && !(activePageId === value);
+			const hasUnvisitedDestination = !checkIfPageHasBeenVisited(value);
 
 			return hasUnvisitedDestination ? `url(#${pathGradientId})` : '#f5f5f5';
 
@@ -116,11 +117,11 @@ function generateTaleMapElements(element, taleTree, className, activePageId, vis
 			let pathToBeDrawn = linkGenerator(d);
 			pathToBeDrawn = offsetPathToGiveItDimensionsForGradientIfNeeded(pathToBeDrawn);
 
-			const { data: targetData } = d.target;
+			const { target: { data: targetData } } = d;
+			const { fallThrough: targetDataFallThrough, value: targetDataValue } = targetData;
 
-			if (targetData.fallThrough) {
+			if (targetDataFallThrough && checkIfPageHasBeenVisited(targetDataValue)) {
 
-				const { value: targetDataValue } = targetData;
 				const fallThroughLink = find(
 					({ target: { data: { value, fallThrough } } }) => (
 						!fallThrough && value === targetDataValue
