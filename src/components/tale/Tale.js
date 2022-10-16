@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import {
 	Routes,
 	Route,
-	useLocation,
-	useParams,
 	useResolvedPath
 } from 'react-router-dom';
 import {
@@ -19,7 +17,7 @@ import getOr from 'lodash/fp/getOr';
 
 import taleShape from '../shapes/taleShape';
 
-import getPageId from './utils/getPageId';
+import useGetDataFromCurrentRoute from './utils/useGetDataFromCurrentRoute';
 import useFetch from '../../utils/useFetch';
 import useGetDestinationsAndDeadEndStatus from './utils/useGetDestinationsAndDeadEndStatus';
 import generateTaleTree from './utils/generateTaleTree';
@@ -34,19 +32,15 @@ export const className = 'tale';
 
 function Tale({ taleCollection, setAppHeaderTitle }) {
 
-	const { taleId, '*': stringAfterTalePath } = useParams();
+	const { taleId, pageId, location, pathname } = useGetDataFromCurrentRoute();
 
 	const activeTale = find({ id: taleId }, taleCollection);
-	const taleTitle = getOr('', 'name', activeTale);
-
-	const location = useLocation();
-	const { pathname } = location;
-	const pageId = getPageId(stringAfterTalePath);
 
 	const { data: pageCollection } = useFetch('pageCollection');
 	const activePage = find({ id: pageId }, pageCollection);
 	const taleTree = generateTaleTree(pageCollection);
 
+	const taleTitle = getOr('', 'name', activeTale);
 	useEffect(() => {
 
 		setAppHeaderTitle(pageId ? taleTitle : '');
