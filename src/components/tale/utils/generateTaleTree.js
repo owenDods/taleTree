@@ -21,6 +21,7 @@ export default (pageCollection, taleFinishDestination = defaultTaleFinishDestina
 		}
 
 	), pageCollection);
+
 	const idToPageRelationshipMap = reduce((acc, curr) => {
 
 		acc[curr.id] = curr;
@@ -44,6 +45,6 @@ export default (pageCollection, taleFinishDestination = defaultTaleFinishDestina
 
 	};
 
-	return populateBranches(rootId);
+	return rootId ? populateBranches(rootId) : null;
 
 };

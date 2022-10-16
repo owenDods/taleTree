@@ -20,6 +20,7 @@ import getOr from 'lodash/fp/getOr';
 import taleShape from '../shapes/taleShape';
 
 import getPageId from './utils/getPageId';
+import useFetch from '../../utils/useFetch';
 import useGetDestinationsAndDeadEndStatus from './utils/useGetDestinationsAndDeadEndStatus';
 import generateTaleTree from './utils/generateTaleTree';
 
@@ -28,8 +29,6 @@ import TaleMap from '../taleMap/TaleMap';
 import TaleStart from '../taleStart/TaleStart';
 import TalePage from '../talePage/TalePage';
 import Lost from '../lost/Lost';
-
-import dummyPageCollection from '../../../dummyData/pageCollection.json';
 
 export const className = 'tale';
 
@@ -44,8 +43,9 @@ function Tale({ taleCollection, setAppHeaderTitle }) {
 	const { pathname } = location;
 	const pageId = getPageId(stringAfterTalePath);
 
-	const activePage = find({ id: pageId }, dummyPageCollection);
-	const activeTaleTree = generateTaleTree(dummyPageCollection);
+	const { data: pageCollection } = useFetch('pageCollection');
+	const activePage = find({ id: pageId }, pageCollection);
+	const taleTree = generateTaleTree(pageCollection);
 
 	useEffect(() => {
 
@@ -78,7 +78,7 @@ function Tale({ taleCollection, setAppHeaderTitle }) {
 			/>
 
 			<TaleMap
-				taleTree={activeTaleTree}
+				taleTree={taleTree}
 				taleId={taleId}
 				activePageId={pageId}
 			/>

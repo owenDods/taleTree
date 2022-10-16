@@ -15,7 +15,11 @@ function TaleMap({ taleTree, taleId, activePageId }) {
 
 	useEffect(() => {
 
-		generateTaleMapElements(taleMapEl.current, taleTree, className, activePageId, visitedPages);
+		if (taleTree) {
+
+			generateTaleMapElements(taleMapEl.current, taleTree, className, activePageId, visitedPages);
+
+		}
 
 	}, [ activePageId ]);
 
