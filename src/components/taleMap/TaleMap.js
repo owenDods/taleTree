@@ -21,7 +21,7 @@ function TaleMap({ taleTree, taleId, activePageId }) {
 
 		}
 
-	}, [ activePageId ]);
+	}, [ activePageId, !!taleTree ]);
 
 	return (
 		<div
