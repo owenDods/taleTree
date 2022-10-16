@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
 	BrowserRouter as Router,
 	Routes,
@@ -13,19 +13,13 @@ import TaleSelection from '../taleSelection/TaleSelection';
 
 import routes from '../../routes';
 
-import dummyTaleCollection from '../../../dummyData/taleCollection.json';
+import useFetch from '../../utils/useFetch';
 
 export const className = 'app';
 
 function App() {
 
-	const [ taleCollection, setTaleCollection ] = useState([]);
-	useEffect(() => {
-
-		setTaleCollection(dummyTaleCollection);
-
-	}, []);
-
+	const { data: taleCollection } = useFetch('taleCollection');
 	const [ appHeaderTitle, setAppHeaderTitle ] = useState('');
 
 	return (

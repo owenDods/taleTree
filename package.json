@@ -6,7 +6,8 @@
 	"license": "MIT",
 	"private": true,
 	"scripts": {
-		"start": "webpack serve --open",
+		"start:dummyApi": "json-server --watch dummyApi.json",
+		"start": "yarn run start:dummyApi & webpack serve --open",
 		"build": "webpack",
 		"lint": "eslint ./src"
 	},
@@ -19,6 +20,7 @@
 		"eslint-plugin-jsx-a11y": "^6.6.0",
 		"eslint-plugin-react": "^7.30.1",
 		"eslint-plugin-react-hooks": "^4.6.0",
+		"json-server": "^0.17.0",
 		"lodash": "^4.17.20",
 		"moment": "^2.29.4",
 		"prop-types": "^15.8.1",
