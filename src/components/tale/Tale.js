@@ -53,8 +53,6 @@ function Tale({ taleCollection, setAppHeaderTitle }) {
 
 	const [ isGoingBackwards, setIsGoingBackwards ] = useState(false);
 
-	const { pathname: startPageDestination } = useResolvedPath(get('startPage', activeTale) || '');
-
 	return (
 
 		<TransitionGroup
@@ -93,7 +91,9 @@ function Tale({ taleCollection, setAppHeaderTitle }) {
 								img={get('img', activeTale)}
 								name={taleTitle}
 								summary={get('summary', activeTale)}
-								startPageDestination={startPageDestination}
+								startPageDestination={
+									useResolvedPath(getOr('', 'startPage', activeTale)).pathname
+								}
 							/>
 						)}
 					/>
