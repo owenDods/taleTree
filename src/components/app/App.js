@@ -19,7 +19,7 @@ export const className = 'app';
 
 function App() {
 
-	const { data: taleCollection } = useFetch('taleCollection');
+	const { data: taleCollection, loading: taleCollectionLoading } = useFetch('taleCollection');
 	const [ appHeaderTitle, setAppHeaderTitle ] = useState('');
 
 	return (
@@ -56,7 +56,12 @@ function App() {
 
 						<Route
 							path="/"
-							element={<TaleSelection taleCollection={taleCollection} />}
+							element={(
+								<TaleSelection
+									taleCollection={taleCollection}
+									loading={taleCollectionLoading}
+								/>
+							)}
 						/>
 
 					</Routes>

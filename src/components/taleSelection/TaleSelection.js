@@ -8,7 +8,7 @@ import TaleSelectionItem from './TaleSelectionItem';
 
 export const className = 'taleSelection';
 
-function TaleSelection({ taleCollection }) {
+function TaleSelection({ taleCollection, loading }) {
 
 	return (
 		<div className={className}>
@@ -18,6 +18,7 @@ function TaleSelection({ taleCollection }) {
 			<Collection
 				name={className}
 				items={taleCollection}
+				loading={loading}
 			>
 
 				<TaleSelectionItem />
@@ -30,7 +31,8 @@ function TaleSelection({ taleCollection }) {
 }
 
 TaleSelection.propTypes = {
-	taleCollection: PropTypes.arrayOf(PropTypes.shape(taleShape))
+	taleCollection: PropTypes.arrayOf(PropTypes.shape(taleShape)),
+	loading: PropTypes.bool
 };
 
 export default TaleSelection;

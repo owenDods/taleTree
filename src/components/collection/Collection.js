@@ -1,14 +1,19 @@
 import React, { cloneElement } from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 import map from 'lodash/fp/map';
 
+import placeholderCollection from './utils/placeholderCollection';
+
 export const className = 'collection';
 
-function Collection({ name, items, children }) {
+function Collection({ name, items, loading, children }) {
+
+	const itemsToRender = loading ? placeholderCollection : items;
 
 	return (
-		<div className={className}>
+		<div className={classnames(className, { [`${className}--loading`]: loading })}>
 
 			{map.convert({ cap: false })(item => (
 
@@ -17,11 +22,11 @@ function Collection({ name, items, children }) {
 					key={`${className}-${name}-${item.id}`}
 				>
 
-					{cloneElement(children, item)}
+					{!loading && cloneElement(children, item)}
 
 				</div>
 
-			), items)}
+			), itemsToRender)}
 
 		</div>
 	);
@@ -36,6 +41,7 @@ Collection.propTypes = {
 			PropTypes.string
 		]).isRequired
 	})),
+	loading: PropTypes.bool,
 	children: PropTypes.element.isRequired
 };
 

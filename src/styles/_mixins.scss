@@ -53,3 +53,7 @@
 	height: 100%;
 	margin: auto;
 }
+
+@mixin opacityPulse {
+	animation: opacityPulse 1s infinite;
+}

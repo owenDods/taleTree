@@ -13,4 +13,16 @@
 		display: flex;
 	}
 
+	&--loading {
+
+		mask-image: linear-gradient(0deg, transparent, #000000);
+
+		.collection__item {
+			background-color: $_grey-semiOpaque;
+			border-radius: $_radius;
+			@include opacityPulse;
+		}
+
+	}
+
 }
