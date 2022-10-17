@@ -32,7 +32,7 @@ function Tale({ setAppHeaderTitle }) {
 
 	const { taleId, pageId, location, pathname } = useGetDataFromCurrentRoute();
 
-	const { data: activeTale } = useFetch(`taleCollection/${taleId}`);
+	const { data: activeTale, loading: taleLoading } = useFetch(`taleCollection/${taleId}`);
 
 	const { data: pageCollection } = useFetch('pageCollection');
 	const activePage = find({ id: pageId }, pageCollection);
@@ -92,6 +92,7 @@ function Tale({ setAppHeaderTitle }) {
 								startPageDestination={
 									useResolvedPath(getOr('', 'startPage', activeTale)).pathname
 								}
+								loading={taleLoading}
 							/>
 						)}
 					/>

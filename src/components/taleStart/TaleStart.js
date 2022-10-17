@@ -1,22 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import classnames from 'classnames';
 
 import BackgroundImg from '../backgroundImg/BackgroundImg';
 
 export const className = 'taleStart';
 
-function TaleStart({ img, name, summary, startPageDestination }) {
+function TaleStart({ img, name, summary, startPageDestination, loading }) {
 
 	return (
-		<div className={className}>
+		<div className={classnames(className, { [`${className}--loading`]: loading })}>
 
 			<BackgroundImg
 				imgUrl={img}
 				component={(<div className={`${className}__img`} />)}
 			>
 
-				<h2>{name}</h2>
+				{name ? (<h2>{name}</h2>) : null}
 
 			</BackgroundImg>
 
@@ -33,7 +34,8 @@ TaleStart.propTypes = {
 	img: PropTypes.string,
 	name: PropTypes.string,
 	summary: PropTypes.string,
-	startPageDestination: PropTypes.string
+	startPageDestination: PropTypes.string,
+	loading: PropTypes.bool
 };
 
 export default TaleStart;
