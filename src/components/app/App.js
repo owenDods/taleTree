@@ -13,13 +13,10 @@ import TaleSelection from '../taleSelection/TaleSelection';
 
 import routes from '../../routes';
 
-import useFetch from '../../utils/useFetch';
-
 export const className = 'app';
 
 function App() {
 
-	const { data: taleCollection, loading: taleCollectionLoading } = useFetch('taleCollection');
 	const [ appHeaderTitle, setAppHeaderTitle ] = useState('');
 
 	return (
@@ -46,22 +43,12 @@ function App() {
 
 						<Route
 							path={`${routes.TALE}/:taleId/*`}
-							element={(
-								<Tale
-									taleCollection={taleCollection}
-									setAppHeaderTitle={setAppHeaderTitle}
-								/>
-							)}
+							element={<Tale setAppHeaderTitle={setAppHeaderTitle} />}
 						/>
 
 						<Route
 							path="/"
-							element={(
-								<TaleSelection
-									taleCollection={taleCollection}
-									loading={taleCollectionLoading}
-								/>
-							)}
+							element={<TaleSelection />}
 						/>
 
 					</Routes>

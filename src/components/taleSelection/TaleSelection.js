@@ -1,14 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-import taleShape from '../shapes/taleShape';
+import useFetch from '../../utils/useFetch';
 
 import Collection from '../collection/Collection';
 import TaleSelectionItem from './TaleSelectionItem';
 
 export const className = 'taleSelection';
 
-function TaleSelection({ taleCollection, loading }) {
+function TaleSelection() {
+
+	const { data: taleCollection, loading } = useFetch('taleCollection');
 
 	return (
 		<div className={className}>
@@ -29,10 +30,5 @@ function TaleSelection({ taleCollection, loading }) {
 	);
 
 }
-
-TaleSelection.propTypes = {
-	taleCollection: PropTypes.arrayOf(PropTypes.shape(taleShape)),
-	loading: PropTypes.bool
-};
 
 export default TaleSelection;

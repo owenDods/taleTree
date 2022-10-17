@@ -15,8 +15,6 @@ import find from 'lodash/fp/find';
 import get from 'lodash/fp/get';
 import getOr from 'lodash/fp/getOr';
 
-import taleShape from '../shapes/taleShape';
-
 import useGetDataFromCurrentRoute from './utils/useGetDataFromCurrentRoute';
 import useFetch from '../../utils/useFetch';
 import useGetDestinationsAndDeadEndStatus from './utils/useGetDestinationsAndDeadEndStatus';
@@ -30,11 +28,11 @@ import Lost from '../lost/Lost';
 
 export const className = 'tale';
 
-function Tale({ taleCollection, setAppHeaderTitle }) {
+function Tale({ setAppHeaderTitle }) {
 
 	const { taleId, pageId, location, pathname } = useGetDataFromCurrentRoute();
 
-	const activeTale = find({ id: taleId }, taleCollection);
+	const { data: activeTale } = useFetch(`taleCollection/${taleId}`);
 
 	const { data: pageCollection } = useFetch('pageCollection');
 	const activePage = find({ id: pageId }, pageCollection);
@@ -127,7 +125,6 @@ function Tale({ taleCollection, setAppHeaderTitle }) {
 }
 
 Tale.propTypes = {
-	taleCollection: PropTypes.arrayOf(PropTypes.shape(taleShape)),
 	setAppHeaderTitle: PropTypes.func
 };
 
