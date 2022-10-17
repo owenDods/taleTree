@@ -18,7 +18,7 @@
 		margin: $_gutter auto 0;
 	}
 
-	a {
+	&__startLink {
 		width: 100%;
 		margin: auto auto $_gutter;
 		font-size: $_fontSize-large;
@@ -40,6 +40,20 @@
 				height: 20vh;
 				background-image: repeating-linear-gradient(0deg, $_grey-semiOpaque, $_grey-semiOpaque 10%, transparent 10%, transparent 20%);
 				@include opacityPulse;
+			}
+
+			&__startLink {
+
+				background-color: $_grey-semiOpaque;
+				padding: $_gutter-small;
+				border-radius: $_radius;
+				box-sizing: border-box;
+				@include opacityPulse;
+
+				span {
+					visibility: hidden;
+				}
+
 			}
 
 		}

@@ -23,7 +23,9 @@ function TaleStart({ img, name, summary, startPageDestination, loading }) {
 
 			<p className={`${className}__summary`}>{summary}</p>
 
-			<Link to={startPageDestination}>Begin</Link>
+			{loading
+				? (<p className={`${className}__startLink`}><span>Begin</span></p>)
+				: (<Link className={`${className}__startLink`} to={startPageDestination}>Begin</Link>)}
 
 		</div>
 	);
