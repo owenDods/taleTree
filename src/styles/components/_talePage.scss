@@ -83,4 +83,10 @@
 		box-shadow: $_shadow;
 	}
 
+	&--loading .talePage__content {
+		height: 50vh;
+		flex-shrink: 1;
+		@include opacityPulse;
+	}
+
 }

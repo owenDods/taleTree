@@ -10,7 +10,7 @@ import useIsAtTopOrBottomOfScroll from './utils/useIsAtTopOrBottomOfScroll';
 
 export const className = 'talePage';
 
-function TalePage({ pageImg, title, text, destinations }) {
+function TalePage({ pageImg, title, text, destinations, loading }) {
 
 	const pageContentEl = useRef(null);
 	const [
@@ -20,7 +20,7 @@ function TalePage({ pageImg, title, text, destinations }) {
 
 	return (
 
-		<div className={className}>
+		<div className={classnames(className, { [`${className}--loading`]: loading })}>
 
 			<div
 				className={
@@ -78,7 +78,8 @@ TalePage.propTypes = {
 			PropTypes.func
 		]),
 		label: PropTypes.string
-	}))
+	})),
+	loading: PropTypes.bool
 };
 
 export default TalePage;

@@ -34,7 +34,11 @@ function Tale({ setAppHeaderTitle }) {
 
 	const { data: activeTale, loading: taleLoading } = useFetch(`taleCollection/${taleId}`);
 
-	const { data: pageCollection } = useFetch('pageCollection');
+	const {
+		data: pageCollection,
+		loading: pageCollectionLoading,
+		hasCompletedInitialFetch: hasPageCollectionCompletedInitialFetch
+	} = useFetch('pageCollection');
 	const activePage = find({ id: pageId }, pageCollection);
 	const taleTree = generateTaleTree(pageCollection);
 
@@ -101,11 +105,11 @@ function Tale({ setAppHeaderTitle }) {
 						path=":pageId"
 						element={(
 							<TalePage
-								backgroundImg={get('backgroundImg', activeTale)}
 								pageImg={get('img', activePage)}
 								title={get('title', activePage)}
 								text={get('text', activePage)}
 								destinations={destinations}
+								loading={pageCollectionLoading || !hasPageCollectionCompletedInitialFetch}
 							/>
 						)}
 					/>

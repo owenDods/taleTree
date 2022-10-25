@@ -5,6 +5,7 @@ function useFetch(url) {
 	const [ data, setData ] = useState(null);
 	const [ loading, setLoading ] = useState(false);
 	const [ error, setError ] = useState(null);
+	const [ hasCompletedInitialFetch, setHasCompletedInitialFetch ] = useState(false);
 
 	useEffect(() => {
 
@@ -40,6 +41,12 @@ function useFetch(url) {
 
 				setLoading(false);
 
+				if (!hasCompletedInitialFetch) {
+
+					setHasCompletedInitialFetch(true);
+
+				}
+
 			}
 
 		};
@@ -48,7 +55,7 @@ function useFetch(url) {
 
 	}, []);
 
-	return { data, loading, error };
+	return { data, loading, error, hasCompletedInitialFetch };
 
 }
 
