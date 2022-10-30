@@ -17,6 +17,7 @@ import getOr from 'lodash/fp/getOr';
 
 import useGetDataFromCurrentRoute from './utils/useGetDataFromCurrentRoute';
 import useFetch from '../../utils/useFetch';
+import getTaleFinishDestinations from './utils/getTaleFinishDestinations';
 import useGetDestinationsAndDeadEndStatus from './utils/useGetDestinationsAndDeadEndStatus';
 import generateTaleTree from './utils/generateTaleTree';
 
@@ -40,7 +41,8 @@ function Tale({ setAppHeaderTitle }) {
 		hasCompletedInitialFetch: hasPageCollectionCompletedInitialFetch
 	} = useFetch('pageCollection');
 	const activePage = find({ id: pageId }, pageCollection);
-	const taleTree = generateTaleTree(pageCollection);
+	const taleFinishDestinations = getTaleFinishDestinations();
+	const taleTree = generateTaleTree(pageCollection, taleFinishDestinations);
 
 	const taleTitle = getOr('', 'title', activeTale);
 	useEffect(() => {
@@ -51,7 +53,11 @@ function Tale({ setAppHeaderTitle }) {
 
 	}, [ taleTitle, pageId ]);
 
-	const { destinations, isDeadEnd } = useGetDestinationsAndDeadEndStatus(activePage, useResolvedPath('').pathname);
+	const { destinations, isDeadEnd } = useGetDestinationsAndDeadEndStatus(
+		activePage,
+		useResolvedPath('').pathname,
+		taleFinishDestinations
+	);
 
 	const [ isGoingBackwards, setIsGoingBackwards ] = useState(false);
 
@@ -75,6 +81,7 @@ function Tale({ setAppHeaderTitle }) {
 				taleTree={taleTree}
 				taleId={taleId}
 				activePageId={pageId}
+				taleFinishDestinations={taleFinishDestinations}
 			/>
 
 			<CSSTransition

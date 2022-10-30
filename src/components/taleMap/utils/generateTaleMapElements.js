@@ -43,14 +43,21 @@ function offsetPathToGiveItDimensionsForGradientIfNeeded(pathToBeDrawn) {
 
 }
 
-function generateTaleMapElements(element, taleTree, className, activePageId, visitedPages) {
+function generateTaleMapElements(
+	element,
+	taleTree,
+	className,
+	activePageId,
+	visitedPages,
+	taleFinishDestinations
+) {
 
 	element.replaceChildren();
 
 	const { width, height } = element.getBoundingClientRect();
 
 	const limitedData = limitDataBasedOnProgress(taleTree, activePageId, visitedPages);
-	const formattedData = formatDataForD3Hierarchy(limitedData);
+	const formattedData = formatDataForD3Hierarchy(limitedData, taleFinishDestinations);
 	const d3HierarchyData = hierarchy(formattedData);
 
 	const dataHeight = d3HierarchyData.height;

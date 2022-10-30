@@ -8,7 +8,7 @@ import generateTaleMapElements from './utils/generateTaleMapElements';
 
 export const className = 'taleMap';
 
-function TaleMap({ taleTree, taleId, activePageId }) {
+function TaleMap({ taleTree, taleId, activePageId, taleFinishDestinations }) {
 
 	const visitedPages = useTrackVisitedPages(taleId, activePageId);
 	const taleMapEl = useRef(null);
@@ -17,7 +17,14 @@ function TaleMap({ taleTree, taleId, activePageId }) {
 
 		if (taleTree) {
 
-			generateTaleMapElements(taleMapEl.current, taleTree, className, activePageId, visitedPages);
+			generateTaleMapElements(
+				taleMapEl.current,
+				taleTree,
+				className,
+				activePageId,
+				visitedPages,
+				taleFinishDestinations
+			);
 
 		}
 
@@ -35,7 +42,8 @@ function TaleMap({ taleTree, taleId, activePageId }) {
 TaleMap.propTypes = {
 	taleTree: PropTypes.shape(taleTreeShape),
 	taleId: PropTypes.string,
-	activePageId: PropTypes.string
+	activePageId: PropTypes.string,
+	taleFinishDestinations: PropTypes.arrayOf(PropTypes.string)
 };
 
 export default TaleMap;

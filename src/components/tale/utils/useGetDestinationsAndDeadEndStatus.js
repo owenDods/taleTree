@@ -3,9 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import getOr from 'lodash/fp/getOr';
 import map from 'lodash/fp/map';
 
-import { defaultTaleFinishDestination } from '../../../config';
-
-export default (activePage, talePath, taleFinishDestination = defaultTaleFinishDestination) => {
+export default (activePage, talePath, taleFinishDestinations) => {
 
 	const pageDestinations = getOr([], 'destinations', activePage);
 	const isDeadEnd = !pageDestinations.length;
@@ -22,7 +20,7 @@ export default (activePage, talePath, taleFinishDestination = defaultTaleFinishD
 		destinations = map(pageDestination => {
 
 			const destinationString = pageDestination.destination;
-			const formattedDestinationString = destinationString === taleFinishDestination
+			const formattedDestinationString = taleFinishDestinations.includes(destinationString)
 				? destinationString : `${talePath}/${destinationString}`;
 
 			return {

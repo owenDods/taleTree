@@ -10,8 +10,6 @@ import remove from 'lodash/fp/remove';
 import cloneDeep from 'lodash/fp/cloneDeep';
 import reject from 'lodash/fp/reject';
 
-import { defaultTaleFinishDestination } from '../../../config';
-
 const mutableRemove = remove.convert({ immutable: false });
 
 const rootParentId = 'root';
@@ -72,7 +70,7 @@ function convertDataToTreeLevels(flattenedData) {
 
 }
 
-function getDuplicatedIdsAsTreeLevels(dataAsTreeLevels, taleFinishDestination) {
+function getDuplicatedIdsAsTreeLevels(dataAsTreeLevels, taleFinishDestinations) {
 
 	let loggedIds = [];
 	const idsRemovedFromTreeLevels = [];
@@ -86,7 +84,7 @@ function getDuplicatedIdsAsTreeLevels(dataAsTreeLevels, taleFinishDestination) {
 
 		loggedIds = [
 			...loggedIds,
-			...reject(id => id === taleFinishDestination, filteredIds)
+			...reject(id => taleFinishDestinations.includes(id), filteredIds)
 		];
 
 		idsRemovedFromTreeLevels.push(removedIds);
@@ -150,13 +148,13 @@ function trimRedundantDestinationLeaves(taleTree) {
 
 }
 
-function formatDataForD3Hierarchy(taleTree, taleFinishDestination = defaultTaleFinishDestination) {
+function formatDataForD3Hierarchy(taleTree, taleFinishDestinations) {
 
 	const flattenedData = flattenTaleTreeData(taleTree);
 	const dataAsTreeLevels = convertDataToTreeLevels(flattenedData);
 	const shallowerDuplicatedIdAsTreeLevels = getDuplicatedIdsAsTreeLevels(
 		dataAsTreeLevels,
-		taleFinishDestination
+		taleFinishDestinations
 	);
 	const flaggedAndTrimmedData = flagTaleTreeFallthroughPagesAndTrimChildren(
 		taleTree,
