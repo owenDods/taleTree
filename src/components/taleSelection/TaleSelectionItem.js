@@ -8,7 +8,7 @@ import BackgroundImg from '../backgroundImg/BackgroundImg';
 
 export const className = 'taleSelectionItem';
 
-function TaleSelectionItem({ name, img, id, author }) {
+function TaleSelectionItem({ title, img, id, author }) {
 
 	return (
 		<BackgroundImg
@@ -16,9 +16,9 @@ function TaleSelectionItem({ name, img, id, author }) {
 			component={(<Link className={className} to={`/tale/${id}/start`} />)}
 		>
 
-			<div className={`${className}__nameAndAuthor`}>
+			<div className={`${className}__titleAndAuthor`}>
 
-				<p>{name}</p>
+				<p>{title}</p>
 
 				<p className={`${className}__author`}>By {author}</p>
 

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 export default {
 	id: PropTypes.string.isRequired,
-	name: PropTypes.string,
+	title: PropTypes.string,
 	img: PropTypes.string,
 	backgroundImg: PropTypes.string,
 	startPage: PropTypes.string,

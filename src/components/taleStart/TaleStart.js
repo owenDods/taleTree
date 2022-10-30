@@ -7,7 +7,7 @@ import BackgroundImg from '../backgroundImg/BackgroundImg';
 
 export const className = 'taleStart';
 
-function TaleStart({ img, name, summary, startPageDestination, loading }) {
+function TaleStart({ img, title, summary, startPageDestination, loading }) {
 
 	return (
 		<div className={classnames(className, { [`${className}--loading`]: loading })}>
@@ -17,7 +17,7 @@ function TaleStart({ img, name, summary, startPageDestination, loading }) {
 				component={(<div className={`${className}__img`} />)}
 			>
 
-				{name ? (<h2>{name}</h2>) : null}
+				{title ? (<h2>{title}</h2>) : null}
 
 			</BackgroundImg>
 
@@ -34,7 +34,7 @@ function TaleStart({ img, name, summary, startPageDestination, loading }) {
 
 TaleStart.propTypes = {
 	img: PropTypes.string,
-	name: PropTypes.string,
+	title: PropTypes.string,
 	summary: PropTypes.string,
 	startPageDestination: PropTypes.string,
 	loading: PropTypes.bool

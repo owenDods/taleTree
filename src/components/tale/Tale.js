@@ -42,7 +42,7 @@ function Tale({ setAppHeaderTitle }) {
 	const activePage = find({ id: pageId }, pageCollection);
 	const taleTree = generateTaleTree(pageCollection);
 
-	const taleTitle = getOr('', 'name', activeTale);
+	const taleTitle = getOr('', 'title', activeTale);
 	useEffect(() => {
 
 		setAppHeaderTitle(pageId ? taleTitle : '');
@@ -91,7 +91,7 @@ function Tale({ setAppHeaderTitle }) {
 						element={(
 							<TaleStart
 								img={get('img', activeTale)}
-								name={taleTitle}
+								title={taleTitle}
 								summary={get('summary', activeTale)}
 								startPageDestination={
 									useResolvedPath(getOr('', 'startPage', activeTale)).pathname
