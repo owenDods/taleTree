@@ -23,10 +23,7 @@ const BackgroundImg = ({ imgUrl, children, component = (<div />) }) => (
 
 BackgroundImg.propTypes = {
 	imgUrl: PropTypes.string,
-	children: PropTypes.oneOfType([
-		PropTypes.element,
-		PropTypes.arrayOf(PropTypes.element)
-	]),
+	children: PropTypes.node,
 	component: PropTypes.element
 };
 
