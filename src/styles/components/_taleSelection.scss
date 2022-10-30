@@ -12,14 +12,19 @@
 		height: 100%;
 		@include imgBox;
 
-		p {
+		&__nameAndAuthor {
 			margin: auto auto 0 0;
 			@include textLabel;
 		}
 
+		&__author {
+			font-size: $_fontSize-small;
+			color: $_darkGrey;
+		}
+
 		&:hover {
 
-			p {
+			.taleSelectionItem__nameAndAuthor {
 				background-color: $_white;
 			}
 
