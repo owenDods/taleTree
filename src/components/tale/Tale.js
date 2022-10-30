@@ -92,6 +92,7 @@ function Tale({ setAppHeaderTitle }) {
 							<TaleStart
 								img={get('img', activeTale)}
 								title={taleTitle}
+								author={get('author', activeTale)}
 								summary={get('summary', activeTale)}
 								startPageDestination={
 									useResolvedPath(getOr('', 'startPage', activeTale)).pathname

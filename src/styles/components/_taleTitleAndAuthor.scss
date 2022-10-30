@@ -1,0 +1,9 @@
+.taleTitleAndAuthor {
+	margin: auto auto 0 0;
+	@include textLabel;
+
+	&__author {
+		font-size: $_fontSize-small;
+		color: $_darkGrey;
+	}
+}

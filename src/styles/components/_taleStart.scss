@@ -9,11 +9,6 @@
 		@include imgBox;
 	}
 
-	h2 {
-		margin: auto auto 0 0;
-		@include textLabel;
-	}
-
 	&__summary {
 		margin: $_gutter auto 0;
 	}

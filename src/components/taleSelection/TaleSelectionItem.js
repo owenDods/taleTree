@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import taleShape from '../shapes/taleShape';
 
 import BackgroundImg from '../backgroundImg/BackgroundImg';
+import TaleTitleAndAuthor from '../taleTitleAndAuthor/TaleTitleAndAuthor';
 
 export const className = 'taleSelectionItem';
 
@@ -16,13 +17,7 @@ function TaleSelectionItem({ title, img, id, author }) {
 			component={(<Link className={className} to={`/tale/${id}/start`} />)}
 		>
 
-			<div className={`${className}__titleAndAuthor`}>
-
-				<p>{title}</p>
-
-				<p className={`${className}__author`}>By {author}</p>
-
-			</div>
+			<TaleTitleAndAuthor title={title} author={author} />
 
 		</BackgroundImg>
 	);

@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 
 import BackgroundImg from '../backgroundImg/BackgroundImg';
+import TaleTitleAndAuthor from '../taleTitleAndAuthor/TaleTitleAndAuthor';
 
 export const className = 'taleStart';
 
-function TaleStart({ img, title, summary, startPageDestination, loading }) {
+function TaleStart({ img, title, author, summary, startPageDestination, loading }) {
 
 	return (
 		<div className={classnames(className, { [`${className}--loading`]: loading })}>
@@ -17,7 +18,7 @@ function TaleStart({ img, title, summary, startPageDestination, loading }) {
 				component={(<div className={`${className}__img`} />)}
 			>
 
-				{title ? (<h2>{title}</h2>) : null}
+				{title && (<TaleTitleAndAuthor title={title} author={author} header />)}
 
 			</BackgroundImg>
 
@@ -35,6 +36,7 @@ function TaleStart({ img, title, summary, startPageDestination, loading }) {
 TaleStart.propTypes = {
 	img: PropTypes.string,
 	title: PropTypes.string,
+	author: PropTypes.string,
 	summary: PropTypes.string,
 	startPageDestination: PropTypes.string,
 	loading: PropTypes.bool
