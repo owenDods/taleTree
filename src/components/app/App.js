@@ -5,6 +5,8 @@ import {
 	Route
 } from 'react-router-dom';
 
+import useFetch from '../../utils/useFetch';
+
 import BackgroundImg from '../backgroundImg/BackgroundImg';
 import AppHeaderContent from './AppHeaderContent';
 import BackButton from '../backButton/BackButton';
@@ -17,6 +19,8 @@ export const className = 'app';
 
 function App() {
 
+	const { data: account } = useFetch('account');
+	console.log(account);
 	const [ appHeaderTitle, setAppHeaderTitle ] = useState('');
 
 	return (

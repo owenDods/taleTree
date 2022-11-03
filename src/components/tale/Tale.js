@@ -20,6 +20,7 @@ import useFetch from '../../utils/useFetch';
 import getTaleFinishDestinations from './utils/getTaleFinishDestinations';
 import useGetDestinationsAndDeadEndStatus from './utils/useGetDestinationsAndDeadEndStatus';
 import generateTaleTree from './utils/generateTaleTree';
+import useSendTaleFinishedRequestWhenNeeded from './utils/useSendTaleFinishedRequestWhenNeeded';
 
 import BackgroundImg from '../backgroundImg/BackgroundImg';
 import TaleMap from '../taleMap/TaleMap';
@@ -58,6 +59,7 @@ function Tale({ setAppHeaderTitle }) {
 		useResolvedPath('').pathname,
 		taleFinishDestinations
 	);
+	useSendTaleFinishedRequestWhenNeeded(destinations, taleFinishDestinations, taleId);
 
 	const [ isGoingBackwards, setIsGoingBackwards ] = useState(false);
 

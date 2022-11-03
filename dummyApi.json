@@ -1,141 +1,144 @@
 {
-	"taleCollection": [
-		{
-			"id": "ba6c3c3b-7483-4713-ab0e-d649db8fe9ae",
-			"title": "Tale 1",
-			"img": "https://placeimg.com/640/480/nature",
-			"backgroundImg": "/backgroundImages/1.jpg",
-			"startPage": "5903086e-517b-4a21-b8da-f41d18361213",
-			"author": "Owen Dods",
-			"summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur interdum urna vel metus volutpat aliquet. Vestibulum eu aliquet sapien, ut faucibus odio. Ut augue lacus, fermentum eu dui sed, ultricies placerat ipsum. Quisque consectetur lobortis porta. Vivamus felis enim, vulputate quis finibus sed, pharetra vitae ipsum. Integer sit amet cursus sapien. Morbi ultricies orci leo, sed fermentum velit sagittis quis. Etiam feugiat consectetur mi, ut vehicula eros consectetur at. Nullam porta tortor erat, eu vestibulum orci ultricies in. In auctor luctus est a efficitur. Proin non nisl condimentum, ornare lacus vel, porta nisl. Etiam vitae tellus lorem. Sed non neque non orci dignissim vulputate."
-		},
-		{
-			"id": "56fe9527-1772-4a5c-ae8a-45aa40ed609d",
-			"title": "Tale 2",
-			"img": "https://placeimg.com/630/480/nature",
-			"backgroundImg": "/backgroundImages/1.jpg",
-			"startPage": "5903086e-517b-4a21-b8da-f41d18361213",
-			"author": "Owen Dods",
-			"summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur interdum urna vel metus volutpat aliquet. Vestibulum eu aliquet sapien, ut faucibus odio. Ut augue lacus, fermentum eu dui sed, ultricies placerat ipsum. Quisque consectetur lobortis porta. Vivamus felis enim, vulputate quis finibus sed, pharetra vitae ipsum. Integer sit amet cursus sapien. Morbi ultricies orci leo, sed fermentum velit sagittis quis. Etiam feugiat consectetur mi, ut vehicula eros consectetur at. Nullam porta tortor erat, eu vestibulum orci ultricies in. In auctor luctus est a efficitur. Proin non nisl condimentum, ornare lacus vel, porta nisl. Etiam vitae tellus lorem. Sed non neque non orci dignissim vulputate."
-		},
-		{
-			"id": "c3899fc0-9ee7-45a8-89de-62a8f0e18421",
-			"title": "Tale 3",
-			"img": "https://placeimg.com/650/480/nature",
-			"backgroundImg": "/backgroundImages/1.jpg",
-			"startPage": "5903086e-517b-4a21-b8da-f41d18361213",
-			"author": "Owen Dods",
-			"summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur interdum urna vel metus volutpat aliquet. Vestibulum eu aliquet sapien, ut faucibus odio. Ut augue lacus, fermentum eu dui sed, ultricies placerat ipsum. Quisque consectetur lobortis porta. Vivamus felis enim, vulputate quis finibus sed, pharetra vitae ipsum. Integer sit amet cursus sapien. Morbi ultricies orci leo, sed fermentum velit sagittis quis. Etiam feugiat consectetur mi, ut vehicula eros consectetur at. Nullam porta tortor erat, eu vestibulum orci ultricies in. In auctor luctus est a efficitur. Proin non nisl condimentum, ornare lacus vel, porta nisl. Etiam vitae tellus lorem. Sed non neque non orci dignissim vulputate."
-		},
-		{
-			"id": "b5e952a2-832c-4d7c-994a-839f9396491f",
-			"title": "Tale 4",
-			"img": "https://placeimg.com/620/480/nature",
-			"backgroundImg": "/backgroundImages/1.jpg",
-			"startPage": "5903086e-517b-4a21-b8da-f41d18361213",
-			"author": "Owen Dods",
-			"summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur interdum urna vel metus volutpat aliquet. Vestibulum eu aliquet sapien, ut faucibus odio. Ut augue lacus, fermentum eu dui sed, ultricies placerat ipsum. Quisque consectetur lobortis porta. Vivamus felis enim, vulputate quis finibus sed, pharetra vitae ipsum. Integer sit amet cursus sapien. Morbi ultricies orci leo, sed fermentum velit sagittis quis. Etiam feugiat consectetur mi, ut vehicula eros consectetur at. Nullam porta tortor erat, eu vestibulum orci ultricies in. In auctor luctus est a efficitur. Proin non nisl condimentum, ornare lacus vel, porta nisl. Etiam vitae tellus lorem. Sed non neque non orci dignissim vulputate."
-		},
-		{
-			"id": "b68db111-6dc3-425b-9de0-4f62cbe9cbb8",
-			"title": "Tale 5",
-			"img": "https://placeimg.com/660/480/nature",
-			"backgroundImg": "/backgroundImages/1.jpg",
-			"startPage": "5903086e-517b-4a21-b8da-f41d18361213",
-			"author": "Owen Dods",
-			"summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur interdum urna vel metus volutpat aliquet. Vestibulum eu aliquet sapien, ut faucibus odio. Ut augue lacus, fermentum eu dui sed, ultricies placerat ipsum. Quisque consectetur lobortis porta. Vivamus felis enim, vulputate quis finibus sed, pharetra vitae ipsum. Integer sit amet cursus sapien. Morbi ultricies orci leo, sed fermentum velit sagittis quis. Etiam feugiat consectetur mi, ut vehicula eros consectetur at. Nullam porta tortor erat, eu vestibulum orci ultricies in. In auctor luctus est a efficitur. Proin non nisl condimentum, ornare lacus vel, porta nisl. Etiam vitae tellus lorem. Sed non neque non orci dignissim vulputate."
-		},
-		{
-			"id": "32305371-7768-4f4c-95ca-0ddc67e22b37",
-			"title": "Tale 6",
-			"img": "https://placeimg.com/640/470/nature",
-			"backgroundImg": "/backgroundImages/1.jpg",
-			"startPage": "5903086e-517b-4a21-b8da-f41d18361213",
-			"author": "Owen Dods",
-			"summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur interdum urna vel metus volutpat aliquet. Vestibulum eu aliquet sapien, ut faucibus odio. Ut augue lacus, fermentum eu dui sed, ultricies placerat ipsum. Quisque consectetur lobortis porta. Vivamus felis enim, vulputate quis finibus sed, pharetra vitae ipsum. Integer sit amet cursus sapien. Morbi ultricies orci leo, sed fermentum velit sagittis quis. Etiam feugiat consectetur mi, ut vehicula eros consectetur at. Nullam porta tortor erat, eu vestibulum orci ultricies in. In auctor luctus est a efficitur. Proin non nisl condimentum, ornare lacus vel, porta nisl. Etiam vitae tellus lorem. Sed non neque non orci dignissim vulputate."
-		},
-		{
-			"id": "e3332096-866d-4e19-9145-c42adc1a07c9",
-			"title": "Tale 7",
-			"img": "https://placeimg.com/640/490/nature",
-			"backgroundImg": "/backgroundImages/1.jpg",
-			"startPage": "5903086e-517b-4a21-b8da-f41d18361213",
-			"author": "Owen Dods",
-			"summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur interdum urna vel metus volutpat aliquet. Vestibulum eu aliquet sapien, ut faucibus odio. Ut augue lacus, fermentum eu dui sed, ultricies placerat ipsum. Quisque consectetur lobortis porta. Vivamus felis enim, vulputate quis finibus sed, pharetra vitae ipsum. Integer sit amet cursus sapien. Morbi ultricies orci leo, sed fermentum velit sagittis quis. Etiam feugiat consectetur mi, ut vehicula eros consectetur at. Nullam porta tortor erat, eu vestibulum orci ultricies in. In auctor luctus est a efficitur. Proin non nisl condimentum, ornare lacus vel, porta nisl. Etiam vitae tellus lorem. Sed non neque non orci dignissim vulputate."
-		}
-	],
-	"pageCollection": [
-		{
-			"id": "5903086e-517b-4a21-b8da-f41d18361213",
-			"parentPageId": null,
-			"taleId": "ba6c3c3b-7483-4713-ab0e-d649db8fe9ae",
-			"title": "Oh wow, three bowls of porridge!",
-			"text": "After gingerly entering the secluded log cabin, you are immediately struck by a powerful smell of bear shit.//Normally, such an offensive stench would repulse even the hardiest forest explorer. But you're ravenous after wandering the woods for days. And this dwelling is the only sign of civilisation you've encountered since you lost your way.//You quickly suppress your nausea, and press on through the dark hallway stretching out in front of you. The earthy stink and the cold silence of the wooden passage form an oppresive barrier that seems to almost thicken the air in front of you. Girding yourself against the near-tangible sensation of being forced back by the sensory onslaught unfurling from the bowels of the creaking shack, you force your trembling legs to carry you towards the door a few feet ahead of you.//Moving is clumsy while you endure stabs of hunger in your stomach. And a blinding headache joins the cacophony of ways your body is telling you you need food.//You lumber into the room as you roughly shoulder past the door. The sight that greets you instantly dissipates your pains.//Three bowls of porridge sit on a large oak dining table.//The leftmost bowl is the largest, and seems to gently radiate a dull orange glow whilst soft vents of steam twirl from it into the dusty rafters.//The middle bowl is less than half the size of its large neighbour, and seems ethereally still. The lack of movement on its moist, beige surface is borderline hypnotic.//Finally, the last bowl would be most accurately described as a thimble. But despite that, it has an oddly dignified air to it. A modest gravitas that renders it endearing.//You can barely restrain yourself: /b/which serving of porridge do you devour first?/b/",
-			"img": "https://placeimg.com/640/480/animals",
-			"destinations": [
-				{
-					"destination": "74cf7f70-eaf0-40c2-816c-573370c978ab",
-					"label": "The large bowl on the left"
-				},
-				{
-					"destination": "ba228037-ce13-41b5-bc91-839dae17bca8",
-					"label": "The middle bowl"
-				},
-				{
-					"destination": "24a5c0cc-6cc6-4470-aba2-78e3d68b5367",
-					"label": "The smallest bowl"
-				}
-			]
-		},
-		{
-			"id": "74cf7f70-eaf0-40c2-816c-573370c978ab",
-			"parentPageId": "5903086e-517b-4a21-b8da-f41d18361213",
-			"taleId": "ba6c3c3b-7483-4713-ab0e-d649db8fe9ae",
-			"title": "Disaster!",
-			"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pretium urna eget libero porta rhoncus. Maecenas lectus eros, malesuada quis feugiat et, iaculis in tellus. Vivamus at est non nisl tempor commodo nec quis erat. Duis eu justo consectetur, tempor elit a, consequat lorem. Sed dictum eros tellus. Pellentesque vel nunc aliquam, rhoncus libero et, fermentum turpis. Proin magna arcu, interdum eget malesuada quis, iaculis vitae felis. Vestibulum condimentum lacinia ipsum vel tincidunt.",
-			"img": "https://placeimg.com/650/480/animals"
-		},
-		{
-			"id": "ba228037-ce13-41b5-bc91-839dae17bca8",
-			"parentPageId": "5903086e-517b-4a21-b8da-f41d18361213",
-			"taleId": "ba6c3c3b-7483-4713-ab0e-d649db8fe9ae",
-			"title": "Not your finest moment",
-			"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pretium urna eget libero porta rhoncus. Maecenas lectus eros, malesuada quis feugiat et, iaculis in tellus. Vivamus at est non nisl tempor commodo nec quis erat. Duis eu justo consectetur, tempor elit a, consequat lorem. Sed dictum eros tellus. Pellentesque vel nunc aliquam, rhoncus libero et, fermentum turpis. Proin magna arcu, interdum eget malesuada quis, iaculis vitae felis. Vestibulum condimentum lacinia ipsum vel tincidunt.",
-			"img": "https://placeimg.com/640/490/animals",
-			"destinations": [
-				{
-					"destination": "24a5c0cc-6cc6-4470-aba2-78e3d68b5367",
-					"label": "Quickly! The smallest bowl"
-				}
-			]
-		},
-		{
-			"id": "24a5c0cc-6cc6-4470-aba2-78e3d68b5367",
-			"parentPageId": "5903086e-517b-4a21-b8da-f41d18361213",
-			"taleId": "ba6c3c3b-7483-4713-ab0e-d649db8fe9ae",
-			"title": "Keep going?",
-			"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pretium urna eget libero porta rhoncus. Maecenas lectus eros, malesuada quis feugiat et, iaculis in tellus. Vivamus at est non nisl tempor commodo nec quis erat. Duis eu justo consectetur, tempor elit a, consequat lorem. Sed dictum eros tellus. Pellentesque vel nunc aliquam, rhoncus libero et, fermentum turpis. Proin magna arcu, interdum eget malesuada quis, iaculis vitae felis. Vestibulum condimentum lacinia ipsum vel tincidunt.",
-			"img": "https://placeimg.com/650/480/animals",
-			"destinations": [
-				{
-					"destination": "83b37fb9-fc06-46fd-935f-b9caeab73de2",
-					"label": "You've made it this far"
-				}
-			]
-		},
-		{
-			"id": "83b37fb9-fc06-46fd-935f-b9caeab73de2",
-			"parentPageId": "24a5c0cc-6cc6-4470-aba2-78e3d68b5367",
-			"taleId": "ba6c3c3b-7483-4713-ab0e-d649db8fe9ae",
-			"title": "Success!",
-			"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pretium urna eget libero porta rhoncus. Maecenas lectus eros, malesuada quis feugiat et, iaculis in tellus. Vivamus at est non nisl tempor commodo nec quis erat. Duis eu justo consectetur, tempor elit a, consequat lorem. Sed dictum eros tellus. Pellentesque vel nunc aliquam, rhoncus libero et, fermentum turpis. Proin magna arcu, interdum eget malesuada quis, iaculis vitae felis. Vestibulum condimentum lacinia ipsum vel tincidunt.",
-			"img": "https://placeimg.com/650/480/animals",
-			"destinations": [
-				{
-					"destination": "/",
-					"label": "Finish"
-				}
-			]
-		}
-	]
+  "taleCollection": [
+    {
+      "id": "ba6c3c3b-7483-4713-ab0e-d649db8fe9ae",
+      "title": "Tale 1",
+      "img": "https://placeimg.com/640/480/nature",
+      "backgroundImg": "/backgroundImages/1.jpg",
+      "startPage": "5903086e-517b-4a21-b8da-f41d18361213",
+      "author": "Owen Dods",
+      "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur interdum urna vel metus volutpat aliquet. Vestibulum eu aliquet sapien, ut faucibus odio. Ut augue lacus, fermentum eu dui sed, ultricies placerat ipsum. Quisque consectetur lobortis porta. Vivamus felis enim, vulputate quis finibus sed, pharetra vitae ipsum. Integer sit amet cursus sapien. Morbi ultricies orci leo, sed fermentum velit sagittis quis. Etiam feugiat consectetur mi, ut vehicula eros consectetur at. Nullam porta tortor erat, eu vestibulum orci ultricies in. In auctor luctus est a efficitur. Proin non nisl condimentum, ornare lacus vel, porta nisl. Etiam vitae tellus lorem. Sed non neque non orci dignissim vulputate."
+    },
+    {
+      "id": "56fe9527-1772-4a5c-ae8a-45aa40ed609d",
+      "title": "Tale 2",
+      "img": "https://placeimg.com/630/480/nature",
+      "backgroundImg": "/backgroundImages/1.jpg",
+      "startPage": "5903086e-517b-4a21-b8da-f41d18361213",
+      "author": "Owen Dods",
+      "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur interdum urna vel metus volutpat aliquet. Vestibulum eu aliquet sapien, ut faucibus odio. Ut augue lacus, fermentum eu dui sed, ultricies placerat ipsum. Quisque consectetur lobortis porta. Vivamus felis enim, vulputate quis finibus sed, pharetra vitae ipsum. Integer sit amet cursus sapien. Morbi ultricies orci leo, sed fermentum velit sagittis quis. Etiam feugiat consectetur mi, ut vehicula eros consectetur at. Nullam porta tortor erat, eu vestibulum orci ultricies in. In auctor luctus est a efficitur. Proin non nisl condimentum, ornare lacus vel, porta nisl. Etiam vitae tellus lorem. Sed non neque non orci dignissim vulputate."
+    },
+    {
+      "id": "c3899fc0-9ee7-45a8-89de-62a8f0e18421",
+      "title": "Tale 3",
+      "img": "https://placeimg.com/650/480/nature",
+      "backgroundImg": "/backgroundImages/1.jpg",
+      "startPage": "5903086e-517b-4a21-b8da-f41d18361213",
+      "author": "Owen Dods",
+      "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur interdum urna vel metus volutpat aliquet. Vestibulum eu aliquet sapien, ut faucibus odio. Ut augue lacus, fermentum eu dui sed, ultricies placerat ipsum. Quisque consectetur lobortis porta. Vivamus felis enim, vulputate quis finibus sed, pharetra vitae ipsum. Integer sit amet cursus sapien. Morbi ultricies orci leo, sed fermentum velit sagittis quis. Etiam feugiat consectetur mi, ut vehicula eros consectetur at. Nullam porta tortor erat, eu vestibulum orci ultricies in. In auctor luctus est a efficitur. Proin non nisl condimentum, ornare lacus vel, porta nisl. Etiam vitae tellus lorem. Sed non neque non orci dignissim vulputate."
+    },
+    {
+      "id": "b5e952a2-832c-4d7c-994a-839f9396491f",
+      "title": "Tale 4",
+      "img": "https://placeimg.com/620/480/nature",
+      "backgroundImg": "/backgroundImages/1.jpg",
+      "startPage": "5903086e-517b-4a21-b8da-f41d18361213",
+      "author": "Owen Dods",
+      "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur interdum urna vel metus volutpat aliquet. Vestibulum eu aliquet sapien, ut faucibus odio. Ut augue lacus, fermentum eu dui sed, ultricies placerat ipsum. Quisque consectetur lobortis porta. Vivamus felis enim, vulputate quis finibus sed, pharetra vitae ipsum. Integer sit amet cursus sapien. Morbi ultricies orci leo, sed fermentum velit sagittis quis. Etiam feugiat consectetur mi, ut vehicula eros consectetur at. Nullam porta tortor erat, eu vestibulum orci ultricies in. In auctor luctus est a efficitur. Proin non nisl condimentum, ornare lacus vel, porta nisl. Etiam vitae tellus lorem. Sed non neque non orci dignissim vulputate."
+    },
+    {
+      "id": "b68db111-6dc3-425b-9de0-4f62cbe9cbb8",
+      "title": "Tale 5",
+      "img": "https://placeimg.com/660/480/nature",
+      "backgroundImg": "/backgroundImages/1.jpg",
+      "startPage": "5903086e-517b-4a21-b8da-f41d18361213",
+      "author": "Owen Dods",
+      "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur interdum urna vel metus volutpat aliquet. Vestibulum eu aliquet sapien, ut faucibus odio. Ut augue lacus, fermentum eu dui sed, ultricies placerat ipsum. Quisque consectetur lobortis porta. Vivamus felis enim, vulputate quis finibus sed, pharetra vitae ipsum. Integer sit amet cursus sapien. Morbi ultricies orci leo, sed fermentum velit sagittis quis. Etiam feugiat consectetur mi, ut vehicula eros consectetur at. Nullam porta tortor erat, eu vestibulum orci ultricies in. In auctor luctus est a efficitur. Proin non nisl condimentum, ornare lacus vel, porta nisl. Etiam vitae tellus lorem. Sed non neque non orci dignissim vulputate."
+    },
+    {
+      "id": "32305371-7768-4f4c-95ca-0ddc67e22b37",
+      "title": "Tale 6",
+      "img": "https://placeimg.com/640/470/nature",
+      "backgroundImg": "/backgroundImages/1.jpg",
+      "startPage": "5903086e-517b-4a21-b8da-f41d18361213",
+      "author": "Owen Dods",
+      "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur interdum urna vel metus volutpat aliquet. Vestibulum eu aliquet sapien, ut faucibus odio. Ut augue lacus, fermentum eu dui sed, ultricies placerat ipsum. Quisque consectetur lobortis porta. Vivamus felis enim, vulputate quis finibus sed, pharetra vitae ipsum. Integer sit amet cursus sapien. Morbi ultricies orci leo, sed fermentum velit sagittis quis. Etiam feugiat consectetur mi, ut vehicula eros consectetur at. Nullam porta tortor erat, eu vestibulum orci ultricies in. In auctor luctus est a efficitur. Proin non nisl condimentum, ornare lacus vel, porta nisl. Etiam vitae tellus lorem. Sed non neque non orci dignissim vulputate."
+    },
+    {
+      "id": "e3332096-866d-4e19-9145-c42adc1a07c9",
+      "title": "Tale 7",
+      "img": "https://placeimg.com/640/490/nature",
+      "backgroundImg": "/backgroundImages/1.jpg",
+      "startPage": "5903086e-517b-4a21-b8da-f41d18361213",
+      "author": "Owen Dods",
+      "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur interdum urna vel metus volutpat aliquet. Vestibulum eu aliquet sapien, ut faucibus odio. Ut augue lacus, fermentum eu dui sed, ultricies placerat ipsum. Quisque consectetur lobortis porta. Vivamus felis enim, vulputate quis finibus sed, pharetra vitae ipsum. Integer sit amet cursus sapien. Morbi ultricies orci leo, sed fermentum velit sagittis quis. Etiam feugiat consectetur mi, ut vehicula eros consectetur at. Nullam porta tortor erat, eu vestibulum orci ultricies in. In auctor luctus est a efficitur. Proin non nisl condimentum, ornare lacus vel, porta nisl. Etiam vitae tellus lorem. Sed non neque non orci dignissim vulputate."
+    }
+  ],
+  "pageCollection": [
+    {
+      "id": "5903086e-517b-4a21-b8da-f41d18361213",
+      "parentPageId": null,
+      "taleId": "ba6c3c3b-7483-4713-ab0e-d649db8fe9ae",
+      "title": "Oh wow, three bowls of porridge!",
+      "text": "After gingerly entering the secluded log cabin, you are immediately struck by a powerful smell of bear shit.//Normally, such an offensive stench would repulse even the hardiest forest explorer. But you're ravenous after wandering the woods for days. And this dwelling is the only sign of civilisation you've encountered since you lost your way.//You quickly suppress your nausea, and press on through the dark hallway stretching out in front of you. The earthy stink and the cold silence of the wooden passage form an oppresive barrier that seems to almost thicken the air in front of you. Girding yourself against the near-tangible sensation of being forced back by the sensory onslaught unfurling from the bowels of the creaking shack, you force your trembling legs to carry you towards the door a few feet ahead of you.//Moving is clumsy while you endure stabs of hunger in your stomach. And a blinding headache joins the cacophony of ways your body is telling you you need food.//You lumber into the room as you roughly shoulder past the door. The sight that greets you instantly dissipates your pains.//Three bowls of porridge sit on a large oak dining table.//The leftmost bowl is the largest, and seems to gently radiate a dull orange glow whilst soft vents of steam twirl from it into the dusty rafters.//The middle bowl is less than half the size of its large neighbour, and seems ethereally still. The lack of movement on its moist, beige surface is borderline hypnotic.//Finally, the last bowl would be most accurately described as a thimble. But despite that, it has an oddly dignified air to it. A modest gravitas that renders it endearing.//You can barely restrain yourself: /b/which serving of porridge do you devour first?/b/",
+      "img": "https://placeimg.com/640/480/animals",
+      "destinations": [
+        {
+          "destination": "74cf7f70-eaf0-40c2-816c-573370c978ab",
+          "label": "The large bowl on the left"
+        },
+        {
+          "destination": "ba228037-ce13-41b5-bc91-839dae17bca8",
+          "label": "The middle bowl"
+        },
+        {
+          "destination": "24a5c0cc-6cc6-4470-aba2-78e3d68b5367",
+          "label": "The smallest bowl"
+        }
+      ]
+    },
+    {
+      "id": "74cf7f70-eaf0-40c2-816c-573370c978ab",
+      "parentPageId": "5903086e-517b-4a21-b8da-f41d18361213",
+      "taleId": "ba6c3c3b-7483-4713-ab0e-d649db8fe9ae",
+      "title": "Disaster!",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pretium urna eget libero porta rhoncus. Maecenas lectus eros, malesuada quis feugiat et, iaculis in tellus. Vivamus at est non nisl tempor commodo nec quis erat. Duis eu justo consectetur, tempor elit a, consequat lorem. Sed dictum eros tellus. Pellentesque vel nunc aliquam, rhoncus libero et, fermentum turpis. Proin magna arcu, interdum eget malesuada quis, iaculis vitae felis. Vestibulum condimentum lacinia ipsum vel tincidunt.",
+      "img": "https://placeimg.com/650/480/animals"
+    },
+    {
+      "id": "ba228037-ce13-41b5-bc91-839dae17bca8",
+      "parentPageId": "5903086e-517b-4a21-b8da-f41d18361213",
+      "taleId": "ba6c3c3b-7483-4713-ab0e-d649db8fe9ae",
+      "title": "Not your finest moment",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pretium urna eget libero porta rhoncus. Maecenas lectus eros, malesuada quis feugiat et, iaculis in tellus. Vivamus at est non nisl tempor commodo nec quis erat. Duis eu justo consectetur, tempor elit a, consequat lorem. Sed dictum eros tellus. Pellentesque vel nunc aliquam, rhoncus libero et, fermentum turpis. Proin magna arcu, interdum eget malesuada quis, iaculis vitae felis. Vestibulum condimentum lacinia ipsum vel tincidunt.",
+      "img": "https://placeimg.com/640/490/animals",
+      "destinations": [
+        {
+          "destination": "24a5c0cc-6cc6-4470-aba2-78e3d68b5367",
+          "label": "Quickly! The smallest bowl"
+        }
+      ]
+    },
+    {
+      "id": "24a5c0cc-6cc6-4470-aba2-78e3d68b5367",
+      "parentPageId": "5903086e-517b-4a21-b8da-f41d18361213",
+      "taleId": "ba6c3c3b-7483-4713-ab0e-d649db8fe9ae",
+      "title": "Keep going?",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pretium urna eget libero porta rhoncus. Maecenas lectus eros, malesuada quis feugiat et, iaculis in tellus. Vivamus at est non nisl tempor commodo nec quis erat. Duis eu justo consectetur, tempor elit a, consequat lorem. Sed dictum eros tellus. Pellentesque vel nunc aliquam, rhoncus libero et, fermentum turpis. Proin magna arcu, interdum eget malesuada quis, iaculis vitae felis. Vestibulum condimentum lacinia ipsum vel tincidunt.",
+      "img": "https://placeimg.com/650/480/animals",
+      "destinations": [
+        {
+          "destination": "83b37fb9-fc06-46fd-935f-b9caeab73de2",
+          "label": "You've made it this far"
+        }
+      ]
+    },
+    {
+      "id": "83b37fb9-fc06-46fd-935f-b9caeab73de2",
+      "parentPageId": "24a5c0cc-6cc6-4470-aba2-78e3d68b5367",
+      "taleId": "ba6c3c3b-7483-4713-ab0e-d649db8fe9ae",
+      "title": "Success!",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pretium urna eget libero porta rhoncus. Maecenas lectus eros, malesuada quis feugiat et, iaculis in tellus. Vivamus at est non nisl tempor commodo nec quis erat. Duis eu justo consectetur, tempor elit a, consequat lorem. Sed dictum eros tellus. Pellentesque vel nunc aliquam, rhoncus libero et, fermentum turpis. Proin magna arcu, interdum eget malesuada quis, iaculis vitae felis. Vestibulum condimentum lacinia ipsum vel tincidunt.",
+      "img": "https://placeimg.com/650/480/animals",
+      "destinations": [
+        {
+          "destination": "/",
+          "label": "Finish"
+        }
+      ]
+    }
+  ],
+  "account": {
+    "taleId": "56fe9527-1772-4a5c-ae8a-45aa40ed609d"
+  }
 }
