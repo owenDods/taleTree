@@ -4,7 +4,7 @@ import map from 'lodash/fp/map';
 import some from 'lodash/fp/some';
 import includes from 'lodash/fp/includes';
 
-import usePost from '../../../utils/usePost';
+import useFetch from '../../../utils/useFetch';
 
 function useSendTaleFinishedRequestWhenNeeded(destinations, taleFinishDestinations, taleId) {
 
@@ -13,13 +13,14 @@ function useSendTaleFinishedRequestWhenNeeded(destinations, taleFinishDestinatio
 		includes(destinationString, taleFinishDestinations)
 	), destinationStrings);
 
-	const { post, hasCompletedInitialFetch } = usePost('account', { taleId });
+	const payload = { taleId };
+	const { fetchRequest, hasCompletedInitialFetch } = useFetch('account', { method: 'PUT', payload });
 
 	useEffect(() => {
 
 		if (isFinish && !hasCompletedInitialFetch) {
 
-			post();
+			fetchRequest();
 
 		}
 

@@ -2,30 +2,44 @@ import { useState, useEffect } from 'react';
 
 import getFetchRequest from './getFetchRequest';
 
-function useFetch(url) {
+function useFetch(url, options = {}) {
+
+	const { method = 'GET', payload } = options;
 
 	const [ data, setData ] = useState(null);
 	const [ loading, setLoading ] = useState(false);
 	const [ error, setError ] = useState(null);
 	const [ hasCompletedInitialFetch, setHasCompletedInitialFetch ] = useState(false);
 
+	const fetchRequest = getFetchRequest(
+		url,
+		{
+			method,
+			payload,
+			setLoading,
+			setData,
+			setError,
+			setHasCompletedInitialFetch
+		}
+	);
+
 	useEffect(() => {
 
-		const fetchData = getFetchRequest(
-			url,
-			{
-				setLoading,
-				setData,
-				setError,
-				setHasCompletedInitialFetch
-			}
-		);
+		if (method === 'GET') {
 
-		fetchData();
+			fetchRequest();
+
+		}
 
 	}, []);
 
-	return { data, loading, error, hasCompletedInitialFetch };
+	return {
+		fetchRequest,
+		data,
+		loading,
+		error,
+		hasCompletedInitialFetch
+	};
 
 }
 
