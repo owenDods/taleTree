@@ -5,7 +5,7 @@ import {
 	Route
 } from 'react-router-dom';
 
-import useFetch from '../../utils/useFetch';
+import { AccountProvider } from './utils/accountContext';
 
 import BackgroundImg from '../backgroundImg/BackgroundImg';
 import AppHeaderContent from './AppHeaderContent';
@@ -19,8 +19,6 @@ export const className = 'app';
 
 function App() {
 
-	const { data: account } = useFetch('account');
-	console.log(account);
 	const [ appHeaderTitle, setAppHeaderTitle ] = useState('');
 
 	return (
@@ -31,35 +29,39 @@ function App() {
 				imgUrl="/backgroundImages/mainApp.jpg"
 			/>
 
-			<Router>
+			<AccountProvider>
 
-				<div className={`${className}__header`}>
+				<Router>
 
-					<AppHeaderContent appHeaderTitle={appHeaderTitle} />
+					<div className={`${className}__header`}>
 
-				</div>
+						<AppHeaderContent appHeaderTitle={appHeaderTitle} />
 
-				<div className={`${className}__content`}>
+					</div>
 
-					<BackButton />
+					<div className={`${className}__content`}>
 
-					<Routes>
+						<BackButton />
 
-						<Route
-							path={`${routes.TALE}/:taleId/*`}
-							element={<Tale setAppHeaderTitle={setAppHeaderTitle} />}
-						/>
+						<Routes>
 
-						<Route
-							path="/"
-							element={<TaleSelection />}
-						/>
+							<Route
+								path={`${routes.TALE}/:taleId/*`}
+								element={<Tale setAppHeaderTitle={setAppHeaderTitle} />}
+							/>
 
-					</Routes>
+							<Route
+								path="/"
+								element={<TaleSelection />}
+							/>
 
-				</div>
+						</Routes>
 
-			</Router>
+					</div>
+
+				</Router>
+
+			</AccountProvider>
 
 		</div>
 
