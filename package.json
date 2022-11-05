@@ -6,7 +6,7 @@
 	"license": "MIT",
 	"private": true,
 	"scripts": {
-		"start:dummyApi": "json-server --watch dummyApi.json",
+		"start:dummyApi": "json-server --watch dummyApi.json --middlewares ./dummyApiMiddleware.js",
 		"start": "yarn run start:dummyApi & webpack serve --open",
 		"build": "webpack",
 		"lint": "eslint ./src"

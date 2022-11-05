@@ -13,7 +13,7 @@ function useSendTaleFinishedRequestWhenNeeded(destinations, taleFinishDestinatio
 		includes(destinationString, taleFinishDestinations)
 	), destinationStrings);
 
-	const payload = { taleId };
+	const payload = { finishedTales: taleId };
 	const { fetchRequest, hasCompletedInitialFetch } = useFetch('account', { method: 'PUT', payload });
 
 	useEffect(() => {

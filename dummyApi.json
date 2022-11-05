@@ -139,6 +139,9 @@
     }
   ],
   "account": {
-    "taleId": "56fe9527-1772-4a5c-ae8a-45aa40ed609d"
+    "finishedTales": [
+      "ba6c3c3b-7483-4713-ab0e-d649db8fe9ae",
+      "56fe9527-1772-4a5c-ae8a-45aa40ed609d"
+    ]
   }
 }
