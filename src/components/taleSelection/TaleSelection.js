@@ -6,7 +6,7 @@ import useFetch from '../../utils/useFetch';
 import { useAccount } from '../app/utils/accountContext';
 
 import Collection from '../collection/Collection';
-import TaleSelectionItem from './TaleSelectionItem';
+import TaleHeroImage from '../taleHeroImage/TaleHeroImage';
 
 export const className = 'taleSelection';
 
@@ -27,7 +27,7 @@ function TaleSelection() {
 				loading={loading}
 			>
 
-				<TaleSelectionItem finishedTales={finishedTales} />
+				<TaleHeroImage finishedTales={finishedTales} />
 
 			</Collection>
 

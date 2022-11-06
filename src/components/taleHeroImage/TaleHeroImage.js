@@ -9,9 +9,9 @@ import Tick from '../../img/tick.svg';
 import BackgroundImg from '../backgroundImg/BackgroundImg';
 import TaleTitleAndAuthor from '../taleTitleAndAuthor/TaleTitleAndAuthor';
 
-export const className = 'taleSelectionItem';
+export const className = 'taleHeroImage';
 
-function TaleSelectionItem({ title, img, id, author, finishedTales }) {
+function TaleHeroImage({ title, img, id, author, finishedTales }) {
 
 	const hasFinishedThisTale = finishedTales.includes(id);
 
@@ -30,10 +30,10 @@ function TaleSelectionItem({ title, img, id, author, finishedTales }) {
 
 }
 
-TaleSelectionItem.propTypes = {
+TaleHeroImage.propTypes = {
 	...taleShape,
 	id: PropTypes.string,
 	finishedTales: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
-export default TaleSelectionItem;
+export default TaleHeroImage;
