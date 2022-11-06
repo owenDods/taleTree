@@ -4,6 +4,7 @@
 	border-radius: $_radius;
 	padding: $_gutter;
 	display: flex;
+	flex-direction: column;
 
 	&__finishStatus {
 
