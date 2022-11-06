@@ -37,17 +37,12 @@ $tale-taleChoice-transitionDuration: 0.2s;
 
 	}
 
+	.taleStart,
 	.talePage {
 		position: absolute;
 		left: 0;
 		width: 90%;
 		overflow: hidden;
-	}
-
-	.taleMap {
-		opacity: 0;
-		visibility: hidden;
-		transition: opacity $_transitionTiming ease-in-out;
 	}
 
 	&-enter {
@@ -191,8 +186,7 @@ $tale-taleChoice-transitionDuration: 0.2s;
 			visibility: hidden;
 		}
 
-		& > .backgroundImg,
-		.taleMap {
+		& > .backgroundImg {
 			opacity: 1;
 			visibility: visible;
 		}

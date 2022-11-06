@@ -19,31 +19,35 @@ function TaleStart({ img, title, id, author, summary, startPageDestination, load
 	return (
 		<div className={classnames(className, { [`${className}--loading`]: loading })}>
 
-			<TaleHeroImage
-				title={title}
-				img={img}
-				id={id}
-				author={author}
-				finishedTales={finishedTales}
-				header
-				loading={loading}
-			/>
+			<div className={`${className}__content`}>
 
-			<div className={`${className}__summarySection`}>
-
-				<p className={`${className}__summary`}>{summary}</p>
-
-				<TaleProgressSummary
+				<TaleHeroImage
+					title={title}
+					img={img}
 					id={id}
+					author={author}
 					finishedTales={finishedTales}
+					header
 					loading={loading}
 				/>
 
-			</div>
+				<div className={`${className}__summarySection`}>
 
-			{loading
-				? (<p className={`${className}__startLink`}><span>Begin</span></p>)
-				: (<Link className={`${className}__startLink`} to={startPageDestination}>Begin</Link>)}
+					<p className={`${className}__summary`}>{summary}</p>
+
+					<TaleProgressSummary
+						id={id}
+						finishedTales={finishedTales}
+						loading={loading}
+					/>
+
+				</div>
+
+				{loading
+					? (<p className={`${className}__startLink`}><span>Begin</span></p>)
+					: (<Link className={`${className}__startLink`} to={startPageDestination}>Begin</Link>)}
+
+			</div>
 
 		</div>
 	);
