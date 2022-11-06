@@ -2,11 +2,9 @@
 
 	@include pageContainer;
 
-	&__img {
-		width: 100%;
+	.taleHeroImage {
 		height: 50vh;
 		margin: $_gutter auto 0;
-		@include imgBox;
 	}
 
 	&__summary {
@@ -15,7 +13,7 @@
 
 	&__startLink {
 		width: 100%;
-		margin: auto auto $_gutter;
+		margin: $_gutter auto;
 		font-size: $_fontSize-large;
 		font-weight: bold;
 		text-align: center;
@@ -24,11 +22,11 @@
 
 	&--loading {
 
-		.taleStart {
+		.taleHeroImage {
+			@include opacityPulse;
+		}
 
-			&__img {
-				@include opacityPulse;
-			}
+		.taleStart {
 
 			&__summary {
 				width: 100%;

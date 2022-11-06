@@ -101,6 +101,7 @@ function Tale({ setAppHeaderTitle }) {
 							<TaleStart
 								img={get('img', activeTale)}
 								title={taleTitle}
+								id={taleId}
 								author={get('author', activeTale)}
 								summary={get('summary', activeTale)}
 								startPageDestination={

@@ -27,7 +27,10 @@ function TaleSelection() {
 				loading={loading}
 			>
 
-				<TaleHeroImage finishedTales={finishedTales} />
+				<TaleHeroImage
+					finishedTales={finishedTales}
+					getLinkTo={({ id }) => `/tale/${id}/start`}
+				/>
 
 			</Collection>
 

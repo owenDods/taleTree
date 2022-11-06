@@ -2,25 +2,30 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import classnames from 'classnames';
+import getOr from 'lodash/fp/getOr';
 
-import BackgroundImg from '../backgroundImg/BackgroundImg';
-import TaleTitleAndAuthor from '../taleTitleAndAuthor/TaleTitleAndAuthor';
+import { useAccount } from '../app/utils/accountContext';
+
+import TaleHeroImage from '../taleHeroImage/TaleHeroImage';
 
 export const className = 'taleStart';
 
-function TaleStart({ img, title, author, summary, startPageDestination, loading }) {
+function TaleStart({ img, title, id, author, summary, startPageDestination, loading }) {
+
+	const { account } = useAccount();
+	const finishedTales = getOr([], 'finishedTales', account);
 
 	return (
 		<div className={classnames(className, { [`${className}--loading`]: loading })}>
 
-			<BackgroundImg
-				imgUrl={img}
-				component={(<div className={`${className}__img`} />)}
-			>
-
-				{title && (<TaleTitleAndAuthor title={title} author={author} header />)}
-
-			</BackgroundImg>
+			<TaleHeroImage
+				title={title}
+				img={img}
+				id={id}
+				author={author}
+				finishedTales={finishedTales}
+				header
+			/>
 
 			<p className={`${className}__summary`}>{summary}</p>
 
@@ -36,6 +41,7 @@ function TaleStart({ img, title, author, summary, startPageDestination, loading 
 TaleStart.propTypes = {
 	img: PropTypes.string,
 	title: PropTypes.string,
+	id: PropTypes.string,
 	author: PropTypes.string,
 	summary: PropTypes.string,
 	startPageDestination: PropTypes.string,
