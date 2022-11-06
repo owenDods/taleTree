@@ -4,12 +4,16 @@ import { Link } from 'react-router-dom';
 
 import taleShape from '../shapes/taleShape';
 
+import Tick from '../../img/tick.svg';
+
 import BackgroundImg from '../backgroundImg/BackgroundImg';
 import TaleTitleAndAuthor from '../taleTitleAndAuthor/TaleTitleAndAuthor';
 
 export const className = 'taleSelectionItem';
 
-function TaleSelectionItem({ title, img, id, author }) {
+function TaleSelectionItem({ title, img, id, author, finishedTales }) {
+
+	const hasFinishedThisTale = finishedTales.includes(id);
 
 	return (
 		<BackgroundImg
@@ -19,6 +23,8 @@ function TaleSelectionItem({ title, img, id, author }) {
 
 			<TaleTitleAndAuthor title={title} author={author} />
 
+			{hasFinishedThisTale && <Tick className={`${className}__finished`} />}
+
 		</BackgroundImg>
 	);
 
@@ -26,7 +32,8 @@ function TaleSelectionItem({ title, img, id, author }) {
 
 TaleSelectionItem.propTypes = {
 	...taleShape,
-	id: PropTypes.string
+	id: PropTypes.string,
+	finishedTales: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
 export default TaleSelectionItem;

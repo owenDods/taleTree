@@ -1,3 +1,5 @@
+$taleSelectionItem-finishedIconSize: 20px;
+
 .taleSelection {
 
 	@include pageContainer;
@@ -10,11 +12,24 @@
 
 		width: 100%;
 		height: 100%;
+		position: relative;
 		@include imgBox;
+
+		&__finished {
+			position: absolute;
+			top: $_gutter;
+			right: $_gutter;
+			width: $taleSelectionItem-finishedIconSize;
+			height: $taleSelectionItem-finishedIconSize;
+			padding: $_gutter-small;
+			background-color: $_white-almostOpaque;
+			border-radius: 100%;
+		}
 
 		&:hover {
 
-			.taleTitleAndAuthor {
+			.taleTitleAndAuthor,
+			.taleSelectionItem__finished {
 				background-color: $_white;
 			}
 

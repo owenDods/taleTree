@@ -1,6 +1,6 @@
 module.exports = (req, res, next) => {
 
-	const dummyData = require('./dummyApi.json');
+	let dummyData = require('./dummyApi.json');
 
 	if (req.method === 'PUT' && req.url === '/account') {
 
@@ -10,7 +10,10 @@ module.exports = (req, res, next) => {
 
 			if (Array.isArray(existingValue)) {
 
-				req.body[key] = [ ...new Set([ ...existingValue, req.body[key] ]) ];
+				const updatedData = [ ...new Set([ ...existingValue, req.body[key] ]) ];
+
+				req.body[key] = updatedData;
+				dummyData.account[key] = updatedData;
 
 			}
 
