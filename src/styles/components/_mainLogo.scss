@@ -3,4 +3,11 @@
 	height: $_lineHeight;
 	line-height: $_lineHeight;
 	z-index: $_z-index-1;
+
+	a {
+		border-radius: 0;
+		background-color: transparent;
+		box-shadow: none;
+		padding: 0;
+	}
 }
