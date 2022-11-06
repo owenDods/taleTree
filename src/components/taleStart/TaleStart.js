@@ -7,6 +7,7 @@ import getOr from 'lodash/fp/getOr';
 import { useAccount } from '../app/utils/accountContext';
 
 import TaleHeroImage from '../taleHeroImage/TaleHeroImage';
+import TaleProgressSummary from '../taleProgressSummary/TaleProgressSummary';
 
 export const className = 'taleStart';
 
@@ -25,9 +26,20 @@ function TaleStart({ img, title, id, author, summary, startPageDestination, load
 				author={author}
 				finishedTales={finishedTales}
 				header
+				loading={loading}
 			/>
 
-			<p className={`${className}__summary`}>{summary}</p>
+			<div className={`${className}__summarySection`}>
+
+				<p className={`${className}__summary`}>{summary}</p>
+
+				<TaleProgressSummary
+					id={id}
+					finishedTales={finishedTales}
+					loading={loading}
+				/>
+
+			</div>
 
 			{loading
 				? (<p className={`${className}__startLink`}><span>Begin</span></p>)

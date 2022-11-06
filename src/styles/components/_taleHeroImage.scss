@@ -1,5 +1,3 @@
-$taleHeroImage-finishedIconSize: 20px;
-
 .taleHeroImage {
 
 	width: 100%;
@@ -11,11 +9,11 @@ $taleHeroImage-finishedIconSize: 20px;
 		position: absolute;
 		top: $_gutter;
 		right: $_gutter;
-		width: $taleHeroImage-finishedIconSize;
-		height: $taleHeroImage-finishedIconSize;
-		padding: $_gutter-small;
-		background-color: $_white-almostOpaque;
-		border-radius: 100%;
+		@include roundIcon;
+	}
+
+	&--loading {
+		@include opacityPulse;
 	}
 
 }

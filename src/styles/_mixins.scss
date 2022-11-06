@@ -57,3 +57,12 @@
 @mixin opacityPulse {
 	animation: opacityPulse 1s infinite;
 }
+
+@mixin roundIcon($size: $_iconSize) {
+	width: $size;
+	height: $size;
+	padding: $_gutter-small;
+	background-color: $_white-almostOpaque;
+	border-radius: 100%;
+	flex-shrink: 0;
+}

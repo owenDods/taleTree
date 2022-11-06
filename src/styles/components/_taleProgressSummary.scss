@@ -1,0 +1,37 @@
+.taleProgressSummary {
+
+	background-color: $_grey-semiOpaque;
+	border-radius: $_radius;
+	padding: $_gutter;
+	display: flex;
+
+	&__finishStatus {
+
+		display: flex;
+		margin: auto;
+
+		p {
+			margin: auto;
+		}
+
+	}
+
+	&__finished {
+		@include roundIcon;
+		margin-left: $_gutter-small;
+		opacity: 0.25;
+	}
+
+	&--finished {
+
+		.taleProgressSummary__finished {
+			opacity: 1;
+		}
+
+	}
+
+	&--loading {
+		@include opacityPulse;
+	}
+
+}
