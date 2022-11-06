@@ -8,12 +8,12 @@
 	}
 
 	&__summary {
-		margin: $_gutter auto 0;
+		margin: $_gutter auto;
 	}
 
 	&__startLink {
 		width: 100%;
-		margin: $_gutter auto;
+		margin: auto auto $_gutter;
 		font-size: $_fontSize-large;
 		font-weight: bold;
 		text-align: center;
