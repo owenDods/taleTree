@@ -9,6 +9,10 @@
 	z-index: $_z-index-1;
 	display: flex;
 
+	&--loading {
+		@include opacityPulse;
+	}
+
 	&__content {
 
 		width: 100%;

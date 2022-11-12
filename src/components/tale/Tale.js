@@ -42,6 +42,7 @@ function Tale({ setAppHeaderTitle }) {
 		loading: pageCollectionLoading,
 		hasCompletedInitialFetch: hasPageCollectionCompletedInitialFetch
 	} = useFetch('pageCollection');
+	const pagesLoading = pageCollectionLoading || !hasPageCollectionCompletedInitialFetch;
 	const activePage = find({ id: pageId }, pageCollection);
 	const taleFinishDestinations = getTaleFinishDestinations();
 	const taleTree = generateTaleTree(pageCollection, taleFinishDestinations);
@@ -87,6 +88,7 @@ function Tale({ setAppHeaderTitle }) {
 				activePageId={pageId}
 				taleFinishDestinations={taleFinishDestinations}
 				visitedPages={visitedPages}
+				loading={pagesLoading}
 			/>
 
 			<CSSTransition
@@ -125,7 +127,7 @@ function Tale({ setAppHeaderTitle }) {
 								title={get('title', activePage)}
 								text={get('text', activePage)}
 								destinations={destinations}
-								loading={pageCollectionLoading || !hasPageCollectionCompletedInitialFetch}
+								loading={pagesLoading}
 							/>
 						)}
 					/>
