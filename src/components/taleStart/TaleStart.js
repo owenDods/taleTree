@@ -26,7 +26,6 @@ function TaleStart({ img, title, id, author, summary, startPageDestination, load
 					img={img}
 					id={id}
 					author={author}
-					finishedTales={finishedTales}
 					header
 					loading={loading}
 				/>

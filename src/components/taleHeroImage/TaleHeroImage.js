@@ -19,7 +19,7 @@ function TaleHeroImage(props) {
 		img,
 		id,
 		author,
-		finishedTales,
+		finishedTales = [],
 		getLinkTo,
 		header,
 		loading
@@ -56,7 +56,7 @@ function TaleHeroImage(props) {
 TaleHeroImage.propTypes = {
 	...taleShape,
 	id: PropTypes.string,
-	finishedTales: PropTypes.arrayOf(PropTypes.string).isRequired,
+	finishedTales: PropTypes.arrayOf(PropTypes.string),
 	getLinkTo: PropTypes.func,
 	header: PropTypes.bool,
 	loading: PropTypes.bool
