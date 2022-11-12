@@ -57,6 +57,12 @@ function generateTaleMapElements(
 	const { width, height } = element.getBoundingClientRect();
 
 	const limitedData = limitDataBasedOnProgress(taleTree, activePageId, visitedPages);
+	const rootHasNoChildren = limitedData.children.length === 0;
+
+	if (rootHasNoChildren) {
+		return;
+	}
+
 	const formattedData = formatDataForD3Hierarchy(limitedData, taleFinishDestinations);
 	const d3HierarchyData = hierarchy(formattedData);
 

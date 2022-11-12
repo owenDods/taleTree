@@ -1,7 +1,9 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import taleTreeShape from '../shapes/taleTreeShape';
+
+import TaleMapEmptyContent from './TaleMapEmptyContent';
 
 import generateTaleMapElements from './utils/generateTaleMapElements';
 
@@ -10,12 +12,15 @@ export const className = 'taleMap';
 function TaleMap({ taleTree, activePageId, taleFinishDestinations, visitedPages }) {
 
 	const taleMapEl = useRef(null);
+	const [ hasTaleMapContent, setHasTaleMapContent ] = useState(false);
 
 	useEffect(() => {
 
+		let taleMapSvg;
+
 		if (taleTree) {
 
-			generateTaleMapElements(
+			taleMapSvg = generateTaleMapElements(
 				taleMapEl.current,
 				taleTree,
 				className,
@@ -26,13 +31,15 @@ function TaleMap({ taleTree, activePageId, taleFinishDestinations, visitedPages 
 
 		}
 
+		setHasTaleMapContent(!!taleMapSvg);
+
 	}, [ activePageId, !!taleTree, JSON.stringify(visitedPages) ]);
 
 	return (
-		<div
-			className={className}
-			ref={taleMapEl}
-		/>
+		<div className={className}>
+			<div className={`${className}__content`} ref={taleMapEl} />
+			{!hasTaleMapContent ? (<TaleMapEmptyContent />) : null}
+		</div>
 	);
 
 }

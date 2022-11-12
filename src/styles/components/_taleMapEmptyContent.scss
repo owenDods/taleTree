@@ -1,0 +1,26 @@
+.taleMapEmptyContent {
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	padding: $_gutter;
+	box-sizing: border-box;
+
+	&__icon {
+		margin: auto auto 0;
+		fill: $_darkGrey;
+		stroke: $_darkGrey;
+		width: 100%;
+	}
+
+	p {
+		color: $_offWhite;
+		text-align: center;
+		margin: $_gutter-small auto auto;
+	}
+
+}
