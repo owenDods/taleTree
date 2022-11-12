@@ -1,13 +1,37 @@
+$mainLogo-iconSize: 40px;
+$mainLogo-iconPadding: 3px;
+
 .mainLogo {
+
 	padding: $_gutter;
-	height: $_lineHeight;
-	line-height: $_lineHeight;
+	height: 100%;
+	line-height: 100%;
 	z-index: $_z-index-1;
 
+	svg {
+		stroke: $_black;
+		width: $mainLogo-iconSize;
+		height: $mainLogo-iconSize;
+		margin: auto $_gutter-tiny auto auto;
+		border: 2px solid $_black;
+		padding: $mainLogo-iconPadding;
+		box-sizing: border-box;
+		border-radius: $_radius-small;
+	}
+
 	a {
+
 		border-radius: 0;
 		background-color: transparent;
 		box-shadow: none;
 		padding: 0;
+		display: flex;
+		height: 100%;
+
+		span {
+			margin: auto;
+		}
+
 	}
+
 }
