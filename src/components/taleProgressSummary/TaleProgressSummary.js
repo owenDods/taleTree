@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
@@ -7,7 +7,7 @@ import Dash from '../../img/dash.svg';
 
 export const className = 'taleProgressSummary';
 
-function TaleProgressSummary({ id, finishedTales, loading }) {
+function TaleProgressSummary({ id, finishedTales, loading, resetVisitedPages, noVisitedPages }) {
 
 	const hasFinishedThisTale = finishedTales.includes(id);
 
@@ -27,15 +27,27 @@ function TaleProgressSummary({ id, finishedTales, loading }) {
 
 			{!loading && (
 
-				<div className={`${className}__finishStatus`}>
+				<Fragment>
 
-					<p>You have {hasFinishedThisTale ? '' : 'not '}finished this tale</p>
+					<div className={`${className}__finishStatus`}>
 
-					{hasFinishedThisTale
-						? (<Tick className={`${className}__finished`} />)
-						: (<Dash className={`${className}__finished`} />)}
+						<p>You have {hasFinishedThisTale ? '' : 'not '}finished this tale</p>
 
-				</div>
+						{hasFinishedThisTale
+							? (<Tick className={`${className}__finished`} />)
+							: (<Dash className={`${className}__finished`} />)}
+
+					</div>
+
+					<button
+						type="button"
+						disabled={!hasFinishedThisTale || noVisitedPages}
+						onClick={() => resetVisitedPages()}
+					>
+						Reset TaleTree for this tale
+					</button>
+
+				</Fragment>
 
 			)}
 
@@ -48,7 +60,9 @@ function TaleProgressSummary({ id, finishedTales, loading }) {
 TaleProgressSummary.propTypes = {
 	id: PropTypes.string,
 	finishedTales: PropTypes.arrayOf(PropTypes.string),
-	loading: PropTypes.bool
+	loading: PropTypes.bool,
+	resetVisitedPages: PropTypes.func,
+	noVisitedPages: PropTypes.bool
 };
 
 export default TaleProgressSummary;

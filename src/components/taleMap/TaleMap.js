@@ -3,14 +3,12 @@ import PropTypes from 'prop-types';
 
 import taleTreeShape from '../shapes/taleTreeShape';
 
-import useTrackVisitedPages from './utils/useTrackVisitedPages';
 import generateTaleMapElements from './utils/generateTaleMapElements';
 
 export const className = 'taleMap';
 
-function TaleMap({ taleTree, taleId, activePageId, taleFinishDestinations }) {
+function TaleMap({ taleTree, activePageId, taleFinishDestinations, visitedPages }) {
 
-	const visitedPages = useTrackVisitedPages(taleId, activePageId);
 	const taleMapEl = useRef(null);
 
 	useEffect(() => {
@@ -28,7 +26,7 @@ function TaleMap({ taleTree, taleId, activePageId, taleFinishDestinations }) {
 
 		}
 
-	}, [ activePageId, !!taleTree ]);
+	}, [ activePageId, !!taleTree, JSON.stringify(visitedPages) ]);
 
 	return (
 		<div
@@ -41,9 +39,9 @@ function TaleMap({ taleTree, taleId, activePageId, taleFinishDestinations }) {
 
 TaleMap.propTypes = {
 	taleTree: PropTypes.shape(taleTreeShape),
-	taleId: PropTypes.string,
 	activePageId: PropTypes.string,
-	taleFinishDestinations: PropTypes.arrayOf(PropTypes.string)
+	taleFinishDestinations: PropTypes.arrayOf(PropTypes.string),
+	visitedPages: PropTypes.arrayOf(PropTypes.string)
 };
 
 export default TaleMap;

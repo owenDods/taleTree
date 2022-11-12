@@ -20,6 +20,7 @@ import useFetch from '../../utils/useFetch';
 import getTaleFinishDestinations from './utils/getTaleFinishDestinations';
 import useGetDestinationsAndDeadEndStatus from './utils/useGetDestinationsAndDeadEndStatus';
 import generateTaleTree from './utils/generateTaleTree';
+import useTrackVisitedPages from './utils/useTrackVisitedPages';
 import useSendTaleFinishedRequestWhenNeeded from './utils/useSendTaleFinishedRequestWhenNeeded';
 
 import BackgroundImg from '../backgroundImg/BackgroundImg';
@@ -44,6 +45,8 @@ function Tale({ setAppHeaderTitle }) {
 	const activePage = find({ id: pageId }, pageCollection);
 	const taleFinishDestinations = getTaleFinishDestinations();
 	const taleTree = generateTaleTree(pageCollection, taleFinishDestinations);
+
+	const { visitedPages, resetVisitedPages } = useTrackVisitedPages(taleId, pageId);
 
 	const taleTitle = getOr('', 'title', activeTale);
 	useEffect(() => {
@@ -81,9 +84,9 @@ function Tale({ setAppHeaderTitle }) {
 
 			<TaleMap
 				taleTree={taleTree}
-				taleId={taleId}
 				activePageId={pageId}
 				taleFinishDestinations={taleFinishDestinations}
+				visitedPages={visitedPages}
 			/>
 
 			<CSSTransition
@@ -108,6 +111,8 @@ function Tale({ setAppHeaderTitle }) {
 									useResolvedPath(getOr('', 'startPage', activeTale)).pathname
 								}
 								loading={taleLoading}
+								resetVisitedPages={resetVisitedPages}
+								noVisitedPages={visitedPages.length === 0}
 							/>
 						)}
 					/>

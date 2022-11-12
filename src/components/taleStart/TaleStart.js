@@ -11,7 +11,19 @@ import TaleProgressSummary from '../taleProgressSummary/TaleProgressSummary';
 
 export const className = 'taleStart';
 
-function TaleStart({ img, title, id, author, summary, startPageDestination, loading }) {
+function TaleStart(props) {
+
+	const {
+		img,
+		title,
+		id,
+		author,
+		summary,
+		startPageDestination,
+		loading,
+		resetVisitedPages,
+		noVisitedPages
+	} = props;
 
 	const { account } = useAccount();
 	const finishedTales = getOr([], 'finishedTales', account);
@@ -38,6 +50,8 @@ function TaleStart({ img, title, id, author, summary, startPageDestination, load
 						id={id}
 						finishedTales={finishedTales}
 						loading={loading}
+						resetVisitedPages={resetVisitedPages}
+						noVisitedPages={noVisitedPages}
 					/>
 
 				</div>
@@ -60,7 +74,9 @@ TaleStart.propTypes = {
 	author: PropTypes.string,
 	summary: PropTypes.string,
 	startPageDestination: PropTypes.string,
-	loading: PropTypes.bool
+	loading: PropTypes.bool,
+	resetVisitedPages: PropTypes.func,
+	noVisitedPages: PropTypes.bool
 };
 
 export default TaleStart;

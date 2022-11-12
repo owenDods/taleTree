@@ -39,7 +39,9 @@ function useLocalStorageState(key, defaultValue = null) {
 
 	}, [ stringifiedValue ]);
 
-	return [ value, setValue ];
+	const resetValue = () => setValue(defaultValue);
+
+	return [ value, setValue, resetValue ];
 
 }
 

@@ -5,7 +5,11 @@ import useLocalStorageState from '../../../utils/useLocalStorageState';
 function useTrackVisitedPages(taleId, activePageId) {
 
 	const visitedPagesKey = `taleTree_visitedPages_${taleId}`;
-	const [ visitedPages, setVisitedPages ] = useLocalStorageState(visitedPagesKey, []);
+	const [
+		visitedPages,
+		setVisitedPages,
+		resetVisitedPages
+	] = useLocalStorageState(visitedPagesKey, []);
 
 	useEffect(() => {
 
@@ -23,7 +27,7 @@ function useTrackVisitedPages(taleId, activePageId) {
 
 	}, [ activePageId ]);
 
-	return visitedPages;
+	return { visitedPages, resetVisitedPages };
 
 }
 
