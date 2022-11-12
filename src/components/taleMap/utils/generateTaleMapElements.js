@@ -60,7 +60,9 @@ function generateTaleMapElements(
 	const rootHasNoChildren = limitedData.children.length === 0;
 
 	if (rootHasNoChildren) {
-		return;
+
+		return null;
+
 	}
 
 	const formattedData = formatDataForD3Hierarchy(limitedData, taleFinishDestinations);
