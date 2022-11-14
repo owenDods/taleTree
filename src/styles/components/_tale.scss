@@ -9,12 +9,6 @@ $tale-taleChoice-transitionDuration: 0.2s;
 	width: 100%;
 	height: 100%;
 
-	.taleStart {
-		opacity: 1;
-		visibility: visible;
-		transition: opacity $_transitionTiming ease-in-out;
-	}
-
 	& > .backgroundImg {
 
 		position: absolute;
@@ -47,6 +41,11 @@ $tale-taleChoice-transitionDuration: 0.2s;
 
 	&-enter {
 
+		&.taleStart {
+			opacity: 0;
+			visibility: hidden;
+		}
+
 		.talePage__content {
 			transform: translateY(-100%);
 			opacity: 0;
@@ -57,6 +56,12 @@ $tale-taleChoice-transitionDuration: 0.2s;
 		}
 
 		&-active {
+
+			&.taleStart {
+				transition: opacity $tale-transitionDuration $tale-transitionDuration, visibility $tale-transitionDuration $tale-transitionDuration;
+				opacity: 1;
+				visibility: visible;
+			}
 
 			.talePage__content {
 				transition: opacity $tale-transitionDuration $tale-transitionDuration, transform $tale-transitionDuration $tale-transitionDuration;
@@ -72,6 +77,11 @@ $tale-taleChoice-transitionDuration: 0.2s;
 		}
 
 		&-done {
+
+			&.taleStart {
+				opacity: 1;
+				visibility: visible;
+			}
 
 			.talePage__content {
 				transform: translateY(0);
@@ -90,6 +100,11 @@ $tale-taleChoice-transitionDuration: 0.2s;
 
 		overflow: hidden;
 
+		&.taleStart {
+			opacity: 1;
+			visibility: visible;
+		}
+
 		.talePage__content {
 			transform: translateY(0);
 			opacity: 1;
@@ -100,6 +115,12 @@ $tale-taleChoice-transitionDuration: 0.2s;
 		}
 
 		&-active {
+
+			&.taleStart {
+				transition: opacity $tale-transitionDuration, visibility $tale-transitionDuration;
+				opacity: 0;
+				visibility: hidden;
+			}
 
 			.talePage__content {
 				transition: opacity $tale-transitionDuration, transform $tale-transitionDuration;
@@ -115,6 +136,11 @@ $tale-taleChoice-transitionDuration: 0.2s;
 		}
 
 		&-done {
+
+			&.taleStart {
+				opacity: 0;
+				visibility: hidden;
+			}
 
 			.talePage__content {
 				transform: translateY(100%);
@@ -180,11 +206,6 @@ $tale-taleChoice-transitionDuration: 0.2s;
 	}
 
 	&--pageActive {
-
-		.taleStart {
-			opacity: 0;
-			visibility: hidden;
-		}
 
 		& > .backgroundImg {
 			opacity: 1;
