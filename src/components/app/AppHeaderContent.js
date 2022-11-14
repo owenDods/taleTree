@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import MainLogo from '../mainLogo/MainLogo';
 
-function AppHeaderContent({ appHeaderTitle }) {
+function AppHeaderContent({ appHeaderTitle, appHeaderLinkTo }) {
 
 	return (
 
@@ -11,7 +12,12 @@ function AppHeaderContent({ appHeaderTitle }) {
 
 			<MainLogo />
 
-			<h2>{appHeaderTitle}</h2>
+			<h2>
+
+				{appHeaderLinkTo
+					? (<Link to={appHeaderLinkTo}>{appHeaderTitle}</Link>) : appHeaderTitle}
+
+			</h2>
 
 		</>
 
@@ -20,7 +26,8 @@ function AppHeaderContent({ appHeaderTitle }) {
 }
 
 AppHeaderContent.propTypes = {
-	appHeaderTitle: PropTypes.string
+	appHeaderTitle: PropTypes.string,
+	appHeaderLinkTo: PropTypes.string
 };
 
 export default AppHeaderContent;

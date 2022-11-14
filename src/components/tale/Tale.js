@@ -31,7 +31,7 @@ import Lost from '../lost/Lost';
 
 export const className = 'tale';
 
-function Tale({ setAppHeaderTitle }) {
+function Tale({ setAppHeaderTitleAndLinkTo, clearAppHeaderTitleAndLinkTo }) {
 
 	const { taleId, pageId, location, pathname } = useGetDataFromCurrentRoute();
 
@@ -50,17 +50,21 @@ function Tale({ setAppHeaderTitle }) {
 	const { visitedPages, resetVisitedPages } = useTrackVisitedPages(taleId, pageId);
 
 	const taleTitle = getOr('', 'title', activeTale);
+	const talePathUrl = useResolvedPath('').pathname;
 	useEffect(() => {
 
-		setAppHeaderTitle(pageId ? taleTitle : '');
+		const newPageTitle = pageId ? taleTitle : '';
+		const newLinkTo = pageId ? `${talePathUrl}/start` : '';
 
-		return () => setAppHeaderTitle('');
+		setAppHeaderTitleAndLinkTo(newPageTitle, newLinkTo);
+
+		return () => clearAppHeaderTitleAndLinkTo();
 
 	}, [ taleTitle, pageId ]);
 
 	const { destinations, isDeadEnd } = useGetDestinationsAndDeadEndStatus(
 		activePage,
-		useResolvedPath('').pathname,
+		talePathUrl,
 		taleFinishDestinations
 	);
 	useSendTaleFinishedRequestWhenNeeded(destinations, taleFinishDestinations, taleId);
@@ -148,7 +152,8 @@ function Tale({ setAppHeaderTitle }) {
 }
 
 Tale.propTypes = {
-	setAppHeaderTitle: PropTypes.func
+	setAppHeaderTitleAndLinkTo: PropTypes.func,
+	clearAppHeaderTitleAndLinkTo: PropTypes.func
 };
 
 export default Tale;

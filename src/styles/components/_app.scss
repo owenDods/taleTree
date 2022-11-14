@@ -37,6 +37,13 @@ $app_headerHeight: 60px;
 			opacity: 0.75;
 		}
 
+		a {
+			border-radius: 0;
+			background-color: transparent;
+			box-shadow: none;
+			padding: 0;
+		}
+
 	}
 
 	&__content {

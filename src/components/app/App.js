@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
 	BrowserRouter as Router,
 	Routes,
@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 
 import { AccountProvider } from './utils/accountContext';
+import useAppHeaderTitleLink from './utils/useAppHeaderTitleLink';
 
 import BackgroundImg from '../backgroundImg/BackgroundImg';
 import AppHeaderContent from './AppHeaderContent';
@@ -19,7 +20,12 @@ export const className = 'app';
 
 function App() {
 
-	const [ appHeaderTitle, setAppHeaderTitle ] = useState('');
+	const {
+		appHeaderTitle,
+		appHeaderLinkTo,
+		setAppHeaderTitleAndLinkTo,
+		clearAppHeaderTitleAndLinkTo
+	} = useAppHeaderTitleLink();
 
 	return (
 
@@ -35,7 +41,10 @@ function App() {
 
 					<div className={`${className}__header`}>
 
-						<AppHeaderContent appHeaderTitle={appHeaderTitle} />
+						<AppHeaderContent
+							appHeaderTitle={appHeaderTitle}
+							appHeaderLinkTo={appHeaderLinkTo}
+						/>
 
 					</div>
 
@@ -47,7 +56,12 @@ function App() {
 
 							<Route
 								path={`${routes.TALE}/:taleId/*`}
-								element={<Tale setAppHeaderTitle={setAppHeaderTitle} />}
+								element={(
+									<Tale
+										setAppHeaderTitleAndLinkTo={setAppHeaderTitleAndLinkTo}
+										clearAppHeaderTitleAndLinkTo={clearAppHeaderTitleAndLinkTo}
+									/>
+								)}
 							/>
 
 							<Route
