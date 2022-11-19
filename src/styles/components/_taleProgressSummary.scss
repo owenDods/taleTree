@@ -26,14 +26,28 @@
 	&__resetButton {
 
 		display: flex;
-		flex-direction: column;
 
-		span {
+		&Text {
+
+			display: flex;
+			flex-direction: column;
 			margin: auto;
+
+			span {
+				margin: auto;
+			}
+
 		}
 
 		&Explanation {
 			font-size: $_fontSize-small;
+		}
+
+		& > svg {
+			width: $_iconSize-large;
+			height: $_iconSize-large;
+			stroke: $_black;
+			margin: auto;
 		}
 
 	}

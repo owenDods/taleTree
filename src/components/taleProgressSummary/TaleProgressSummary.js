@@ -4,6 +4,7 @@ import classnames from 'classnames';
 
 import Tick from '../../img/tick.svg';
 import Dash from '../../img/dash.svg';
+import TaleMap from '../../img/taleMap.svg';
 
 export const className = 'taleProgressSummary';
 
@@ -45,13 +46,16 @@ function TaleProgressSummary({ id, finishedTales, loading, resetVisitedPages, no
 						disabled={!hasFinishedThisTale || noVisitedPages}
 						onClick={() => resetVisitedPages()}
 					>
-						<span>Reset TaleTree for this tale</span>
-						<span className={`${className}__resetButtonExplanation`}>
-							({hasFinishedThisTale
-								? 'It will still be marked as finished'
-								: 'You can reset once this tale has been finished'}
-							)
-						</span>
+						<div className={`${className}__resetButtonText`}>
+							<span>Reset TaleTree for this tale</span>
+							<span className={`${className}__resetButtonExplanation`}>
+								({hasFinishedThisTale
+									? 'It will still be marked as finished'
+									: 'You can reset once this tale has been finished'}
+								)
+							</span>
+						</div>
+						<TaleMap />
 					</button>
 
 				</Fragment>
