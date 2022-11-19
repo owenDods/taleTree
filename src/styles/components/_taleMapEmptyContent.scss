@@ -15,12 +15,13 @@
 		fill: $_darkGrey;
 		stroke: $_darkGrey;
 		width: 100%;
+		height: auto;
 	}
 
 	p {
 		color: $_offWhite;
 		text-align: center;
-		margin: $_gutter-small auto auto;
+		margin: $_gutter auto auto;
 	}
 
 }

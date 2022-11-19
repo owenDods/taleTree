@@ -1,6 +1,6 @@
 import React from 'react';
 
-import TaleTree from '../../img/taleTree.svg';
+import TaleMap from '../../img/taleMap.svg';
 
 export const className = 'taleMapEmptyContent';
 
@@ -10,7 +10,7 @@ function TaleMapEmptyContent() {
 
 		<div className={className}>
 
-			<TaleTree className={`${className}__icon`} />
+			<TaleMap className={`${className}__icon`} />
 
 			<p>Your TaleTree will grow here to map your progress through this tale</p>
 

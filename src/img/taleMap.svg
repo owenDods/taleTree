@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 500 500" width="500" height="500" xmlns="http://www.w3.org/2000/svg">
+  <ellipse cx="250" cy="450" rx="50" ry="50"/>
+
+  <path
+    style="fill: none; stroke-width: 50px; stroke-linecap: round;"
+    d="M 250,475 C 250,400 125,400 125,300"
+  />
+  <ellipse cx="125" cy="300" rx="50" ry="50"/>
+  <path
+    style="fill: none; stroke-width: 50px; stroke-linecap: round;"
+    d="M 125,300 C 125,200 25,150 25,25"
+  />
+  <path
+    style="fill: none; stroke-width: 50px; stroke-linecap: round;"
+    d="M 125,300 C 125,200 215,150 215,25"
+  />
+
+  <path
+    style="fill: none; stroke-width: 50px; stroke-linecap: round;"
+    d="M 250,475 C 250,400 375,400 375,300"
+  />
+  <ellipse cx="375" cy="300" rx="50" ry="50"/>
+  <path
+    style="fill: none; stroke-width: 50px; stroke-linecap: round;"
+    d="M 375,300 C 375,200 285,150 285,25"
+  />
+  <path
+    style="fill: none; stroke-width: 50px; stroke-linecap: round;"
+    d="M 375,300 C 375,200 475,150 475,25"
+  />
+</svg>
