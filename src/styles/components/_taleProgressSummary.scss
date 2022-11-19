@@ -23,6 +23,21 @@
 		opacity: 0.25;
 	}
 
+	&__resetButton {
+
+		display: flex;
+		flex-direction: column;
+
+		span {
+			margin: auto;
+		}
+
+		&Explanation {
+			font-size: $_fontSize-small;
+		}
+
+	}
+
 	&--finished {
 
 		.taleProgressSummary__finished {

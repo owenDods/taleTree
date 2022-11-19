@@ -41,10 +41,17 @@ function TaleProgressSummary({ id, finishedTales, loading, resetVisitedPages, no
 
 					<button
 						type="button"
+						className={`${className}__resetButton`}
 						disabled={!hasFinishedThisTale || noVisitedPages}
 						onClick={() => resetVisitedPages()}
 					>
-						Reset TaleTree for this tale
+						<span>Reset TaleTree for this tale</span>
+						<span className={`${className}__resetButtonExplanation`}>
+							({hasFinishedThisTale
+								? 'It will still be marked as finished'
+								: 'You can reset once this tale has been finished'}
+							)
+						</span>
 					</button>
 
 				</Fragment>
