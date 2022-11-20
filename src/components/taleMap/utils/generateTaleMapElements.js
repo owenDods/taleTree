@@ -49,7 +49,8 @@ function generateTaleMapElements(
 	className,
 	activePageId,
 	visitedPages,
-	taleFinishDestinations
+	taleFinishDestinations,
+	navigateToPage
 ) {
 
 	element.replaceChildren();
@@ -159,10 +160,15 @@ function generateTaleMapElements(
 		.filter(({ data: { fallThrough } }) => !fallThrough);
 
 	const node = svg.append('g')
-		.selectAll('a')
+		.selectAll('g')
 		.data(dataWithNoFallThroughNodes)
-		.join('a')
-		.attr('transform', d => `translate(${d.x},-${d.y})`);
+		.join('g')
+		.attr('transform', d => `translate(${d.x},-${d.y})`)
+		.on('click', (e, { data: { value } }) => {
+
+			navigateToPage(value);
+
+		});
 
 	node.append('circle')
 		.classed(`${className}__node`, true)

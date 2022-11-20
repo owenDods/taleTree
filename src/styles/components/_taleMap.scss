@@ -29,7 +29,8 @@
 	&__node {
 
 		fill: $_white;
-		r: 8px;
+		r: 8;
+		cursor: pointer;
 
 		&--start {
 			fill: $_lightBlue;
@@ -45,6 +46,10 @@
 
 		&--unvisited:not(.taleMap__node--active) {
 			visibility: hidden;
+		}
+
+		&:hover:not(.taleMap__node--active) {
+			r: 10;
 		}
 
 	}

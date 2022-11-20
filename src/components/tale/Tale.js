@@ -93,6 +93,7 @@ function Tale({ setAppHeaderTitleAndLinkTo, clearAppHeaderTitleAndLinkTo }) {
 				taleFinishDestinations={taleFinishDestinations}
 				visitedPages={visitedPages}
 				loading={pagesLoading}
+				talePathUrl={talePathUrl}
 			/>
 
 			<CSSTransition
