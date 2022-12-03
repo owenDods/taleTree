@@ -13,7 +13,7 @@ function useSendTaleFinishedRequestWhenNeeded(destinations, taleFinishDestinatio
 	const payload = { finishedTales: taleId };
 	const { fetchRequest: updateFinishedTalesForAccount } = useFetch('account', { method: 'PUT', payload });
 
-	const { account, fetchAccount } = useAccount();
+	const { account, fetchAccount, setLocalStorageAccount } = useAccount();
 	const finishedTales = get('finishedTales', account);
 
 	useEffect(() => {
@@ -28,8 +28,21 @@ function useSendTaleFinishedRequestWhenNeeded(destinations, taleFinishDestinatio
 
 		if (isFinish && accountHasNotFinishedThisTale) {
 
-			updateFinishedTalesForAccount()
-				.then(() => fetchAccount());
+			if (fetchAccount) {
+
+				updateFinishedTalesForAccount()
+					.then(() => fetchAccount());
+
+			} else {
+
+				setLocalStorageAccount(prevAccount => (
+					{
+						...prevAccount,
+						finishedTales: [ ...new Set([ ...prevAccount.finishedTales, taleId ]) ]
+					}
+				));
+
+			}
 
 		}
 
