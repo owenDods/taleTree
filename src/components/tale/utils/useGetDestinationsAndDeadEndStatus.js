@@ -5,7 +5,7 @@ import map from 'lodash/fp/map';
 
 export default (activePage, talePath, taleFinishDestinations) => {
 
-	const pageDestinations = getOr([], 'destinations', activePage);
+	const pageDestinations = getOr([], 'destinationCollection', activePage);
 	const isDeadEnd = !pageDestinations.length;
 
 	const navigate = useNavigate();
@@ -19,7 +19,7 @@ export default (activePage, talePath, taleFinishDestinations) => {
 
 		destinations = map(pageDestination => {
 
-			const destinationString = pageDestination.destination;
+			const destinationString = pageDestination.destination || pageDestination.address;
 			const formattedDestinationString = taleFinishDestinations.includes(destinationString)
 				? destinationString : `${talePath}/${destinationString}`;
 

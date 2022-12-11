@@ -7,19 +7,25 @@ import { checkIsPageId } from '../../../routes';
 
 export default (pageCollection, taleFinishDestinations) => {
 
-	const pageCollectionAsIdRelationships = map(({ id, parentPageId, destinations }) => (
+	const pageCollectionAsIdRelationships = map(({ id, parentPageId, destinationCollection }) => {
 
-		{
+		const destinationCollectionAsRelevantStrings = map(({ destination, address }) => (
+
+			destination || address
+
+		), destinationCollection);
+
+		return {
 			id,
 			parentPageId,
-			destinations: filter(destinationString => (
+			destinationCollection: filter(destinationString => (
 
 				taleFinishDestinations.includes(destinationString) || checkIsPageId(destinationString)
 
-			), map('destination', destinations))
-		}
+			), destinationCollectionAsRelevantStrings)
+		};
 
-	), pageCollection);
+	}, pageCollection);
 
 	const idToPageRelationshipMap = reduce((acc, curr) => {
 
@@ -34,7 +40,8 @@ export default (pageCollection, taleFinishDestinations) => {
 	const populateBranches = parentBranchId => {
 
 		const isFinish = taleFinishDestinations.includes(parentBranchId);
-		const childBranches = isFinish ? [] : idToPageRelationshipMap[parentBranchId].destinations;
+		const childBranches = isFinish
+			? [] : idToPageRelationshipMap[parentBranchId].destinationCollection;
 
 		return {
 			value: parentBranchId,

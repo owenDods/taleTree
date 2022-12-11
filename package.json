@@ -7,7 +7,8 @@
 	"private": true,
 	"scripts": {
 		"start:dummyApi": "json-server --watch dummyApi.json --middlewares ./dummyApiMiddleware.js --delay 1000",
-		"start": "yarn run start:dummyApi & webpack serve --open",
+		"start:default": "webpack serve --open",
+		"start": "yarn run start:dummyApi & yarn run start:default",
 		"build": "webpack",
 		"lint": "eslint ./src"
 	},
