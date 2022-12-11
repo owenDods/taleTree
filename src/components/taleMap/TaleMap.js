@@ -23,6 +23,7 @@ function TaleMap(props) {
 	} = props;
 
 	const taleMapEl = useRef(null);
+	const [ hasMadeInitialGenerateAttempt, setHasMadeInitialGenerateAttempt ] = useState(false);
 	const [ hasTaleMapContent, setHasTaleMapContent ] = useState(false);
 	const navigate = useNavigate();
 
@@ -44,13 +45,15 @@ function TaleMap(props) {
 				navigateToPage
 			);
 
+			setHasMadeInitialGenerateAttempt(true);
+
 		}
 
 		setHasTaleMapContent(!!taleMapSvg);
 
 	}, [ activePageId, !!taleTree, JSON.stringify(visitedPages) ]);
 
-	const shouldShowEmptyContent = !hasTaleMapContent && !loading;
+	const shouldShowEmptyContent = hasMadeInitialGenerateAttempt && !hasTaleMapContent && !loading;
 
 	return (
 		<div className={classnames(className, { [`${className}--loading`]: loading })}>
