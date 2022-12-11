@@ -2,7 +2,12 @@ $taleSelectionItem-finishedIconSize: 20px;
 
 .taleSelection {
 
-	@include pageContainer;
+	height: 100%;
+	overflow: auto;
+
+	&__content {
+		@include pageContainer;
+	}
 
 	&__heading {
 		margin: $_gutter auto 0;

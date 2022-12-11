@@ -19,20 +19,24 @@ function TaleSelection() {
 	return (
 		<div className={className}>
 
-			<h1 className={`${className}__heading`}>Tale Selection</h1>
+			<div className={`${className}__content`}>
 
-			<Collection
-				name={className}
-				items={taleCollection}
-				loading={loading}
-			>
+				<h1 className={`${className}__heading`}>Tale Selection</h1>
 
-				<TaleHeroImage
-					finishedTales={finishedTales}
-					getLinkTo={({ id }) => `/tale/${id}/start`}
-				/>
+				<Collection
+					name={className}
+					items={taleCollection}
+					loading={loading}
+				>
 
-			</Collection>
+					<TaleHeroImage
+						finishedTales={finishedTales}
+						getLinkTo={({ id }) => `/tale/${id}/start`}
+					/>
+
+				</Collection>
+
+			</div>
 
 		</div>
 	);
