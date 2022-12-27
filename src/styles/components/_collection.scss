@@ -7,7 +7,7 @@
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	gap: $_gutter;
-	grid-auto-rows: minmax(25vh, auto);
+	grid-auto-rows: minmax(25vh, 50vh);
 
 	&__item {
 		display: flex;
