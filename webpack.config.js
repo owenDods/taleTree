@@ -41,7 +41,8 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			title: 'TaleTree',
 			hash: true,
-			template: 'index.html'
+			template: 'index.html',
+			favicon: path.resolve(__dirname, 'static', 'taleTree.ico')
 		}),
 		new CopyPlugin({
 			patterns: [
