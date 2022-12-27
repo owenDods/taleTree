@@ -12,7 +12,7 @@ const BackgroundImg = ({ imgUrl, children, component = (<div />) }) => (
 			...component.props,
 			style: {
 				...component.props.style,
-				backgroundImage: `url(${imgUrl})`
+				backgroundImage: imgUrl ? `url(${imgUrl})` : ''
 			},
 			className: classNames(component.props.className, className)
 		},
